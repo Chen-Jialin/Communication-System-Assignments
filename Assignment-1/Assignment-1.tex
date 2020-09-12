@@ -1,6 +1,96 @@
 \documentclass{assignment}
-\ProjectInfos*{Introduction to System System}{EE140}{Fall, 2020}{Assignment 1}{Due time : 10:15, Sept 18, 2020 (Friday)}{陈稼霖}{45875852}
-
+\UsingEnglish
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment 1}{Due time : 10:15, Sept 18, 2020 (Friday)}{陈稼霖}{45875852}
 \begin{document}
-    Hello world!
+\begin{prob}[15 pts]
+    Classify each of the following signals as an energy signal or as a power signal by calculating E (energy) or P (power). Note: the parameters involved are positive constants.
+    \begin{itemize}
+        \item[a)] $x(t)=e^{-\alpha\abs{t}}\cos\pi t$,
+        \item[b)] $x(t)=\Pi(t-3)\cos 3\pi t$, $\left(\Pi(t)=\left\{\begin{array}{ll}1,&\abs{t}\leq 0.5\\0,&\text{otherwise}\end{array}\right.\right)$
+        \item[c)] $x(t)=\abs{t}$,
+        \item[d)] $x(t)=\sum_{n=-\infty}^{\infty}\Lambda(\frac{t}{2}-n)$, $\left(\Lambda(t)=\left\{\begin{array}{ll}1-\abs{t},&\abs{t}\\0,&\text{otherwise}\end{array}\right.\right)$
+        \item[e)] $x(t)=e^{j2\pi 3t}u(t)$, $\left(u(t)=\left\{\begin{array}{ll}1,&t\geq 0\\0,&\text{otherwise}\end{array}\right.\right)$
+    \end{itemize}
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}[20 pts]
+    Calculate \textbf{the Fourier transform and the energy} of the following signals.
+    \begin{itemize}
+        \item[a)] $x_1(t)=5\sinc(2t)e^{j2\pi 3t}$
+        \item[b)] $x_2(t)=\sinc^2(t-1)$
+        \item[c)] $x_a(t)=x_1(t)+x_2(-t)$
+        \item[d)] $x_b(t)=x_1(-t)+x_2(t)$
+        \item[e)] $x_c(t)=2x_1(t)\cos 6\pi t+x_2(t)e^{j6\pi t}$
+    \end{itemize}
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}[10 pts]
+    Calculate the convolution of the following signal.
+    \item[a)] $y(t)=e^{-\abs{t}}*\Pi(t-2)$
+    \item[b)] $y(t)=\sgn(t)*\Lambda(t-2)$
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}[20 pts]
+    Calculate the Fourier transform of the following periodic signal.
+    \begin{itemize}
+        \item[a)] $\sum_{n=-\infty}^{\infty}\Lambda(\frac{t}{2}-2n)$
+        \item[b)] $\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]*\left[\Pi(\frac{t}{2})\cos(2\pi t)\right]$
+    \end{itemize}
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}[15 pts]
+    \textbf{Determine} the range of permissible cutoff frequencies for the ideal lowpass filter used to reconstruct the following signal
+    \[
+        x(t)=4\cos^2(200\pi t)\cos(1000\pi t)
+    \]
+    Which is sampled at $2000$ samples per second. Sketch $X(f)$ and $X_{\delta}(f)$ (spectrum after the sampling). Find the minimum allowable sampling frequency.
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}
+    \begin{itemize}
+        \item[1)] Express the spectrum $Y(f)$ of
+        \[
+            y(t)=x(t)\cos(400\pi t)+\hat{x}(t)\sin(400\pi t)
+        \]
+        using the spectrum $X(f)$ of $x(t)$, where $\hat{x}(t)$ is the Hilbert transform of $x(t)$. (5 pts)
+        \item[2)] if $x(t)=2\cos(60\pi t)$, sketch $Y(f).$
+    \end{itemize}
+\end{prob}
+\begin{sol}
+
+\end{sol}
+
+\begin{prob}
+    Consider $x(t)=2\cos(60\pi t)$, the reference frequency $f_0=40$ Hz. Calculate the following signals.
+    \begin{itemize}
+        \item[a)] The Hilbert transform of $x(t)$, i.e., $\hat{x}(t)$.
+        \item[b)] The analytic signal $x_p(t)$.
+        \item[c)] The convex envelope of $x(t)$, i.e., $\tilde{x}(t)$.
+        \item[d)] The inphase and quadrature component of $x(t)$, i.e., $x_R(t)$ and $x_I(t)$.\\
+        （Please refer to Lecture 2, Slide 36 or Page 88 of reference textbook, we will learn this in the next class. I am sorry for the lagging.）
+        \item[e)] Determine and plot the spectrum of the following signals:
+        \begin{itemize}
+            \item[i.] $x_1(t)=\frac{2}{3}x(t)+\frac{1}{3}j\hat{x}(t)$
+            \item[ii.] $x_2(t)=\left[\frac{1}{5}x(t)+\frac{4}{5}j\hat{x}(t)\right]e^{j2\pi f_0t}$
+        \end{itemize}
+    \end{itemize}
+\end{prob}
+\begin{sol}
+
+\end{sol}
 \end{document}

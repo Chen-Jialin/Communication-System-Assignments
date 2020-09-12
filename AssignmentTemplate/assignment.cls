@@ -17,8 +17,8 @@
 
 % 数学公式 Mathematical equations
 \RequirePackage{amsmath, amssymb, amsthm, bm} % 基础数学支持, 特殊数学符号, 自定义定理, 公式内加粗 Basic math support, special math symbols, theorem custom, bold in equation
-\usepackage{mathrsfs}% non-CM calligraphic letters in equation - \mathscr{}
-\usepackage{esint}% special integral signs
+\usepackage{mathrsfs}% 公式内花体字母 Non-CM calligraphic letters in equations
+\usepackage{esint}% 特殊积分号 Special integral signs
 
 % 图片 Figures
 \RequirePackage{graphicx} % 图片 Graphics
@@ -39,7 +39,7 @@
 % 其他 Others
 \RequirePackage{ulem} % 各式下划线和删除标记 Various underlines & deletion notes
 
-\newcommand{\UsingEnglish}{\ctexset{today={old},contentsname={Content}, listfigurename={Figure List}, listtablename={Table List}, figurename={Figure}, tablename={Table}, abstractname={Abstract}, indexname={Index}, appendixname={Appendix}, bibname={References}, proofname={Proof}}} % 阻止ctex宏包过度汉化 Suppress excessive chinesization by ctex package
+\providecommand{\UsingEnglish}{\ctexset{today={old},contentsname={Content}, listfigurename={Figure List}, listtablename={Table List}, figurename={Figure}, tablename={Table}, abstractname={Abstract}, indexname={Index}, appendixname={Appendix}, bibname={References}, proofname={Proof}}} % 阻止ctex宏包过度汉化 Suppress excessive chinesization by ctex package
 
 % 页眉和页脚 Header & footer
 \pagestyle{fancy} % 全局页眉和页脚风格 Global header and footer style
@@ -87,6 +87,8 @@
 \allowdisplaybreaks[4] % 公式跨页 Cross-page equations
 \providecommand{\abs}[1]{\left\lvert#1\right\rvert} % 绝对值 Absolute
 \providecommand{\norm}[1]{\left\lVert#1\right\rVert} % 范数 Norm
+\providecommand{\sgn}{\,\text{sgn}\,} % 符号函数 Sign function
+\providecommand{\sinc}{\,\text{sinc}\,} % 辛格函数 sinc function
 \providecommand{\bra}[1]{\left\langle#1\right\rvert} % 左矢 Bra
 \providecommand{\ket}[1]{\left\lvert#1\right\rangle} % 右矢 Ket
 \providecommand{\braket}[2]{\left\langle#1\left\vert\right.#2\right\rangle} % 右矢接左矢 Contiguous ket after bra
