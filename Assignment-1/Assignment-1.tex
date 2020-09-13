@@ -21,38 +21,21 @@
             \notag=&\int_0^{+\infty}e^{-2\alpha t}(\cos 2\pi t+1)\,dt\\
             \notag=&\int_0^{+\infty}e^{-2\alpha t}\re[e^{i2\pi t}]\,dt-\left.\frac{1}{2\alpha}e^{-2\alpha t}\right\lvert_{0}^{+\infty}\\
             \notag=&\re\left[\int_0^{+\infty}e^{(-2\alpha+i2\pi)t}\,dt\right]+\frac{1}{2\alpha}\\
-            \notag=&\re\left[\left.\frac{1}{-2\alpha+i2\pi}e^{(-2\alpha+i2\pi)t}\right\rvert_0^{+\infty}\right]+\frac{1}{2\alpha}\\
             \notag=&\re\left[\frac{1}{2\alpha-i2\pi}\right]+\frac{1}{2\alpha}\\
             =&\frac{\alpha}{2(\alpha^2+\pi^2)}+\frac{1}{2\alpha}<+\infty.
         \end{align}
-        % The average power of the signal:
-        % \begin{align}
-        %     \notag P=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}e^{-2\alpha\abs{t}}\cos^2\pi t\,dt\\
-        %     \notag=&2\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}e^{-2\alpha t}\cos^2\pi t\,dt\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}e^{-2\alpha t}(\cos 2\pi t+1)\,dt\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\int_0^{T/2}e^{-2\alpha t}\re[e^{i2\pi t}]\,dt-\left.\frac{1}{2\alpha}e^{-2\alpha t}\right\rvert_0^{T/2}\right\}\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\int_0^{T/2}e^{(-2\alpha+i2\pi)t}\,dt\right]+\frac{1-e^{-\alpha T}}{2\alpha}\right\}\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\left.\frac{1}{-2\alpha+i2\pi}e^{(-2\alpha+i2\pi)t}\right\rvert_0^{T/2}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\frac{1-e^{(-\alpha+i\pi)T}}{2\alpha-i2\pi}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
-        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\frac{\left[1-e^{-\alpha T}(\cos\pi T+i\sin\pi T)\right](2\alpha+i2\pi)}{4(\alpha^2+\pi^2)}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
-        %     =&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\frac{\alpha\left[1-e^{-\alpha T\cos\pi T}\cos\pi T\right]+\pi e^{-\alpha T\sin\pi T}\sin\pi T}{2(\alpha^2+\pi^2)}+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
-        %     =&0.
-        % \end{align}
         Therefore, the signal is \textbf{an energy signal}.
         \item[b)] The energy of the signal:
         \begin{align}
             \notag E=&\int_{-\infty}^{+\infty}\abs{x(t)}^2\,dt=\int_{-\infty}^{+\infty}\abs{\Pi(t-3)\cos 3\pi t}^2\,dt\\
             \notag=&\int_{5/2}^{7/2}\cos^23\pi t\,dt\\
             \notag=&\frac{1}{2}\int_{5/2}^{7/2}(\cos 6\pi t+1)\,dt\\
-            \notag=&\frac{1}{2}\left.\left(\frac{1}{6\pi}\sin 6\pi t+t\right)\right\rvert_{5/2}^{7/2}\\
             \notag=&\frac{1}{2}\left[\frac{\sin(7/2)-\sin(5/2)}{6\pi}+1\right]<+\infty.
         \end{align}
         Therefore, the signal is \textbf{an energy signal}.
         \item[c)] The average power of the signal is
         \begin{align}
-            \notag P=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{t}^2\,dt\\
-            \notag=&2\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}t^2\,dt\\
-            =&2\lim_{T\rightarrow+\infty}\frac{T^2}{24}=+\infty.
+            P=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{t}^2\,dt=\lim_{T\rightarrow+\infty}\frac{2}{T}\int_0^{T/2}t^2\,dt=\lim_{T\rightarrow+\infty}\frac{T^2}{12}=+\infty.
         \end{align}
         Therefore, the signal is \textbf{neither an energy signal nor a power signal}.
         \item[d)] The signal function can be reexpressed as
@@ -90,7 +73,85 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[a)] We first look for the Fourier transform of $\frac{1}{\pi t}$ (see reference at \footnote{\url{https://math.stackexchange.com/questions/1033870/does-the-fourier-transform-exist-for-ft-1-t}}). Consider such a function:
+        \begin{align}
+            f_{\alpha}(t)=\left\{\begin{array}{ll}
+                e^{-2\pi\alpha t},&t>0\\
+                0,&t=0\\
+                -e^{2\pi\alpha t},&t<0
+            \end{array}\right.
+        \end{align}
+        where $\alpha>0$. The Fourier transform of the above function is
+        \begin{align}
+            \notag\mathscr{F}[f_{\alpha}(t)]=&\int_{-\infty}^{+\infty}f(t)e^{-j2\pi f\tau}\,d\tau=-\int_{-\infty}^0e^{2\pi(\alpha-jf)\tau}\,d\tau+\int_0^{+\infty}e^{-2\pi(\alpha+if)\tau}\,d\tau\\
+            =&-\frac{1}{2\pi(\alpha-jf)}+\frac{1}{2\pi(\alpha+if)}=-\frac{2jf}{2\pi(\alpha^2+f^2)}.
+        \end{align}
+        Since the sign function is the limit of $f_{\alpha}(t)$ when $a\rightarrow 0$:
+        \begin{align}
+            \sgn(t)=\left\{\begin{array}{ll}
+                1,&t>0,\\
+                0,&t=0,\\
+                -1,&t<0,
+            \end{array}\right.=\lim_{\alpha\rightarrow 0}f_{\alpha}(t),
+        \end{align}
+        by taking the limit $\alpha\rightarrow 0$, we get the Fourier transform of the sign function:
+        \begin{align}
+            \mathscr{F}[\sgn(t)]=\lim_{\alpha\rightarrow 0}\mathscr{f}[f_{\alpha}(t)]=\frac{1}{j\pi f}.
+        \end{align}
+        Using the duality property, the Fourier transform of $\frac{1}{\pi t}$ is
+        \begin{align}
+            \mathscr{F}[\frac{1}{\pi t}]=-j\sgn(f).
+        \end{align}
+        Then, using the multiplication property, the Fourier transform of the sinc function is
+        \begin{align}
+            \notag\mathscr{F}[\sinc(t)]=&\mathscr{F}\left[\frac{\sin(\pi t)}{\pi t}\right]=\mathscr{F}[\sin(\pi t)]*\mathscr{F}\left[\frac{1}{\pi t}\right]\\
+            \notag=&\frac{1}{2j}\left[\delta\left(f-\frac{1}{2}\right)-\delta\left(f+\frac{1}{2}\right)\right]*\left[-j\sgn(f)\right]\\
+            \notag=&-\frac{1}{2}\int_{-\infty}^{+\infty}\left[\delta\left(\nu-\frac{1}{2}\right)-\delta\left(\nu+\frac{1}{2}\right)\right]\sgn(f-\nu)\,d\nu\\
+            \notag=&-\frac{1}{2}\left[\sgn\left(f-\frac{1}{2}\right)-\sgn\left(f+\frac{1}{2}\right)\right]\\
+            =&\Pi(f).
+        \end{align}
+        Finally, using the scaling shifting property, we have
+        \begin{align}
+            \mathscr{F}[\sinc(2t)]=\frac{1}{2}\Pi\left(\frac{f}{2}\right).
+        \end{align}
+        And using the frequency shifting property, we get the Fourier transform of $x_1(t)$:
+        \begin{align}
+            \mathscr{F}[x_1(t)]=\mathscr{F}[5\sinc(2t)e^{j2\pi 3t}]=\frac{5}{2}\Pi\left(\frac{f-3}{2}\right).
+        \end{align}
+        \item[b)] Using the time shifting property, we have
+        \begin{align}
+            \mathscr{F}[\sinc(t-1)]=\Pi(f)e^{-j2\pi f}.
+        \end{align}
+        Using the multiplication property, we get the Fourier transform of $x_2(t)$:
+        \begin{align}
+            \notag\mathscr{F}[x_2(t)]=&\mathscr{F}[\sinc^2(t-1)]=\mathscr{F}[\sinc(t-1)]*\mathscr{F}[\sinc(t-1)]\\
+            \notag=&\int_{-\infty}^{+\infty}\Pi(\nu)e^{-j2\pi\nu}\Pi(f-\nu)e^{-j2\pi(f-\nu)}\,d\nu\\
+            \notag=&\int_{-\infty}^{+\infty}\Pi(\nu)\Pi(f-\nu)e^{-j2\pi f}\,d\nu\\
+            =&\Lambda(f)e^{-j2\pi f}.
+        \end{align}
+        \item[c)] Using the superposition and the scaling properties, the Fourier transform of $x_a(t)$ is
+        \begin{align}
+            \mathscr{F}[x_a(t)]=\mathscr{F}[x_1(t)+x_2(-t)]=\mathscr{F}[x_1(t)]+\mathscr{F}[x_2(-t)]=\frac{5}{2}\Pi\left(\frac{f-3}{2}\right)+\Lambda(f)e^{-j2\pi f}.
+        \end{align}
+        \item[d)] Using the superposition and the scaling properties, the Fourier transform of $x_b(t)$ is
+        \begin{align}
+            \mathscr{F}[x_b(t)]=\mathscr{F}[x_1(-t)+x_2(t)]=\mathscr{F}[x_1(-t)]+\mathscr{F}[x_2(t)]=\frac{5}{2}\Pi\left(\frac{f-3}{2}\right)+\Lambda(f)e^{-j2\pi f}.
+        \end{align}
+        \item[e)] The Fourier transform of the first term is
+        \begin{align}
+            \notag\mathscr{F}[2x_1(t)\cos 6\pi t]=&\mathscr{F}\left[x_1(t)(e^{j2\pi 3t}+e^{-j2\pi 3t})\right]=\mathscr{F}\left[x_1(t)e^{j2\pi 3t}\right]+\mathscr{F}\left[x_1(t)e^{-j2\pi 3t}\right]\\
+            =&\frac{5}{2}\left[\Pi\left(\frac{f}{2}-3\right)+\Pi\left(\frac{f}{2}\right)\right].
+        \end{align}
+        The Fourier transform of the second term is
+        \begin{align}
+            \mathscr{F}\left[x_2(t)e^{j6\pi t}\right]=\mathscr{F}\left[x_2(t)e^{j2\pi 3t}\right]=\Lambda(f-3)e^{-j2\pi(f-3)}.
+        \end{align}
+        Therefore, the Fourier transform of $x_c(t)$ is
+        \begin{align}
+            \mathscr{F}[x_c(t)]=\frac{5}{2}\left[\Pi\left(\frac{f}{2}-3\right)+\Pi\left(\frac{f}{2}\right)\right]+\Lambda(f-3)e^{-j2\pi(f-3)}.
+        \end{align}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[10 pts]
