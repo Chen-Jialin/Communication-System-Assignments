@@ -156,11 +156,64 @@
 
 \begin{prob}[10 pts]
     Calculate the convolution of the following signal.
-    \item[a)] $y(t)=e^{-\abs{t}}*\Pi(t-2)$
-    \item[b)] $y(t)=\sgn(t)*\Lambda(t-2)$
+    \begin{itemize}
+        \item[a)] $y(t)=e^{-\abs{t}}*\Pi(t-2)$
+        \item[b)] $y(t)=\sgn(t)*\Lambda(t-2)$
+    \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[a)] 
+        \begin{align}
+            \notag y(t)=&e^{-\abs{t}}*\Pi(t-2)=\int_{-\infty}^{+\infty}e^{-\abs{\tau}}\Pi(t-\tau-2)\,d\tau\\
+            =&\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}e^{-\abs{\tau}}\,d\tau.
+        \end{align}
+        If $t\geq \frac{5}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}e^{-\tau}\,d\tau=e^{\frac{5}{2}-t}-e^{\frac{3}{2}-t}.
+        \end{align}
+        If $\frac{3}{2}\leq t<\frac{5}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^0e^{\tau}\,d\tau+\int_0^{t-\frac{3}{2}}e^{-\tau}\,d\tau=2-e^{t-\frac{5}{2}}-e^{t-\frac{3}{2}}.
+        \end{align}
+        If $t<\frac{3}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}e^{\tau}\,d\tau=e^{t-\frac{3}{2}}-e^{t-\frac{5}{2}}.
+        \end{align}
+        Therefore, in general,
+        \begin{align}
+            y(t)=\left\{\begin{array}{ll}
+                e^{\frac{5}{2}-t}-e^{\frac{3}{2}-t},&t\geq\frac{5}{2},\\
+                2-e^{t-\frac{5}{2}}-e^{t-\frac{3}{2}},&\frac{3}{2}\leq t<\frac{3}{2},\\
+                e^{t-\frac{3}{2}}-e^{t-\frac{5}{2}},&t<\frac{3}{2}.
+            \end{array}\right.
+        \end{align}
+        \item[b)] 
+        \begin{align}
+            \notag y(t)=&\sgn(t)*\Lambda(t-2)=\int_{-\infty}^{+\infty}\sgn(\tau)\Lambda(t-\tau-2)\,d\tau\\
+            =&\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}\sgn(\tau)\,d\tau.
+        \end{align}
+        If $t\geq\frac{5}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}d\tau=1.
+        \end{align}
+        If $\frac{3}{2}<t\leq\frac{5}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^0(-1)\,d\tau+\int_0^{t-\frac{3}{2}}\,d\tau=2t-4.
+        \end{align}
+        If $t<\frac{3}{2}$,
+        \begin{align}
+            y(t)=\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}(-1)\,d\tau=-1.
+        \end{align}
+        Therefore, in general,
+        \begin{align}
+            y(t)=\left\{\begin{array}{ll}
+                1,&t\geq\frac{5}{2},\\
+                2t-4,&\frac{3}{2}\leq t<\frac{5}{2},\\
+                -1,&t<\frac{3}{2}.
+            \end{array}\right.
+        \end{align}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[20 pts]
