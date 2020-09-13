@@ -13,7 +13,70 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[a)] The energy of the signal:
+        \begin{align}
+            \notag E=&\int_{-\infty}^{+\infty}\abs{x(t)}^2\,dt=\int_{-\infty}^{+\infty}e^{-2\alpha\abs{t}}\cos^2\pi t\,dt\\
+            \notag=&2\int_0^{+\infty}e^{-2\alpha t}\cos^2\pi t\,dt\\
+            \notag=&\int_0^{+\infty}e^{-2\alpha t}(\cos 2\pi t+1)\,dt\\
+            \notag=&\int_0^{+\infty}e^{-2\alpha t}\re[e^{i2\pi t}]\,dt-\left.\frac{1}{2\alpha}e^{-2\alpha t}\right\lvert_{0}^{+\infty}\\
+            \notag=&\re\left[\int_0^{+\infty}e^{(-2\alpha+i2\pi)t}\,dt\right]+\frac{1}{2\alpha}\\
+            \notag=&\re\left[\left.\frac{1}{-2\alpha+i2\pi}e^{(-2\alpha+i2\pi)t}\right\rvert_0^{+\infty}\right]+\frac{1}{2\alpha}\\
+            \notag=&\re\left[\frac{1}{2\alpha-i2\pi}\right]+\frac{1}{2\alpha}\\
+            =&\frac{\alpha}{2(\alpha^2+\pi^2)}+\frac{1}{2\alpha}<+\infty.
+        \end{align}
+        % The average power of the signal:
+        % \begin{align}
+        %     \notag P=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}e^{-2\alpha\abs{t}}\cos^2\pi t\,dt\\
+        %     \notag=&2\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}e^{-2\alpha t}\cos^2\pi t\,dt\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}e^{-2\alpha t}(\cos 2\pi t+1)\,dt\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\int_0^{T/2}e^{-2\alpha t}\re[e^{i2\pi t}]\,dt-\left.\frac{1}{2\alpha}e^{-2\alpha t}\right\rvert_0^{T/2}\right\}\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\int_0^{T/2}e^{(-2\alpha+i2\pi)t}\,dt\right]+\frac{1-e^{-\alpha T}}{2\alpha}\right\}\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\left.\frac{1}{-2\alpha+i2\pi}e^{(-2\alpha+i2\pi)t}\right\rvert_0^{T/2}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\frac{1-e^{(-\alpha+i\pi)T}}{2\alpha-i2\pi}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
+        %     \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\re\left[\frac{\left[1-e^{-\alpha T}(\cos\pi T+i\sin\pi T)\right](2\alpha+i2\pi)}{4(\alpha^2+\pi^2)}\right]+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
+        %     =&\lim_{T\rightarrow+\infty}\frac{1}{T}\left\{\frac{\alpha\left[1-e^{-\alpha T\cos\pi T}\cos\pi T\right]+\pi e^{-\alpha T\sin\pi T}\sin\pi T}{2(\alpha^2+\pi^2)}+\frac{1}{2\alpha}\left(1-e^{-\alpha T}\right)\right\}\\
+        %     =&0.
+        % \end{align}
+        Therefore, the signal is \textbf{an energy signal}.
+        \item[b)] The energy of the signal:
+        \begin{align}
+            \notag E=&\int_{-\infty}^{+\infty}\abs{x(t)}^2\,dt=\int_{-\infty}^{+\infty}\abs{\Pi(t-3)\cos 3\pi t}^2\,dt\\
+            \notag=&\int_{5/2}^{7/2}\cos^23\pi t\,dt\\
+            \notag=&\frac{1}{2}\int_{5/2}^{7/2}(\cos 6\pi t+1)\,dt\\
+            \notag=&\frac{1}{2}\left.\left(\frac{1}{6\pi}\sin 6\pi t+t\right)\right\rvert_{5/2}^{7/2}\\
+            \notag=&\frac{1}{2}\left[\frac{\sin(7/2)-\sin(5/2)}{6\pi}+1\right]<+\infty.
+        \end{align}
+        Therefore, the signal is \textbf{an energy signal}.
+        \item[c)] The average power of the signal is
+        \begin{align}
+            \notag P=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{t}^2\,dt\\
+            \notag=&2\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}t^2\,dt\\
+            =&2\lim_{T\rightarrow+\infty}\frac{T^2}{24}=+\infty.
+        \end{align}
+        Therefore, the signal is \textbf{neither an energy signal nor a power signal}.
+        \item[d)] The signal function can be reexpressed as
+        \begin{align}
+            x(t)=1.
+        \end{align}
+        The average power of the signal:
+        \begin{gather}
+            P=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\,dt=1,\\
+            \Longrightarrow 0<P<+\infty.
+        \end{gather}
+        Therefore, the signal is \textbf{a power signal}.
+        \item[e)] The average power of the signal:
+        \begin{align}
+            \notag P=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{e^{j6\pi t}u(t)}^2\,dt\\
+            \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}\abs{e^{j6\pi t}}^2\,dt\\
+            \notag=&\lim_{T\rightarrow+\infty}\frac{1}{T}\int_0^{T/2}\,dt\\
+            =&\frac{1}{2}.
+        \end{align}
+        \begin{align}
+            \Longrightarrow 0<P<+\infty.
+        \end{align}
+        Therefore, the signal is \textbf{a power signal}.
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[20 pts]
