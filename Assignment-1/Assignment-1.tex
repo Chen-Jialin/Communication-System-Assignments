@@ -163,7 +163,7 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[a)] 
+        \item[a)] The convolution can be written as
         \begin{align}
             \notag y(t)=&e^{-\abs{t}}*\Pi(t-2)=\int_{-\infty}^{+\infty}e^{-\abs{\tau}}\Pi(t-\tau-2)\,d\tau\\
             =&\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}e^{-\abs{\tau}}\,d\tau.
@@ -188,7 +188,7 @@
                 e^{t-\frac{3}{2}}-e^{t-\frac{5}{2}},&t<\frac{3}{2}.
             \end{array}\right.
         \end{align}
-        \item[b)] 
+        \item[b)] The convolution can be written as
         \begin{align}
             \notag y(t)=&\sgn(t)*\Lambda(t-2)=\int_{-\infty}^{+\infty}\sgn(\tau)\Lambda(t-\tau-2)\,d\tau\\
             =&\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}\sgn(\tau)\,d\tau.
@@ -224,7 +224,54 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[a)] The Fourier series of the signal is
+        \begin{align}
+            \sum_{n=-\infty}^{\infty}\Lambda\left(\frac{t}{2}-2n\right)=\sum_{n=-\infty}^{\infty}c_ne^{jn2\pi\frac{t}{4}},
+        \end{align}
+        where
+        \begin{align}
+            \notag c_n=&\frac{1}{4}\int_{-2}^2\sum_{n=-\infty}^{\infty}\Lambda\left(\frac{\tau}{2}-2n\right)e^{-jn2\pi\frac{\tau}{4}}\,d\tau\\
+            \notag=&\frac{1}{2}\int_0^2\left(1-\frac{\tau}{2}\right)\cos\left(n2\pi \frac{\tau}{4}\right)\,d\tau\\
+            \notag=&\frac{\sin(n\pi)}{n\pi}-\frac{1}{4}\frac{1}{n2\pi\frac{1}{4}}\int_0^2\tau\,d\left[\sin\left(n2\pi\frac{\tau}{4}\right)\right]\\
+            \notag=&\frac{\sin(n\pi)}{n\pi}-\frac{\sin(n\pi)}{n\pi}+\frac{1}{4}\frac{1}{n2\pi\frac{1}{4}}\int_0^2\sin\left(n2\pi\frac{\tau}{4}\right)\,d\tau\\
+            =&\frac{1-\cos(n\pi)}{(n\pi)^2}.
+        \end{align}
+        Note that $c_n=2$ when $n=0$.
+        The fourier transform of the signal is
+        \begin{align}
+            \notag\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\Lambda\left(\frac{t}{2}-2n\right)\right]=&\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}e^{jn2\pi\frac{t}{4}}\right]\\
+            \notag=&\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\mathscr{F}\left[e^{-j2\pi(f-\frac{n}{4})t}\right]\\
+            =&\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\delta(f-\frac{n}{4}).
+        \end{align}
+        \item[b)] The Fourier series of $\sum_{n=-\infty}^{\infty}\delta(t-2n)$ is
+        \begin{align}
+            \sum_{n=-\infty}^{\infty}\delta(t-2n)=\sum_{n=-\infty}^{\infty}c_ne^{jn2\pi\frac{t}{2}},
+        \end{align}
+        where
+        \begin{align}
+            c_n=&\frac{1}{2}\int_{-1}^1\sum_{n=-\infty}^{\infty}\delta(t-2n)e^{-jn2\pi\frac{\tau}{2}}\,d\tau=\frac{1}{2}.
+        \end{align}
+        The Fourier transform of $\sum_{n=-\infty}^{\infty}\delta(t-2n)$ is
+        \begin{align}
+            \mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]=\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1}{2}e^{jn2\pi\frac{t}{2}}\right]=\sum_{n=-\infty}^{\infty}\frac{1}{2}\mathscr{F}\left[e^{jn2\pi\frac{t}{2}}\right]=\sum_{n=-\infty}^{\infty}\delta\left(f-\frac{n}{2}\right).
+        \end{align}
+        The Fourier transform of $\Pi\left(\frac{t}{2}\right)\cos(2\pi t)$ is
+        \small\begin{align}
+            \notag&\mathscr{F}\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]=\int_{-\infty}^{+\infty}\Pi\left(\frac{\tau}{2}\right)\cos(2\pi\tau)e^{-j2\pi f\tau}\,d\tau\\
+            \notag=&2\int_0^1\left(1-\frac{\tau}{2}\right)\cos(2\pi\tau)\cos(2\pi f\tau)\,d\tau\\
+            \notag=&\int_0^1\left(1-\frac{\tau}{2}\right)\{\cos[2\pi(f+1)\tau]+\cos[2\pi(f-1)\tau]\}\,d\tau\\
+            \notag=&\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}-\frac{1}{2}\frac{1}{2\pi(f+1)}\int_0^1\tau\,d\{\sin[2\pi(f+1)\tau]\}-\frac{1}{2}\frac{1}{2\pi(f-1)}\int_0^1\tau\,d\{\sin[2\pi(f-1)\tau]\}\\
+            \notag=&\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}-\frac{1}{2}\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{1}{2}\frac{1}{2\pi(f+1)}\int_0^1\sin[2\pi(f+1)\tau]\,d\tau\\
+            \notag&-\frac{1}{2}\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1}{2}\frac{1}{2\pi(f-1)}\int_0^1\sin[2\pi(f-1)\tau]\,d\tau\\
+            =&\frac{1}{2}\left\{\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1-\cos[2\pi(f+1)]}{[2\pi(f+1)]^2}+\frac{1-\cos[2\pi(f-1)]}{[2\pi(f-1)]^2}\right\}
+        \end{align}\normalsize
+        Using the time convolution property, we get the Fourier transform of the signal
+        \begin{align}
+            \notag&\mathscr{F}\left\{\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]*\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\right\}=\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]\mathscr{F}\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\\
+            =&\sum_{n=-\infty}^{\infty}\frac{1}{2}\delta\left(f-\frac{n}{2}\right)\left\{\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1-\cos[2\pi(f+1)]}{[2\pi(f+1)]^2}+\frac{1-\cos[2\pi(f-1)]}{[2\pi(f-1)]^2}\right\}.
+        \end{align}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[15 pts]
