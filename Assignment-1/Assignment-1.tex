@@ -38,7 +38,7 @@
             P=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{x(t)}^2\,dt=\lim_{T\rightarrow+\infty}\frac{1}{T}\int_{-T/2}^{T/2}\abs{t}^2\,dt=\lim_{T\rightarrow+\infty}\frac{2}{T}\int_0^{T/2}t^2\,dt=\lim_{T\rightarrow+\infty}\frac{T^2}{12}=+\infty.
         \end{align}
         Therefore, the signal is \textbf{neither an energy signal nor a power signal}.
-        \item[d)] The signal function can be reexpressed as
+        \item[d)] The signal function can be written as
         \begin{align}
             x(t)=1.
         \end{align}
@@ -312,7 +312,34 @@
     Which is sampled at $2000$ samples per second. Sketch $X(f)$ and $X_{\delta}(f)$ (spectrum after the sampling). Find the minimum allowable sampling frequency.
 \end{prob}
 \begin{sol}
-
+    The signal can be written as
+    \begin{align}
+        \notag x(t)=&4\cos^2(200\pi t)\cos(1000\pi t)=2[1+\cos(400\pi t)]\cos(1000\pi t)\\
+        =&2\cos(1000\pi t)+\cos(1400\pi t)+\cos(600\pi t).
+    \end{align}
+    The spectrum of the signal is
+    \begin{align}
+        \notag X(f)=&\mathscr{F}[x(t)]=\mathscr{F}[2\cos(1000\pi t)+\cos(1400\pi t)+\cos(600\pi t)]\\
+        =&\delta(f-500)+\delta(f+500)+\frac{1}{2}\delta(f-700)+\frac{1}{2}\delta(f+700)+\frac{1}{2}\delta(f-300)+\frac{1}{2}\delta(f+300),
+    \end{align}
+    as shown in figure \ref{5-X(f)}.
+    Sampling at $2000$ samples per second means that the sampling frequency is $f_s=2000$ Hz. The spectrum after the sampling is
+    \begin{align}
+        X_{\delta}(f)=2000\sum_{n=-\infty}^{\infty}X(f-2000n),
+    \end{align}
+    as shown in figure \ref{5-Xdelta(f)}.
+    \begin{figure}[h]
+        \centering
+        \subfigure[Original spetrum of the signal: $X(f)$]{
+        \label{5-X(f)}
+        \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-5-X(f).png}}
+        \subfigure[Spectrum after the sampling: $X_{\delta}(f)$]{
+        \label{5-Xdelta(f)}
+        \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-5-Xdelta(f).png}}
+        \caption{}
+        \label{5}
+    \end{figure}
+    According to the sampling theorem, the range of permissible cutoff frequencies for the ideal lowpass filter to reconstruct the signal is $700\text{Hz}<f_c<1300$Hz and the minimum allowable sampling frequency is $1400$Hz.
 \end{sol}
 
 \begin{prob}
