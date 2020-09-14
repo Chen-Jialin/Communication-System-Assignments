@@ -349,11 +349,41 @@
             y(t)=x(t)\cos(400\pi t)+\hat{x}(t)\sin(400\pi t)
         \]
         using the spectrum $X(f)$ of $x(t)$, where $\hat{x}(t)$ is the Hilbert transform of $x(t)$. (5 pts)
-        \item[2)] if $x(t)=2\cos(60\pi t)$, sketch $Y(f).$
+        \item[2)] if $x(t)=\sinc(t)$, sketch $Y(f)$. (5 pts)
     \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[1)] The spectrum of $y(t)$ is
+        \begin{align}
+            \notag Y(f)=&\mathscr{F}[y(t)]=\mathscr{F}[x(t)\cos(400\pi t)+\hat{x}(t)\sin(400\pi t)]\\
+            \notag=&\mathscr{F}\left[x(t)\frac{e^{j400\pi t}+e^{-j400\pi t}}{2}\right]+\mathscr{F}\left\{\mathscr{F}^{-1}[-j\sgn(f)X(f)]\frac{e^{j400\pi t}-e^{-j400\pi t}}{2j}\right\}\\
+            =&\frac{1}{2}X(f-200)+\frac{1}{2}X(f+200)-\frac{1}{2}\sgn(f-200)X(f-200)+\frac{1}{2}\sgn(f+200)X(f+200)
+        \end{align}
+        \item[2)] If $x(t)=\sinc(t)$, then
+        \begin{align}
+            X(f)=\Pi(f)
+        \end{align}
+        and
+        \begin{align}
+            Y(f)=\frac{1}{2}\Pi(f-200)+\frac{1}{2}\Pi(f+200)-\frac{1}{2}\sgn(f-200)\Pi(f-200)+\frac{1}{2}\sgn(f+200)\Pi(f+200),
+        \end{align}
+        as shown in figure.
+        \begin{figure}[h]
+            \centering
+            \subfigure[Overall view of $Y(f)$]{
+            \label{6-Y(f)}
+            \includegraphics[width=0.6\textwidth]{Assignment-1-Problem-6-Y(f).png}}
+            \subfigure[$Y(f)$ near $-200$]{
+            \label{6-Y(f)near-200}
+            \includegraphics[width=0.4\textwidth]{Assignment-1-Problem-6-Y(f)near-200.png}}
+            \subfigure[$Y(f)$ near $+200$]{
+            \label{6-Y(f)near200}
+            \includegraphics[width=0.4\textwidth]{Assignment-1-Problem-6-Y(f)near200.png}}
+            \caption{Spectrum of $y(t)$: $Y(f)$}
+            \label{6}
+        \end{figure}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}
