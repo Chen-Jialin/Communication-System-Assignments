@@ -368,7 +368,7 @@
         \begin{align}
             Y(f)=\frac{1}{2}\Pi(f-200)+\frac{1}{2}\Pi(f+200)-\frac{1}{2}\sgn(f-200)\Pi(f-200)+\frac{1}{2}\sgn(f+200)\Pi(f+200),
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{6}.
         \begin{figure}[h]
             \centering
             \subfigure[Overall view of $Y(f)$]{
@@ -391,7 +391,7 @@
     \begin{itemize}
         \item[a)] The Hilbert transform of $x(t)$, i.e., $\hat{x}(t)$.
         \item[b)] The analytic signal $x_p(t)$.
-        \item[c)] The convex envelope of $x(t)$, i.e., $\tilde{x}(t)$.
+        \item[c)] The complex envelope of $x(t)$, i.e., $\tilde{x}(t)$.
         \item[d)] The inphase and quadrature component of $x(t)$, i.e., $x_R(t)$ and $x_I(t)$.\\
         （Please refer to Lecture 2, Slide 36 or Page 88 of reference textbook, we will learn this in the next class. I am sorry for the lagging.）
         \item[e)] Determine and plot the spectrum of the following signals:
@@ -402,6 +402,97 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
-
+    \begin{itemize}
+        \item[a)] The Fourier spectrum of $x(t)$ is
+        \begin{align}
+            \notag X(f)=\mathscr{F}[x(t)]=\delta(f-30)+\delta(f+30).
+        \end{align}
+        The spectrum of $x(t)$ after Hilbert transform is
+        \begin{align}
+            \hat{X}(f)=-j\sgn(f)X(f)=\delta(f-30)e^{-j\pi/2}+\delta(f+30)e^{j\pi/2}.
+        \end{align}
+        The Hilbert transform of $x(t)$ is
+        \begin{align}
+            \notag\hat{x}(t)=&\mathscr{F}^{-1}[\hat{X}(f)]=\mathscr{F}[\delta(f-30)e^{-j\pi/2}+\delta(f+30)e^{j\pi/2}]\\
+            \notag=&e^{j60\pi t}e^{-j\pi/2}+e^{-j60\pi t}e^{j\pi/2}\\
+            =&2\sin(60\pi t).
+        \end{align}
+        \item[b)] The analytic signal of $x(t)$ is
+        \begin{align}
+            x_p(t)=x(t)+j\hat{x}(t)=2\cos(60\pi t)+j2\sin(60\pi t)=2e^{j60\pi t}.
+        \end{align}
+        \item[c)] The complex envelope of $x(t)$ is
+        \begin{align}
+            \tilde{x}(t)=x_p(t)e^{-j2\pi 40t}=2e^{-j20\pi t}.
+        \end{align}
+        \item[d)] The inphase component of $x(t)$ is
+        \begin{align}
+            x_R(t)=\re[\tilde{x}(t)]=2\cos(20\pi t).
+        \end{align}
+        The quadrature component of $x(t)$ is
+        \begin{align}
+            x_I(t)=\im[\tilde{x}(t)]=2\sin(20\pi t).
+        \end{align}
+        \item[e)] 
+        \begin{itemize}
+            \item[i.] The spectrum of $x_1(t)$ is
+            \begin{align}
+                \notag X_1(f)=&\mathscr{F}[x_1(t)]=\mathscr{F}\left[\frac{2}{3}x(t)+\frac{1}{3}j\hat{x}(t)\right]\\
+                \notag=&\frac{2}{3}X(f)+\frac{1}{3}j\hat{X}(f)\\
+                \notag=&\frac{2}{3}[\delta(f-30)+\delta(f+30)]+\frac{1}{3}j\left[\delta(f-30)e^{-j\pi/2}+\delta(f+30)e^{j\pi/2}\right]\\
+                =&\delta(f-30)+\frac{1}{3}\delta(f+30).
+            \end{align}
+            Its amplitude spectrum is
+            \begin{align}
+                \abs{X_1(f)}=\delta(f-30)+\frac{1}{3}\delta(f+30),
+            \end{align}
+            and angular spectrum is
+            \begin{align}
+                \theta_1(f)=0.
+            \end{align}
+            as shown in figure \ref{7-X1}.
+            \begin{figure}[h]
+                \centering
+                \subfigure[$\abs{X_1(f)}$]{
+                \label{7-X1(f)}
+                \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-7-X1(f).png}}
+                \subfigure[$\abs{\theta_1(f)}$]{
+                \label{y-theta1(f)}
+                \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-7-theta1(f).png}}
+                \caption{Spectrum of $x_1(t)$}
+                \label{7-X1}
+            \end{figure}
+            \item[ii.] The Fourier transform of $\left[\frac{1}{5}x(t)+\frac{4}{5}j\hat{x}(t)\right]$ is
+            \begin{align}
+                \notag\mathscr{F}\left[\frac{1}{5}x(t)+\frac{4}{5}j\hat{x}(t)\right]=&\frac{1}{5}X(f)+\frac{4}{5}j\hat{X}(f)\\
+                \notag=&\frac{1}{5}[\delta(f-30)+\delta(f+30)]+\frac{4}{5}j\left[\delta(f-30)e^{-j\pi/2}+\delta(f+30)e^{j\pi/2}\right]\\
+                =&\delta(f-30)-\frac{3}{5}\delta(f+30).
+            \end{align}
+            Using the frequency shifting property, we get the spectrum of $x_2(t)$:
+            \begin{align}
+                X_1(f)=\mathscr{F}[x_2(t)]=\mathscr{F}\left\{\left[\frac{1}{5}x(t)+\frac{4}{5}j\hat{x}(t)\right]e^{j2\pi f_0t}\right\}=\delta(f-f_0-30)-\frac{3}{5}\delta(f-f_0+30).
+            \end{align}
+            Its amplitude spectrum is
+            \begin{align}
+                \abs{X_1(f)}=\delta(f-f_0-30)-\frac{3}{5}\delta(f-f_0+30)=\delta(f-70)-\frac{3}{5}\delta(f-10),
+            \end{align}
+            and angular spectrum is
+            \begin{align}
+                \theta_2(f)=0,
+            \end{align}
+            as shown in figure \ref{7-X2}.
+			\begin{figure}[h]
+                \centering
+                \subfigure[$\abs{X_2(f)}$]{
+                \label{7-X2(f)}
+                \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-7-X2(f).png}}
+                \subfigure[$\abs{\theta_2(f)}$]{
+                \label{7-theta2(f)}
+                \includegraphics[width=0.45\textwidth]{Assignment-1-Problem-7-theta2(f).png}}
+                \caption{Spectrum of $x_2(t)$}
+                \label{7-X2}
+            \end{figure}
+        \end{itemize}
+    \end{itemize}
 \end{sol}
 \end{document}
