@@ -2,7 +2,7 @@
 \UsingEnglish
 \ProjectInfos*{Introduction to System System}{EE140}{Fall, 2020}{Assignment 2}{Due time : 10:15, Sept 25, 2020 (Friday)}{陈稼霖}{45875852}
 \begin{document}
-\begin{prob}[10 pts]
+\begin{prob}[Conditional probability, 10 pts]
     Given a binary communication channel where $A=$input and $B=$output, let $P(A)=0.3$, $P(B\vert A)=0.8$, and $P(\bar{B}\vert\bar{A})=0.6$. Find $P(A\vert B)$ and $P(\bar{A}\vert\bar{B})$.
 \end{prob}
 \begin{sol}
@@ -21,4 +21,50 @@
     \end{align}
 \end{sol}
 
+
+\begin{prob}[Property of PDF, 20pts]
+    The joint pdf of random variables $X$ and $Y$ is $f(x,y)=Axye^{-2(x+y)}$, $x\geq 0$, $y\geq 0$. Find the following.
+    \begin{itemize}
+        \item[1)] Find the constant $A$.
+        \item[2)] Find the marginal pdfs of $X$ and $Y$, $f_X(x)$ and $f_Y(y)$.
+        \item[3)] Are $X$ and $Y$ statistically independent? Justify your answer.
+        \item[4)] Find the probability density function of $Z=X+Y$.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[1)] As a property of pdf,
+        \begin{align}
+            \notag\int_0^{+\infty}\int_0^{+\infty}f(x,y)\,dx\,dy=&\int_0^{+\infty}\int_0^{+\infty}Axye^{-2(x+y)}\,dx\,dy=A\left[\int_0^{+\infty}xe^{-2x}\,dx\right]\left[\int_0^{+\infty}ye^{-2y}\,dy\right]\\
+            \notag=&A\left[\int_0^{+\infty}xe^{-2x}\,dx\right]^2=A\left[-\frac{1}{2}\int_0^{+\infty}xd\left(e^{-2x}\right)\right]^2\\
+            \notag=&A\left[\left.-\frac{1}{2}\left(xe^{-2x}\right)\right\rvert_0^{+\infty}+\frac{1}{2}\int_0^{+\infty}e^{-2x}\,dx\right]^2\\
+            \notag=&A\left[\frac{1}{4}\right]^2=\frac{A}{16}=1,
+        \end{align}
+        which gives us that
+        \begin{align}
+            A=16.
+        \end{align}
+        \item[2)] The marginal pdf of $X$ is
+        \begin{align}
+            \notag f_X(x)=&\int_{-\infty}^{+\infty}f(x,\beta)\,d\beta=\int_{-\infty}^{+\infty}16x\beta e^{-2(x+\beta)}\,d\beta\\
+            \notag=&16xe^{-2x}\int_{-\infty}^{+\infty}\beta e^{-2\beta}\,d\beta\\
+            =&4xe^{-2x},
+        \end{align}
+        and similarly, the marginal pdf of $Y$ is
+        \begin{align}
+            \notag f_Y(y)=&\int_{-\infty}^{+\infty}f(\alpha,y)\,d\alpha=\int_{-\infty}^{+\infty}16\alpha ye^{-2(\alpha+y)}\,d\alpha=4ye^{-2y}.
+        \end{align}
+        \item[3)] \textbf{$X$ and $Y$ are statistically independent}, since
+        \begin{align}
+            f(x,y)=16xye^{-2(x+y)}=\left(4xe^{-2x}\right)\left(4ye^{-2y}\right)=f_X(x)f_Y(y),\qquad\text{for all }x\geq 0,y\geq 0.
+        \end{align}
+        \item[4)] Since $X$ and $Y$ are independent, the pdf of $Z=X+Y$ is the convolution of pdfs of $X$ and $Y$:
+        \begin{align}
+            \notag f_Z(z)=&\int_0^zf_X(z-u)f_Y(u)\,du\\
+            \notag=&\int_0^z4(z-u)e^{-2(z-u)}\cdot 4ue^{-2u}\,du\\
+            \notag=&16e^{-2z}\int_0^z(z-u)u\,du\\
+            =&\frac{8}{3}z^3e^{-2z}.
+        \end{align}
+    \end{itemize}
+\end{sol}
 \end{document}
