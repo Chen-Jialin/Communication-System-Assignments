@@ -30,7 +30,7 @@
             \notag E=&\int_{-\infty}^{+\infty}\abs{x(t)}^2\,dt=\int_{-\infty}^{+\infty}\abs{\Pi(t-3)\cos 3\pi t}^2\,dt\\
             \notag=&\int_{5/2}^{7/2}\cos^23\pi t\,dt\\
             \notag=&\frac{1}{2}\int_{5/2}^{7/2}(\cos 6\pi t+1)\,dt\\
-            \notag=&\frac{1}{2}\left[\frac{\sin(7/2)-\sin(5/2)}{6\pi}+1\right]<+\infty.
+            \notag=&\frac{1}{2}<+\infty.
         \end{align}
         Therefore, the signal is \textbf{an energy signal}.
         \item[c)] The average power of the signal is
@@ -121,7 +121,7 @@
         \end{align}
         The energy of $x_1(t)$ is
         \begin{align}
-            E=\int_{-\infty}^{+\infty}\abs{\mathscr{F}[x_1(t)]}^2\,d\tau=\int_{-\infty}^{+\infty}\abs{\frac{5}{2}\Pi\left(\frac{f-3}{2}\right)}^2\,df=\frac{25}{2}.
+            E=\int_{-\infty}^{+\infty}\abs{\mathscr{F}[x_1(t)]}^2\,df=\int_{-\infty}^{+\infty}\abs{\frac{5}{2}\Pi\left(\frac{f-3}{2}\right)}^2\,df=\frac{25}{2}.
         \end{align}
         \item[b)] Using the time shifting property, we have
         \begin{align}
@@ -284,22 +284,19 @@
         \end{align}
         The Fourier transform of $\sum_{n=-\infty}^{\infty}\delta(t-2n)$ is
         \begin{align}
-            \mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]=\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1}{2}e^{jn2\pi\frac{t}{2}}\right]=\sum_{n=-\infty}^{\infty}\frac{1}{2}\mathscr{F}\left[e^{jn2\pi\frac{t}{2}}\right]=\sum_{n=-\infty}^{\infty}\delta\left(f-\frac{n}{2}\right).
+            \mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]=\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1}{2}e^{jn2\pi\frac{t}{2}}\right]=\sum_{n=-\infty}^{\infty}\frac{1}{2}\mathscr{F}\left[e^{jn2\pi\frac{t}{2}}\right]=\frac{1}{2}\sum_{n=-\infty}^{\infty}\delta\left(f-\frac{n}{2}\right).
         \end{align}
         The Fourier transform of $\Pi\left(\frac{t}{2}\right)\cos(2\pi t)$ is
         \small\begin{align}
             \notag&\mathscr{F}\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]=\int_{-\infty}^{+\infty}\Pi\left(\frac{\tau}{2}\right)\cos(2\pi\tau)e^{-j2\pi f\tau}\,d\tau\\
-            \notag=&2\int_0^1\left(1-\frac{\tau}{2}\right)\cos(2\pi\tau)\cos(2\pi f\tau)\,d\tau\\
-            \notag=&\int_0^1\left(1-\frac{\tau}{2}\right)\{\cos[2\pi(f+1)\tau]+\cos[2\pi(f-1)\tau]\}\,d\tau\\
-            \notag=&\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}-\frac{1}{2}\frac{1}{2\pi(f+1)}\int_0^1\tau\,d\{\sin[2\pi(f+1)\tau]\}-\frac{1}{2}\frac{1}{2\pi(f-1)}\int_0^1\tau\,d\{\sin[2\pi(f-1)\tau]\}\\
-            \notag=&\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}-\frac{1}{2}\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{1}{2}\frac{1}{2\pi(f+1)}\int_0^1\sin[2\pi(f+1)\tau]\,d\tau\\
-            \notag&-\frac{1}{2}\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1}{2}\frac{1}{2\pi(f-1)}\int_0^1\sin[2\pi(f-1)\tau]\,d\tau\\
-            =&\frac{1}{2}\left\{\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1-\cos[2\pi(f+1)]}{[2\pi(f+1)]^2}+\frac{1-\cos[2\pi(f-1)]}{[2\pi(f-1)]^2}\right\}
+            \notag=&2\int_0^1\cos(2\pi\tau)\cos(2\pi f\tau)\,d\tau\\
+            \notag=&\int_0^1\{\cos[2\pi(f+1)\tau]+\cos[2\pi(f-1)\tau]\}\,d\tau\\
+            \notag=&\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}.
         \end{align}\normalsize
         Using the time convolution property, we get the Fourier transform of the signal
         \begin{align}
-            \notag&\mathscr{F}\left\{\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]*\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\right\}=\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]\mathscr{F}\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\\
-            =&\sum_{n=-\infty}^{\infty}\frac{1}{2}\delta\left(f-\frac{n}{2}\right)\left\{\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}+\frac{1-\cos[2\pi(f+1)]}{[2\pi(f+1)]^2}+\frac{1-\cos[2\pi(f-1)]}{[2\pi(f-1)]^2}\right\}.
+            \notag\mathscr{F}\left\{\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]*\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\right\}=&\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\delta(t-2n)\right]\mathscr{F}\left[\Pi\left(\frac{t}{2}\right)\cos(2\pi t)\right]\\
+            =&\frac{1}{2}\sum_{n=-\infty}^{\infty}\delta\left(f-\frac{n}{2}\right)\left\{\frac{\sin[2\pi(f+1)]}{2\pi(f+1)}+\frac{\sin[2\pi(f-1)]}{2\pi(f-1)}\right\}.
         \end{align}
     \end{itemize}
 \end{sol}
@@ -325,7 +322,9 @@
     as shown in figure \ref{5-X(f)}.
     Sampling at $2000$ samples per second means that the sampling frequency is $f_s=2000$ Hz. The spectrum after the sampling is
     \begin{align}
-        X_{\delta}(f)=2000\sum_{n=-\infty}^{\infty}X(f-2000n),
+        \notag X_{\delta}(f)=&2000\sum_{n=-\infty}^{\infty}X(f-2000n)\\
+        \notag=&2000\sum_{n=-\infty}^{\infty}\left[\delta(f-2000n-500)+\delta(f-2000n+500)+\frac{1}{2}\delta(f-2000n-700)+\frac{1}{2}\delta(f-2000n+700)\right.\\
+        &\left.+\frac{1}{2}\delta(f-2000n-300)+\frac{1}{2}\delta(f-2000n+300)\right],
     \end{align}
     as shown in figure \ref{5-Xdelta(f)}.
     \begin{figure}[h]
