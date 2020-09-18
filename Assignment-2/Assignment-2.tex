@@ -1,0 +1,24 @@
+\documentclass{assignment}
+\UsingEnglish
+\ProjectInfos*{Introduction to System System}{EE140}{Fall, 2020}{Assignment 2}{Due time : 10:15, Sept 25, 2020 (Friday)}{陈稼霖}{45875852}
+\begin{document}
+\begin{prob}[10 pts]
+    Given a binary communication channel where $A=$input and $B=$output, let $P(A)=0.3$, $P(B\vert A)=0.8$, and $P(\bar{B}\vert\bar{A})=0.6$. Find $P(A\vert B)$ and $P(\bar{A}\vert\bar{B})$.
+\end{prob}
+\begin{sol}
+    Using the law of total probability, the probability of getting output $B$ is
+    \begin{align}
+        \notag P(B)=&P(B\vert A)P(A)+P(B\vert\bar{A})P(\bar{A})=P(B\vert A)P(A)+[1-P(\bar{B}\vert\bar{A})][1-P(A)]\\
+        =&0.8\times 0.3+(1-0.6)\times(1-0.3)=0.52.
+    \end{align}
+    Using Bayes' theorem, we have
+    \begin{align}
+        P(A\vert B)=\frac{P(B\vert A)P(A)}{P(B)}=\frac{0.8\times 0.3}{0.52}=\frac{6}{13},
+    \end{align}
+    and
+    \begin{align}
+        P(\bar{A}\vert\bar{B})=\frac{P(\bar{B}\vert\bar{A})P(\bar{A})}{P(\bar{B})}=\frac{P(\bar{B}\vert\bar{A})[1-P(A)]}{P(\bar{B})}=\frac{0.6\times(1-0.3)}{1-0.52}=\frac{7}{8}.
+    \end{align}
+\end{sol}
+
+\end{document}
