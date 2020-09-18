@@ -67,4 +67,54 @@
         \end{align}
     \end{itemize}
 \end{sol}
+
+\begin{prob}[Gaussian random variables, 20pts]
+    Assume two random variables $X$ and $Y$ are jointly Gaussian with mean $m_x=1$, $m_y=2$, and variances $\sigma_x^2=1$, $\sigma_y^2=4$.
+    \begin{itemize}
+        \item[1)] Write down the expressions for their marginal pdfs.
+        \item[2)] Assume the correlation coefficient is $\rho_{XY}=0.5$, a new random variables is defined as $Z=X+Y$, find the expression for the pdf of $Z$.
+        \item[3)] Express the following probabilities using the $Q$ function.
+        \begin{itemize}
+            \item[a)] $P(\abs{X}\leq 5)$
+            \item[b)] $P(-2<Y\leq 12)$
+        \end{itemize}
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[1)] The expression for marginal pdf of $X$ is
+        \begin{align}
+            f_X(x)=\frac{1}{\sqrt{2\pi\sigma_x^2}}\exp\left[-\frac{1}{2\sigma_x^2}(x-m_x)^2\right]=\frac{1}{\sqrt{2\pi}}\exp\left[-\frac{1}{2}(x-1)^2\right],
+        \end{align}
+        and the expression for marginal pdf of $Y$ is
+        \begin{align}
+            f_Y(y)=\frac{1}{\sqrt{2\pi\sigma_y^2}}\exp\left[-\frac{1}{2\sigma_y^2}(y-m_y)^2\right]=\frac{1}{\sqrt{2\pi\cdot 4}}\exp\left[-\frac{1}{2\times 4}(y-2)^2\right].
+        \end{align}
+        \item[2)] The jointly pdf of $X$ and $Y$ is
+        \begin{align}
+            \notag f_{XY}(x,y)=&\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho_{XY}^2}}\exp\left\{-\frac{1}{2(1-\rho_{XY}^2)}\left[\frac{(x-m_x)^2}{\sigma_x^2}-\frac{2\rho(x-m_x)(y-m_y)}{\sigma_x\sigma_y}+\frac{(y-m_y)^2}{\sigma_y^2}\right]\right\}\\
+            =&\frac{1}{2\pi\sqrt{3}}\exp\left\{-\frac{1}{2\times\frac{3}{4}}\left[(x-1)^2-\frac{(x-1)(y-2)}{2}+\frac{(y-2)^2}{4}\right]\right\}.
+        \end{align}
+        The expression of the pdf of $Z$ is
+        \begin{align}
+            \notag f_Z(z)=&\int_{-\infty}^{+\infty}f_{XY}(u,z-u)\,du\\
+            \notag=&\int_{-\infty}^{+\infty}\frac{1}{2\pi\sqrt{3}}\exp\left\{-\frac{1}{2\times\frac{3}{4}}\left[(u-1)^2-\frac{(u-1)(z-u-2)}{2}+\frac{(z-u-2)^2}{4}\right]\right\}\,du\\
+            \notag=&\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\cdot 7}}\frac{1}{\sqrt{2\pi\frac{3}{7}}}\exp\left\{-\frac{1}{2\times\frac{3}{7}}\left[(u-\frac{2}{7}(z+\frac{1}{2}))^2+\frac{3}{49}(z-3)^2\right]\right\}\\
+            =&\frac{1}{\sqrt{2\pi 7}}\exp\left\{-\frac{1}{14}(z-3)^2\right\}.
+        \end{align}
+        \item[3)] 
+        \begin{itemize}
+            \item[a)] 
+            \begin{align}
+                \notag P(\abs{X}\leq 5)=&P(-5\leq X\leq 5)=1-P(X>5)-P(X<-5)=1-P(X>5)-P(X>7)\\
+                =&1-Q(5-1)-Q(7-1)=1-Q(4)-Q(6).
+            \end{align}
+            \item[b)] 
+            \begin{align}
+                \notag P(-2<Y\leq 12)=&1-P(Y>12)-P(Y<-2)=1-P(Y>12)-P(Y>6)\\
+                =&1-Q\left(\frac{12-2}{2}\right)-P\left(\frac{6-2}{2}\right)=1-Q(5)-Q(2).
+            \end{align}
+        \end{itemize}
+    \end{itemize}
+\end{sol}
 \end{document}
