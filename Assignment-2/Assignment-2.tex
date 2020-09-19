@@ -117,4 +117,68 @@
         \end{itemize}
     \end{itemize}
 \end{sol}
+
+\begin{prob}[Random Process: probability, 20pts]
+    A fair die is thrown. Depending on the number of spots on the up face, the following random process are generated.
+    \begin{itemize}
+        \item[1)] Sketch several examples of sample functions of each case. ($A>0$ is a constant).
+        \begin{itemize}
+            \item[a)] $X(t,\zeta)=\left\{\begin{array}{ll}
+                2A,&1\text{ or }2\text{ spots up}\\
+                0,&3\text{ or }4\text{ spots up}\\
+                -2A,&5\text{ or }6\text{ spots up}
+            \end{array}\right.$
+            \item[b)] $X(t,\zeta)=\left\{\begin{array}{ll}
+                2A,&1\text{ or }2\text{ spots up}\\
+                At,&3\text{ or }4\text{ spots up}\\
+                -At,&5\text{ or }6\text{ spots up}
+            \end{array}\right.$
+        \end{itemize}
+        \item[2)] What are the following probabilities for each case (case a and case b in 1))?
+        \begin{itemize}
+            \item[i.] $P(X(4)\geq A)$ ($X(4)$ means $X(t=4,\zeta)$, which is a random variable.)
+            \item[ii.] $P(X(2)\leq 0)$ ($X(2)$ means $X(t=2,\zeta)$, which is a random variable.)
+        \end{itemize}
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[1)] 
+        \begin{itemize}
+            \item[a)] As shown in figure \ref{4-a}.
+            \item[b)] As shown in figure \ref{4-b}.
+            \begin{figure}[h]
+                \centering
+                \subfigure[Sample functions of a)]{
+                \label{4-a}
+                \includegraphics[width=0.45\textwidth]{Assignment-2-Problem-4-a.jpg}}
+                \subfigure[Sample functions of b)]{
+                \label{4-b}
+                \includegraphics[width=0.45\textwidth]{Assignment-2-Problem-4-b.jpg}}
+                \caption{}
+                \label{4}
+            \end{figure}
+        \end{itemize}
+        \item[2)] 
+        \begin{itemize}
+            \item[i.] For case a,
+            \begin{align}
+                P(X(4)\geq A)=\frac{1}{3}.
+            \end{align}
+            For case b,
+            \begin{align}
+                P(X(4)\geq A)=\frac{2}{3}.
+            \end{align}
+            \item[ii.] For case a,
+            \begin{align}
+                P(X(2)\leq 0)=\frac{2}{3}.
+            \end{align}
+            For case b,
+            \begin{align}
+                P(X(2)\leq 0)=\frac{1}{3}.
+            \end{align}
+        \end{itemize}
+    \end{itemize}
+\end{sol}
+
 \end{document}
