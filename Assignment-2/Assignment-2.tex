@@ -181,4 +181,53 @@
     \end{itemize}
 \end{sol}
 
+\begin{prob}[Random Process: mean, variance, autocorrelation, 30 pts]
+    Let the sample function of a random process be given by $X(t)=A\cos 2\pi f_0t$, where $f_0$ is fixed and $A$ has the pdf
+    \[
+        f_A(a)=\frac{1}{\sqrt{2\pi\sigma_a^2}}e^{-\frac{\abs{a-\mu_a}^2}{2\sigma_a^2}}.
+    \]
+    The mean and variance of $A$ are given by $\mu_a=0$, $\sigma_a^2=4$.
+    \begin{itemize}
+        \item[1)] Find the mean and variance of random process $X(t)$ at time $t_0$.\\
+        (Hint: ensemble-mean; Note that $\cos 2\pi f_0t_0$ is just a constant.)
+        \item[2)] Find the autocorrelation function of $X(t)$.
+        \item[3)] Is $X(t)$ stationary?
+        \item[4)] Find the time average mean and autocorrelation function of $X(t)$.\\
+        (Hint1: the time average mean can be calculated as $\langle X(t)\rangle=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^Tx(t)\,dt$, the time average autocorrelation function can be calculated as $\langle X(t)X(t+\tau)\rangle=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^Tx(t)x(t+\tau)\,dt$\\
+        Hint2: For periodic signal, $\langle X(t)\rangle=\frac{1}{T}\int_0^Tx(t)\,dt$, and $\langle X(t)X(t+\tau)\rangle=\frac{1}{T}\int_0^Tx(t)x(t+\tau)\,dt$)
+        \item[5)] Is the $X(t)$ ergodic?
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[1)] The mean of random process $X(t)$ at time $t_0$ is
+        \begin{align}
+            E(X(t_0))=E[X(t=t_0)]=\int_{-\infty}^{+\infty}a\cos(2\pi f_0t_0)\frac{1}{\sqrt{2\pi\sigma_a^2}}e^{-\frac{\abs{a-\mu_a}^2}{2\sigma_a^2}}\,da=0.
+        \end{align}
+        The variance of random process $X(t)$ at time $t_0$ is
+        \begin{align}
+            \sigma_X^2(t_0)=E\left[\abs{X(t_0)-\overline{X(t_0)}}^2\right]=E[X(t_0)^2]=E[A^2]\cos^2(2\pi f_0t_0)=\sigma_a^2\cos^2(2\pi f_0t_0)=4\cos^2(2\pi f_0t_0).
+        \end{align}
+        \item[2)] Let $t_1=t$, $t_2=t+\tau$. The autocorrelation function of $X(t)$ is
+        \begin{align}
+            \notag R_X(t_1,t_2)=&E[X(t_1)X(t_2)]=X[A\cos(2\pi f_0t)A\cos(2\pi f_0(t+\tau))]\\
+            \notag=&E[A^2]\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)]\\
+            \notag=&\sigma_a^2\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)]\\
+            =&4\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)].
+        \end{align}
+        \item[3)] \textbf{No}, since the second-order statistics of $X(t)$ does not depend only on the time gap $\tau$, but also on the begin time $t$.
+        \item[4)] $X(t)$ is a periodic signal. Its time mean is
+        \begin{align}
+            \notag\langle X(t)\rangle=&\frac{1}{T}\int_0^Tx(t)\,dt=f_0\int_0^{1/f_0}A\cos(2\pi f_0t)\,dt\\
+            =&0.
+        \end{align}
+        and its autocorrelation function is
+        \begin{align}
+            \notag\langle X(t)X(t+\tau)\rangle=&\frac{1}{T}\int_0^Tx(t)x(t+\tau)\,dt=f_0\int_0^{1/f_0}A\cos(2\pi f_0t)A\cos(2\pi f_0(t+\tau))\,dt\\
+            \notag=&A^2f_0\frac{1}{2}\int_0^{1/f_0}\cos[2\pi f_0(2t+\tau)]+\cos[2\pi f_0\tau]\,dt\\
+            =&\frac{A^2}{2}\cos(2\pi f_0\tau).
+        \end{align}
+        \item[5)] \textbf{Yes}, since the ensemble average equals the time average.
+    \end{itemize}
+\end{sol}
 \end{document}
