@@ -210,7 +210,7 @@
         \end{align}
         \item[2)] Let $t_1=t$, $t_2=t+\tau$. The autocorrelation function of $X(t)$ is
         \begin{align}
-            \notag R_X(t_1,t_2)=&E[X(t_1)X(t_2)]=X[A\cos(2\pi f_0t)A\cos(2\pi f_0(t+\tau))]\\
+            \notag R_X(t_1,t_2)=&E[X(t_1)X(t_2)]=E[A\cos(2\pi f_0t)A\cos(2\pi f_0(t+\tau))]\\
             \notag=&E[A^2]\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)]\\
             \notag=&\sigma_a^2\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)]\\
             =&4\cos(2\pi f_0t)\cos[2\pi f_0(t+\tau)].
@@ -227,7 +227,7 @@
             \notag=&A^2f_0\frac{1}{2}\int_0^{1/f_0}\cos[2\pi f_0(2t+\tau)]+\cos[2\pi f_0\tau]\,dt\\
             =&\frac{A^2}{2}\cos(2\pi f_0\tau).
         \end{align}
-        \item[5)] \textbf{Yes}, since the ensemble average equals the time average.
+        \item[5)] \textbf{No}, since $R_X(t,t+\tau)\neq\langle X(t)X(t+\tau)\rangle$.
     \end{itemize}
 \end{sol}
 \end{document}
