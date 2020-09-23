@@ -221,7 +221,7 @@
         \item[b)] The convolution can be written as
         \begin{align}
             \notag y(t)=&\sgn(t)*\Lambda(t-2)=\int_{-\infty}^{+\infty}\sgn(\tau)\Lambda(t-\tau-2)\,d\tau\\
-            \sout{=}&\sout{\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}\sgn(\tau)\,d\tau.}\\
+            \notag\sout{=}&\sout{\int_{t-\frac{5}{2}}^{t-\frac{3}{2}}\sgn(\tau)\,d\tau.}\\
             {\color{red}=}&{\color{red}-\int_{-\infty}^0\Lambda(t-\tau-2)\,d\tau+\int_0^{+\infty}\Lambda(t-\tau-2)\,d\tau.}
         \end{align}
         {\color{red}
@@ -286,9 +286,12 @@
         Note that $c_n=2$ when $n=0$.
         The fourier transform of the signal is
         \begin{align}
-            \notag\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\Lambda\left(\frac{t}{2}-2n\right)\right]=&\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}e^{jn2\pi\frac{t}{4}}\right]\\
-            \notag=&\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\mathscr{F}\left[e^{-j2\pi(f-\frac{n}{4})t}\right]\\
-            =&\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\delta(f-\frac{n}{4}).
+            \notag\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\Lambda\left(\frac{t}{2}-2n\right)\right]\sout{=}&\sout{\mathscr{F}\left[\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}e^{jn2\pi\frac{t}{4}}\right]}\\
+            \notag=&\mathscr{F}\left[\sum_{n=-\infty}^{\infty}c_ne^{jn2\pi\frac{t}{4}}\right]\\
+            \notag\sout{=}&\sout{\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\mathscr{F}\left[e^{-j2\pi(f-\frac{n}{4})t}\right]}\\
+            \notag=&\sum_{n=-\infty}^{\infty}c_n\mathscr{F}\left[e^{-j2\pi(f-\frac{n}{4})t}\right]\\
+            \notag\sout{=}&\sout{\sum_{n=-\infty}^{\infty}\frac{1-\cos(n\pi)}{(n\pi)^2}\delta(f-\frac{n}{4}).}\\
+            =&\sum_{n=-\infty}^{\infty}c_n\delta\left(f-\frac{n}{4}\right).
         \end{align}
         \item[b)] The Fourier series of $\sum_{n=-\infty}^{\infty}\delta(t-2n)$ is
         \begin{align}
