@@ -1,6 +1,6 @@
 \documentclass{assignment}
 \UsingEnglish
-\ProjectInfos*{Introduction to System System}{EE140}{Fall, 2020}{Assignment 3}{Due time : 10:15, Oct 9, 2020 (Friday)}{陈稼霖}{45875852}
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment 3}{Due time : 10:15, Oct 9, 2020 (Friday)}{陈稼霖}{45875852}
 \begin{document}
 \begin{prob}[Autocorrelation and cross-correlation function, 30 pts]
     The random process are given by $X(t)=n(t)+A\cos(2\pi f_0t+\theta)$, $Y(t)=n(t)+A\sin(2\pi f_0t+\theta)$, where $A$ and $f_0$ are positive constants and $\theta$ is a random variable uniformly distributed in the interval $[-\pi,\pi)$. The first term $n(t)$ represents a stationary random noise process with autocorrelation function $R_n(\tau)=B\Lambda(\tau)+C$, where $B$ and $C$ are positive constants. We further assume the random process $n(t)$ and $A\cos(2\pi f_0t+\theta)$ are uncorrelated, $n(t)$ and $A\sin(2\pi f_0t+\theta)$ are also uncorrelated.
@@ -97,7 +97,7 @@
 \end{sol}
 
 \begin{prob}[Gaussian random process transmission through a linear system, 30 pts]
-    The input to a lowpass filter with impulse response $h(t)=\exp(-10t)u(t)$ is white, Gaussian noise with two-sided power spectral density of $2$W/Hz. Obtain the following:
+    The input to a lowpass filter with impulse response $h(t)=\exp(-10t)u(t)$ is white, Gaussian noise with two-sided power spectral density of $2$ W/Hz. Obtain the following:
     \begin{itemize}
         \item[1)] The mean of the output.
         \item[2)] The power spectral density of the output.
@@ -109,7 +109,62 @@
     (Hint: $\mathscr{F}[\exp(-\alpha t)u(t),\alpha>0]=\frac{1}{\alpha+j2\pi f}$, $\mathscr{F}[\exp(-\alpha\abs{t}),\alpha>0]=\frac{2\alpha}{\alpha^2+(2\pi f)^2}$)
 \end{prob}
 \begin{sol}
-    
+    \item[1)] The output is
+    \begin{align}
+        Y(t)=n_w(t)*h(t)=\int_{-\infty}^{+\infty}h(\tau)n_w(t-\tau)\,d\tau.
+    \end{align}
+    The mean of the output is
+    \begin{align}
+        \notag E[Y(t)]=&E\left[\int_{-\infty}^{+\infty}h(\tau)n_w(t-\tau)\,d\tau\right]\\
+        \notag=&\int_{-\infty}^{+\infty}h(\tau)E[n_w(t-\tau)]\,d\tau\\
+        \notag&(\because n_w(t)\text{ is a white, Gaussian noise})\\
+        \notag=&\int_{-\infty}^{+\infty}h(\tau)\cdot 0\,d\tau\\
+        =&0.
+    \end{align}
+    \item[2)] The spectral of the response of the lowpass filter is
+    \begin{align}
+        H(f)=\mathscr{F}[h(t)]=\mathscr{F}[\exp(-10t)u(t)]=\frac{1}{10+i2\pi f}.
+    \end{align}
+    The power spectral density of the output is
+    \begin{align}
+        S_{n_w}(f)=\abs{H(f)}^2S_{n_w}(f)=\frac{1}{100+4\pi^2f^2}\frac{N_0}{2}=\frac{1}{50+2\pi^2f^2}\qquad(\text{W/Hz}).
+    \end{align}
+    \item[3)] The autocorrelation function of the output is
+    \begin{align}
+        \notag R_Y(\tau)=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(\tau_1)h(\tau_2)R_{n_w}(t-\tau_1+\tau_2)\,d\tau_1\,d\tau_2\\
+        \notag=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(\tau_1)h(\tau_2)\frac{N_0}{2}\delta(\tau-\tau_1+\tau_2)\,d\tau_1\,d\tau_2\\
+        \notag=&\frac{N_0}{2}\int_{-\infty}^{+\infty}h(\tau+\tau_2)h(\tau_2)\,d\tau_2\\
+        \notag=&\frac{N_0}{2}\int_{-\infty}^{+\infty}\exp[-10(\tau+\tau_2)]u(\tau+\tau_2)\exp(-10\tau_2)u(\tau_2)\,d\tau_2\\
+        \notag=&\frac{N_0}{2}\exp(-10\tau)\int_{\max\{0,-\tau\}}^{+\infty}\exp(-20\tau_2)\,d\tau_2\\
+        \notag=&\frac{N_0}{2}\exp(-10\tau)\frac{1}{20}\exp[-20\max\{0,-\tau\}]\\
+        =&\frac{1}{10}\exp(-10\abs{\tau})\qquad(\text{W$^2$/Hz$^2$}).
+    \end{align}
+    \item[4)] Since the input is a Gaussian noise and the lowpass filter is a linear system, the output is a Gaussian random process. As obtained in 1), the mean of the output is $0$. The variance of the output is
+    \begin{align}
+        \sigma_Y^2=E[Y^2(t)]=R_Y(0)=\frac{1}{10}.
+    \end{align}
+    The probability density function of the output at an arbitrary time $t_1$ is
+    \begin{align}
+        f_Y=\frac{1}{\sqrt{2\pi\sigma_Y^2}}\exp\left\{-\frac{1}{2\sigma_Y^2}(y-E[Y(t)])^2\right\}=\sqrt{\frac{5}{\pi}}\exp(-5y^2).
+    \end{align}
+    \item[5)] The autocovariance of $Y(t)$ and $Y(t+2)$ is
+    \begin{align}
+        \sigma_{Y(t),Y(t+2)}=E\{[Y(t)-E[Y(t)]][Y(t+2)-E[Y(t+2)]]\}=E[Y(t)Y(t+2)]=R_Y(2)=\frac{1}{10}\exp(-20).
+    \end{align}
+    The correlation coefficient of $Y(t)$ and $Y(t+2)$ is
+    \begin{align}
+        \rho_{Y(t),Y(t+2)}=\frac{\sigma_{Y(t),Y(t+2)}}{\sigma_{Y(t)}\sigma_{Y(t+2)}}=\frac{\frac{1}{10}\exp(-20)}{\frac{1}{10}\times\frac{1}{10}}=10\exp(-20).
+    \end{align}
+    The joint probability density function of the output at times $t_1$ and $t_1+2$ is
+    \small\begin{align}
+        \notag&f_{Y(t),Y(t+\tau)}(y_1,y_2)=\frac{1}{2\pi\sigma_{Y(t)}\sigma_{Y(t+2)}\sqrt{1-\rho_{Y(t),Y(t+2)}^2}}\times\\
+        \notag&\qquad\exp\left\{-\frac{1}{2(1-\rho_{Y(t),Y(t+2)}^2)}\left[\frac{(y_1-E[Y(t)])^2}{\sigma_{Y(t)}^2}-\frac{2\rho_{Y(t),Y(t+2)}(y_1-E[Y(t)])(y_2-E[Y(t+2)])}{\sigma_{Y(t)}\sigma_{Y(t+2)}}+\frac{(y_2-E[Y(t+2)])^2}{\sigma_{Y(t+2)}^2}\right]\right\}\\
+        =&\frac{5}{\pi\sqrt{1-100\exp(-40)}}\exp\left\{-\frac{100\exp(40)}{2[\exp(40)-100]}[y_1^2-20\exp(-20)y_1y_2+y_2^2]\right\}.
+    \end{align}\normalsize
+    \item[6)] The noise equivalent bandwidth of the filter is
+    \begin{align}
+        B_N=\frac{\int_0^{+\infty}\abs{H(f)}^2\,df}{H_0^2}=\frac{\int_0^{+\infty}\frac{1}{100+4\pi^2f^2}\,df}{1/100}=\frac{5}{\pi}\arctan\left.\left(\frac{\pi}{5}x\right)\right\rvert_0^{+\infty}=\frac{5}{2}.
+    \end{align}
 \end{sol}
 
 \begin{prob}[Narrowband noise, 40pts]

@@ -1,6 +1,6 @@
 \documentclass{assignment}
 \UsingEnglish
-\ProjectInfos*{Introduction to System System}{EE140}{Fall, 2020}{Assignment 2}{Due time : 10:15, Sept 25, 2020 (Friday)}{陈稼霖}{45875852}
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment 2}{Due time : 10:15, Sept 25, 2020 (Friday)}{陈稼霖}{45875852}
 \begin{document}
 \begin{prob}[Conditional probability, 10 pts]
     Given a binary communication channel where $A=$input and $B=$output, let $P(A)=0.3$, $P(B\vert A)=0.8$, and $P(\bar{B}\vert\bar{A})=0.6$. Find $P(A\vert B)$ and $P(\bar{A}\vert\bar{B})$.
@@ -202,7 +202,7 @@
     \begin{itemize}
         \item[1)] The mean of random process $X(t)$ at time $t_0$ is
         \begin{align}
-            E(X(t_0))=E[X(t=t_0)]=\int_{-\infty}^{+\infty}a\cos(2\pi f_0t_0)\frac{1}{\sqrt{2\pi\sigma_a^2}}e^{-\frac{\abs{a-\mu_a}^2}{2\sigma_a^2}}\,da=0.
+            E[X(t_0)]=E[X(t=t_0)]=\int_{-\infty}^{+\infty}a\cos(2\pi f_0t_0)\frac{1}{\sqrt{2\pi\sigma_a^2}}e^{-\frac{\abs{a-\mu_a}^2}{2\sigma_a^2}}\,da=0.
         \end{align}
         The variance of random process $X(t)$ at time $t_0$ is
         \begin{align}
@@ -218,8 +218,7 @@
         \item[3)] \textbf{No}, since the second-order statistics of $X(t)$ does not depend only on the time gap $\tau$, but also on the begin time $t$.
         \item[4)] $X(t)$ is a periodic signal. Its time mean is
         \begin{align}
-            \notag\langle X(t)\rangle=&\frac{1}{T}\int_0^Tx(t)\,dt=f_0\int_0^{1/f_0}A\cos(2\pi f_0t)\,dt\\
-            =&0.
+            \langle X(t)\rangle=&\frac{1}{T}\int_0^Tx(t)\,dt=f_0\int_0^{1/f_0}A\cos(2\pi f_0t)\,dt=0.
         \end{align}
         and its autocorrelation function is
         \begin{align}
