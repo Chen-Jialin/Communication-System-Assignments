@@ -182,6 +182,66 @@
     \end{figure}
 \end{prob}
 \begin{sol}
-    
+    The power spectral density of $n(t)$ can be written as
+    \begin{align}
+        S_n(f)=\frac{N_0}{2}\left[\Pi\left(\frac{f-\frac{f_1+f_2}{2}}{f_2-f_1}\right)+\Pi\left(\frac{f+\frac{f_1+f_2}{2}}{f_2-f_1}\right)\right].
+    \end{align}
+    \begin{itemize}
+        \item[1)] For $f_0=f_1$,
+        \begin{align}
+            \notag S_{n_c}(f)=S_{n_s}(f)=&\text{LP}[S_n(f-f_0)+S_n(f+f_0)]=\frac{N_0}{2}\left[\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)+\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right]\\
+            =&\frac{N_0}{2}\Pi\left(\frac{f}{2(f_2-f_1)}\right),
+        \end{align}
+        as shown in figure.
+        \begin{align}
+            S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=j\frac{N_0}{2}\left[\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)-\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right],
+        \end{align}
+        as shown in figure.
+        \item[2)] For $f_0=f_2$,
+        \begin{align}
+            \notag S_{n_c}(f)=S_{n_s}(f)=&\text{LP}[S_n(f-f_0)+S_n(f+f_0)]=\frac{N_0}{2}\left[\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)+\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right]\\
+            =&\frac{N_0}{2}\Pi\left(\frac{f}{2(f_2-f_1)}\right),
+        \end{align}
+        as shown in figure.
+        \begin{align}
+            S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=j\frac{N_0}{2}\left[\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)-\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right],
+        \end{align}
+        as shown in figure.
+        \item[3)] For $f_0=\frac{f_1+f_2}{2}$,
+        \begin{align}
+            S_{n_c}(f)=S_{n_s}(f)=\text{LP}\left[S_n(f-f_0)+S_n(f+f_0)\right]=N_0\Pi\left(\frac{f}{f_2-f_1}\right),
+        \end{align}
+        as shown in figure.
+        \begin{align}
+            S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=0,
+        \end{align}
+        as shown in figure.
+        
+        \begin{figure}[h]
+            \centering
+            \caption{Case 1)}
+            \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
+            \label{3-1-1}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-1.jpg}}
+            \subfigure[$S_{n_cn_s}(f)$]{
+            \label{3-1-2}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-2.jpg}}
+            \caption{Case 2)}
+            \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
+            \label{3-2-1}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-1.jpg}}
+            \subfigure[$S_{n_cn_s}(f)$]{
+            \label{3-2-2}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-3.jpg}}
+            \caption{Case 3)}
+            \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
+            \label{3-3-1}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-4.jpg}}
+            \subfigure[$S_{n_cn_s}(f)$]{
+            \label{3-3-2}
+            \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-5.jpg}}
+        \end{figure}
+        \item[4)] For cases \textbf{1), 2) and 3)}, $n_c(t)$ and $n_s(t)$ are uncorrelated. This is because, for all the cases above, the cross power spectral density is pure imaginary, so that the correlation function of $n_s(t)$ and $n_c(t)$, $R_{n_sn_c}(\tau)=\mathscr{F}^{-1}[S_{n_sn_c}(f)]$, is an odd function and thus $R_{n_sn_c}(0)=0$. Therefore, for all the cases above, $n_c(t)$ and $n_s(t)$ are uncorrelated.
+    \end{itemize}
 \end{sol}
 \end{document}
