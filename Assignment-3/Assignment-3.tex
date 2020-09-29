@@ -38,7 +38,7 @@
             \notag&(\because n(t)\text{ and }A\sin(2\pi f_0t+\theta)\text{ are uncorrelated})\\
             \notag=&R_n(\tau)+E[n(t)]E[A\sin(2\pi f_0t+\theta)]\\
             \notag&+E[A\sin(2\pi f_0t+\theta)]E[n(t+\tau)]+A^2E[\sin(2\pi f_0t+\theta)\sin(2\pi f_0(t+\tau)+\theta)]\\
-            \notag=&B\Lambda(\tau)+C+\frac{A^2}{2}\int_{-\pi}^{\pi}[\cos(2\pi f_0t)-\cos(4\pi f_0t+2\pi f_0\tau+2\theta)]\frac{1}{2\pi}\,d\theta\\
+            \notag=&B\Lambda(\tau)+C+\frac{A^2}{2}\int_{-\pi}^{\pi}[\cos(2\pi f_0\tau)-\cos(4\pi f_0t+2\pi f_0\tau+2\theta)]\frac{1}{2\pi}\,d\theta\\
             =&B\Lambda(\tau)+C+\frac{A^2}{2}\cos(2\pi f_0\tau).
         \end{align}
         \item[2)] The cross-correlation function of $X(t)$ and $Y(t)$ is
@@ -47,8 +47,8 @@
             \notag=&E[n(t)n(t+\tau)]+E[n(t)A\sin(2\pi f_0(t+\tau)+\theta)]\\
             \notag+&E[A\cos(2\pi f_0t+\theta)n(t+\tau)]+E[A\cos(2\pi f_0t+\theta)A\sin(2\pi f_0(t+\tau)+\theta)]\\
             \notag&(\because n(t)\text{ and }A\cos(2\pi f_0t+\theta)\text{ are uncorrelated, }n(t)\text{ and }A\sin(2\pi f_0t+\theta)\text{ are uncorrelated})\\
-            \notag=&R_n(\tau)+E[n(t)]E[A\sin(2\pi f_0(t+\tau)+\theta)]+E[A\cos(2\pi f_0t+\theta)]E[n(t+\tau)]\\
-            \notag&+E[A\sin(2\pi f_0(t+\tau)+\theta)]+A^2E[\cos(2\pi f_0t+\theta)\sin(2\pi f_0(t+\tau)+\theta)]\\
+            \notag=&R_n(\tau)+E[n(t)]E[A\sin(2\pi f_0(t+\tau)+\theta)]\\
+            \notag&+E[A\cos(2\pi f_0t+\theta)]E[n(t+\tau)]+A^2E[\cos(2\pi f_0t+\theta)\sin(2\pi f_0(t+\tau)+\theta)]\\
             \notag=&B\Lambda(\tau)+C+\frac{A^2}{2}\int_{-\pi}^{\pi}[\sin(4\pi f_0t+2\pi f_0\tau+2\theta)+\sin(2\pi f_0\tau)]\frac{1}{2\pi}\,d\theta\\
             =&B\Lambda(\tau)+C+\frac{A^2}{2}\sin(2\pi f_0\tau).
         \end{align}
@@ -60,7 +60,7 @@
         are not dependent on $t$, and as obtained in 1), the second-order statistics of $X(t)$ only depends on the gap, so $X(t)$ is wide-sense stationary. According to Wiener-Khinchine, the power spectral density of $X(t)$ is
         \begin{align}
             \notag S_X(t)=&\mathscr{F}[R_X(\tau)]=\mathscr{F}\left[B\Lambda(\tau)+C+\frac{A^2}{2}\cos(2\pi f_0\tau)\right]\\
-            =&B\sinc^2\left(\frac{f}{2}\right)+C\delta(f)+\frac{A^2}{4}\left[\delta(f-f_0)+\delta(f+f_0)\right].
+            =&B\sinc^2f+C\delta(f)+\frac{A^2}{4}\left[\delta(f-f_0)+\delta(f+f_0)\right].
         \end{align}
         Similarly, the first-order statistics of $Y(t)$
         \begin{align}
@@ -70,12 +70,12 @@
         are not dependent on $t$, and as obtained in 2), the second-order statistics of $Y(t)$ only depends on the gap, so $Y(t)$ is wide-sense stationary. According to Wiener-Khinchine theorem, the power spectral density of $Y(t)$ is
         \begin{align}
             \notag S_Y(t)=&\mathscr{F}[R_Y(\tau)]=\mathscr{F}\left[B\Lambda(\tau)+C+\frac{A^2}{2}\cos(2\pi f_0\tau)\right]\\
-            =&B\sinc^2\left(\frac{f}{2}\right)+C\delta(f)+\frac{A^2}{4}\left[\delta(f-f_0)+\delta(f+f_0)\right].
+            =&B\sinc^2f+C\delta(f)+\frac{A^2}{4}\left[\delta(f-f_0)+\delta(f+f_0)\right].
         \end{align}
         \item[4)] As we obtained in 3), both $X(t)$ and $Y(t)$ are wide-sense stationary. The cross power of $X(t)$ and $Y(t)$ is
         \begin{align}
             \notag S_{XY}(f)=&\mathscr{F}[R_{XY}(\tau)]=\mathscr{F}\left[B\Lambda(\tau)+C+\frac{A^2}{2}\sin(2\pi f_0\tau)\right]\\
-            =&B\sinc^2\left(\frac{f}{2}\right)+C\delta(f)+\frac{A^2}{4j}\left[\delta(f-f_0)-\delta(f+f_0)\right].
+            =&B\sinc^2f+C\delta(f)+\frac{A^2}{4j}\left[\delta(f-f_0)-\delta(f+f_0)\right].
         \end{align}
         \item[5)] The total power of $X(t)$ is
         \begin{align}
@@ -85,13 +85,13 @@
         \begin{align}
             P_Y=E[Y^2(t)]=R_Y(\tau=0)=B+C+\frac{A^2}{2}.
         \end{align}
-        \item[6)] Since the total power of $X(t)$ is a constant, the DC power of $X(t)$ is
+        \item[6)] As obtained in 3), the mean of $X(t)$ is $E[X(t)]=0$, so the DC power of $X(t)$ is
         \begin{align}
-            P_{X,\text{DC}}=P_X=B+C+\frac{A^2}{2}.
+            \overline{X(t)}^2=E^2[X(t)]=0.
         \end{align}
-        Similarly, since the total power of $Y(t)$ is a constant, the DC power of $Y(t)$ is
+        Similarly, as obtained in 3), the mean of $Y(t)$ is $E[Y(t)]=0$, so the DC power of $Y(t)$ is
         \begin{align}
-            P_{Y,\text{DC}}=P_Y=B+C+\frac{A^2}{2}.
+            \overline{Y(t)}^2=E^2[Y(t)]=0.
         \end{align}
     \end{itemize}
 \end{sol}
@@ -129,7 +129,7 @@
     \begin{align}
         S_{n_w}(f)=\abs{H(f)}^2S_{n_w}(f)=\frac{1}{100+4\pi^2f^2}\frac{N_0}{2}=\frac{1}{50+2\pi^2f^2}\qquad(\text{W/Hz}).
     \end{align}
-    \item[3)] The autocorrelation function of the output is
+    \item[3)] The input is white, Gaussian noise, and thus, stationary, so the autocorrelation function of the output is
     \begin{align}
         \notag R_Y(\tau)=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(\tau_1)h(\tau_2)R_{n_w}(t-\tau_1+\tau_2)\,d\tau_1\,d\tau_2\\
         \notag=&\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}h(\tau_1)h(\tau_2)\frac{N_0}{2}\delta(\tau-\tau_1+\tau_2)\,d\tau_1\,d\tau_2\\
@@ -159,7 +159,7 @@
     \small\begin{align}
         \notag&f_{Y(t),Y(t+\tau)}(y_1,y_2)=\frac{1}{2\pi\sigma_{Y(t)}\sigma_{Y(t+2)}\sqrt{1-\rho_{Y(t),Y(t+2)}^2}}\times\\
         \notag&\qquad\exp\left\{-\frac{1}{2(1-\rho_{Y(t),Y(t+2)}^2)}\left[\frac{(y_1-E[Y(t)])^2}{\sigma_{Y(t)}^2}-\frac{2\rho_{Y(t),Y(t+2)}(y_1-E[Y(t)])(y_2-E[Y(t+2)])}{\sigma_{Y(t)}\sigma_{Y(t+2)}}+\frac{(y_2-E[Y(t+2)])^2}{\sigma_{Y(t+2)}^2}\right]\right\}\\
-        =&\frac{5}{\pi\sqrt{1-100\exp(-40)}}\exp\left\{-\frac{100\exp(40)}{2[\exp(40)-100]}[y_1^2-20\exp(-20)y_1y_2+y_2^2]\right\}.
+        =&\frac{50}{\pi\sqrt{1-100\exp(-40)}}\exp\left\{-\frac{100\exp(40)}{2[\exp(40)-100]}[y_1^2-20\exp(-20)y_1y_2+y_2^2]\right\}.
     \end{align}\normalsize
     \item[6)] The noise equivalent bandwidth of the filter is
     \begin{align}
@@ -192,54 +192,53 @@
             \notag S_{n_c}(f)=S_{n_s}(f)=&\text{LP}[S_n(f-f_0)+S_n(f+f_0)]=\frac{N_0}{2}\left[\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)+\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right]\\
             =&\frac{N_0}{2}\Pi\left(\frac{f}{2(f_2-f_1)}\right),
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{3-1-1}.
         \begin{align}
             S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=j\frac{N_0}{2}\left[\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)-\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right],
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{3-1-2}.
         \item[2)] For $f_0=f_2$,
         \begin{align}
             \notag S_{n_c}(f)=S_{n_s}(f)=&\text{LP}[S_n(f-f_0)+S_n(f+f_0)]=\frac{N_0}{2}\left[\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)+\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right]\\
             =&\frac{N_0}{2}\Pi\left(\frac{f}{2(f_2-f_1)}\right),
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{3-2-1}.
         \begin{align}
             S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=j\frac{N_0}{2}\left[\Pi\left(\frac{f-\frac{f_2-f_1}{2}}{f_2-f_1}\right)-\Pi\left(\frac{f+\frac{f_2-f_1}{2}}{f_2-f_1}\right)\right],
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{3-2-2}.
         \item[3)] For $f_0=\frac{f_1+f_2}{2}$,
         \begin{align}
             S_{n_c}(f)=S_{n_s}(f)=\text{LP}\left[S_n(f-f_0)+S_n(f+f_0)\right]=N_0\Pi\left(\frac{f}{f_2-f_1}\right),
         \end{align}
-        as shown in figure.
+        as shown in figure \ref{3-3-1}.
         \begin{align}
             S_{n_cn_s}(f)=j\text{LP}[S_n(f-f_0)-S_n(f+f_0)]=0,
         \end{align}
-        as shown in figure.
-        
+        as shown in figure \ref{3-3-2}.
         \begin{figure}[h]
             \centering
-            \caption{Case 1)}
             \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
             \label{3-1-1}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-1.jpg}}
             \subfigure[$S_{n_cn_s}(f)$]{
             \label{3-1-2}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-2.jpg}}
-            \caption{Case 2)}
+            \caption{Case 1)}
             \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
             \label{3-2-1}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-1.jpg}}
             \subfigure[$S_{n_cn_s}(f)$]{
             \label{3-2-2}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-3.jpg}}
-            \caption{Case 3)}
+            \caption{Case 2)}
             \subfigure[$S_{n_c}(f)$ or $S_{n_s}(f)$]{
             \label{3-3-1}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-4.jpg}}
             \subfigure[$S_{n_cn_s}(f)$]{
             \label{3-3-2}
             \includegraphics[width=0.35\textwidth]{Assignment-3-Problem-3-5.jpg}}
+            \caption{Case 3)}
         \end{figure}
         \item[4)] For cases \textbf{1), 2) and 3)}, $n_c(t)$ and $n_s(t)$ are uncorrelated. This is because, for all the cases above, the cross power spectral density is pure imaginary, so that the correlation function of $n_s(t)$ and $n_c(t)$, $R_{n_sn_c}(\tau)=\mathscr{F}^{-1}[S_{n_sn_c}(f)]$, is an odd function and thus $R_{n_sn_c}(0)=0$. Therefore, for all the cases above, $n_c(t)$ and $n_s(t)$ are uncorrelated.
     \end{itemize}
