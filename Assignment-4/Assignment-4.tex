@@ -219,7 +219,7 @@
         \item[a)] Write the equation for $y(t)$.
         \item[b)] Find the condition for which the message signal $m(t)$ may be recovered from the $y(t)$. (Hint: What's the ration of the wanted signal to the distortion, and how to keep the ratio large?)
     \end{itemize}
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics[width=.5\columnwidth]{Assignment-4-Problem-5.jpg}
         \caption{}
@@ -228,8 +228,29 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[a)] 
-        \item[b)] 
+        \item[a)] The equation for $y(t)$ is
+        \begin{align}
+            \notag y(t)=&a_1A_c[1+am_n(t)]\cos\omega_c+a_2^2A_c^2[1+am_n(t)]^2\cos^2\omega_ct\\
+            \notag=&a_1A_c[1+am_n(t)]\cos\omega_ct+a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]\frac{1+\cos 2\omega_ct}{2}\\
+            =&\frac{1}{2}a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]+a_1A_c[1+am_n(t)]\cos\omega_ct+\frac{1}{2}a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]\cos 2\omega_ct
+        \end{align}
+        \item[b)] We can use a filter that can filter high frequency signal and DC signal. After passing the filter, we can get
+        \begin{align}
+            g(t)=\frac{1}{2}a_2^2A_c^2am_n(t)[2+am_n(t)].
+        \end{align}
+        What we want to get is
+        \begin{align}
+            a_2^2A_c^2am_n(t).
+        \end{align}
+        The distortion is
+        \begin{align}
+            \frac{1}{2}a_2^2A_c^2a^2m_n^2(t).
+        \end{align}
+        The ratio of the wanted signal to the distortion is
+        \begin{align}
+            \frac{2}{am_n(t)}.
+        \end{align}
+        Therefore, we can recover $m(t)$ from $y(t)$ when $am_n(t)$ is very large.
     \end{itemize}
 \end{sol}
 \end{document}
