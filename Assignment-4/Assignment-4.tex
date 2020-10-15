@@ -59,7 +59,7 @@
         \begin{align}
             M(f)=\mathscr{F}[m(t)]=5[\delta(f-5)+\delta(f+5)].
         \end{align}
-        The spectrum of the signal of VSB modulation with VSB filter $H(f)$ is Figure \ref{Assigment-4-Problem-1} is
+        The spectrum of the signal of VSB modulation with VSB filter $H(f)$ is Figure \ref{Assignment-4-Problem-1} is
         \begin{align}
             \notag X_c(f)=&[M(f-100)+M(f+100)]H(f)\\
             \notag=&5[\delta(f-105)+\delta(f-95)+\delta(f+95)+\delta(f+105)]H(f)\\
@@ -156,7 +156,7 @@
     \end{itemize}
 \end{sol}
 
-Note that the following two problems are two extension problems based on what you have learned on the class.
+\noindent\textcolor{red}{Note that the following two problems are two extension problems based on what you have learned on the class.}
 
 \begin{prob}[Square-Law Modulator, 30 pts]
     Consider a square-law modulator, as shown in Figure \ref{Assignment-4-Problem-4}. Assume that the average value of $m(t)$ is zero ($\langle m(t)\rangle=0$), and that the maximum value of $\abs{m(t)}$ is $M$. Also assume that the square-law device in Figure \ref{Assignment-4-Problem-4} is defined by $y(t)=a_1x(t)+a_2x^2(t)$, where $a_1$ and $a_2$ are constants.
@@ -175,10 +175,41 @@ Note that the following two problems are two extension problems based on what yo
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[a)] 
-        \item[b)] 
-        \item[c)] 
-        \item[d)] 
+        \item[a)] The equation for $y(t)$ is
+        \begin{align}
+            \notag y(t)=&a_1[m(t)+\cos(\omega_ct)]+a_2[m(t)+\cos(\omega_ct)]^2\\
+            \notag=&a_1m(t)+a_1\cos(\omega_ct)+a_2m^2(t)+2a_2m(t)\cos(\omega_ct)+a_2\cos^2(\omega_ct)\\
+            =&a_1m(t)+a_2m^2(t)+a_1\left[1+\frac{2a_2}{a_1}m(t)\right]\cos(\omega_ct)+\frac{a_2}{2}[\cos(4\pi\omega_ct)+1].
+        \end{align}
+        \item[b)] What we want to get is DSB-LC modulator signal:
+        \begin{align}
+            g(t)=a_1\left[1+\frac{2a_2}{a_1}m(t)\right]\cos(\omega_ct),
+        \end{align}
+        so we need the carrier frequency to be greater than threefold of the bandwidth of the :
+        \begin{align}
+            f_c>3W,
+        \end{align}
+        and we need the center frequency $f_0$ and the bandwidth $B$ of the filter satisfy
+        \begin{align}
+            f_c+W\leq f_0+B\leq 2f_c,\quad 2W\leq f_c-B\leq f_c-W.
+        \end{align}
+        One of the proper choices is that the center frequency of the filter equals the carrier frequency and the bandwidth of the filter is no less than the twice of the bandwidth of the message signal and no greater than $f_c-2W$:
+        \begin{align}
+            f_0=f_c,\quad W\leq B\leq f_c-2W.
+        \end{align}
+        \item[c)] The output AM signal is
+        \begin{align}
+            g(t)=a_1\left[1+\frac{2a_2M}{a_1}\frac{m(t)}{M}\right]\cos(\omega_ct)
+        \end{align}
+        The modulation index of the output AM signal $g(t)$ is
+        \begin{align}
+            \frac{2a_2M}{a_1}.
+        \end{align}
+        \item[d)] The advantage of this method of modulation：
+        \begin{itemize}
+            \item[(1)] This method includes the carrier into the modulated signal, and thus make it easy for envelope detection.
+            \item[(2)] This method is relatively easy to realize.
+        \end{itemize}
     \end{itemize}
 \end{sol}
 
