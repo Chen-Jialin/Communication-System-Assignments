@@ -109,7 +109,7 @@
     \end{align}
     The sideband power is
     \begin{align}
-        P_s=\frac{1}{2}A_c^2a^2\langle m_n^2(t)\rangle=200\langle\cos^2(40\pi t)\rangle=100\langle 1+\cos(80\pi t)\rangle=100.
+        P_s=\frac{1}{2}A_c^2a^2\langle m_n^2(t)\rangle=100.
     \end{align}
     The transmission efficiency is
     \begin{align}
@@ -125,8 +125,34 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[a)] 
-        \item[b)] 
+        \item[a)] Suppose the spectrum of the message signal is
+        \begin{align}
+            M(f)=\frac{a_1}{2}[\delta(f-100)+\delta(f+100)]+\frac{a_2}{2}[\delta(f-200)+\delta(f+200)]+\frac{a_3}{2}[\delta(f-400)+\delta(f+400)].
+        \end{align}
+        The spectrum of the SSB modulated signal with only the upper sideband retained is
+        \begin{align}
+            \notag X_c(f)=&\frac{A_c}{2}\left\{\frac{a_1}{2}[\delta(f-100000-100)+\delta(f+100000+100)]\right.\\
+            \notag&\quad+\frac{a_2}{2}[\delta(f-100000-200)+\delta(f+100000+200)]\\
+            &\quad\left.+\frac{a_3}{2}[\delta(f-100000-400)+\delta(f+100000+400)]\right\}.
+        \end{align}
+        The spectrum of the demodulated signal is
+        \begin{align}
+            \notag D(f)=&\text{LP}[X_c(f-100020)+X_c(f+100020)]\\
+            =&\frac{A_c}{2}\left\{\frac{a_1}{2}[\delta(f-80)+\delta(f+80)]+\frac{a_2}{2}[\delta(f-180)+\delta(f+180)]+\frac{a_3}{2}[\delta(f-380)+\delta(f+380)]\right\}.
+        \end{align}
+        Therefore, the frequency components of the detector output are at $80$ Hz, $180$ Hz and $380$ Hz.
+        \item[b)] The spectrum of the SSB modulated signal with only the lower sideband retained is
+        \begin{align}
+            \notag X_f(f)=&\frac{A_c}{2}\left\{\frac{a_1}{2}[\delta(f-100000+100)+\delta(f+100000-100)]\right.\\
+            \notag&\quad+\frac{a_2}{2}[\delta(f-100000+200)+\delta(f+100000-200)]\\
+            &\quad\left.+\frac{a_3}{2}[\delta(f-100000+400)+\delta(f+100000-400)]\right\}.
+        \end{align}
+        The spectrum of the demodulated signal is
+        \begin{align}
+            \notag D(f)=&\text{LP}[X_c(f-100020)+X_c(f+100020)]\\
+            =&\frac{A_c}{2}\left\{\frac{a_1}{2}[\delta(f-120)+\delta(f+120)]+\frac{a_2}{2}[\delta(f-220)+\delta(f+220)]+\frac{a_3}{2}[\delta(f-420)+\delta(f+420)]\right\}.
+        \end{align}
+        Therefore, the frequency components of the detector output are at $120$ Hz, $220$ Hz and $420$ Hz.
     \end{itemize}
 \end{sol}
 
