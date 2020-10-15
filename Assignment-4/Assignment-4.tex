@@ -8,13 +8,13 @@
         \item[a)] Double-sideband-suppressed carrier (DSB-SC) modulation.
         \item[b)] Double-sideband, Large carrier (DSB-LC) modulation with modulation index $a=0.1$.
         \item[c)] Single-sideband (SSB) modulation with upper sideband retained.
-        \item[d)] Vestigial-sideband (VSB) modulation with following VSB filter $H(f)$ in Figure 1.
+        \item[d)] Vestigial-sideband (VSB) modulation with following VSB filter $H(f)$ in Figure \ref{Assignment-4-Problem-1}.
     \end{itemize}
-    \begin{figure}
+    \begin{figure}[h]
         \centering
         \includegraphics[width=.5\columnwidth]{Assignment-4-Problem-1.jpg}
         \caption{}
-        \label{Assigment-4-Problem-1}
+        \label{Assignment-4-Problem-1}
     \end{figure}
 \end{prob}
 \begin{sol}
@@ -30,7 +30,7 @@
         as shown in figure.
         \item[b)] The modulated signal of DSB-LC modulation with modulation index $a=0.1$ is
         \begin{align}
-            \notag x_c(t)=&2\left[1+a\frac{m(t)}{\min[\abs{m(t)}]}\right]\cos(200\pi t)\\
+            \notag x_c(t)=&2\left[1+a\frac{m(t)}{\abs{\min[m(t)]}}\right]\cos(200\pi t)\\
             \notag=&2\left[1+0.1\frac{10\cos(10\pi t)}{10}\right]\cos(200\pi t)\\
             \notag=&2\cos(200\pi t)+0.2\cos(10\pi t)\cos(200\pi t)\\
             =&2\cos(200\pi t)+0.1[\cos(190\pi t)+\cos(210\pi t)].
@@ -70,6 +70,109 @@
         \begin{align}
             x_c(t)=\mathscr{F}^{-1}[X_c(f)]=9\cos(190\pi t)+\cos(210\pi t).
         \end{align}
+    \end{itemize}
+\end{sol}
+
+\begin{prob}[DSB-LC or AM, 20 pts]
+    An AM (i.e. DSB-LC) modulator has output $x_c(t)=40\cos(400\pi t)+10\cos(360\pi t)+10\cos(440\pi t)$. Determine the modulation index, the carrier power, the sideband power and the transmission efficiency.
+\end{prob}
+\begin{sol}
+    The spectrum of the modulated signal is
+    \begin{align}
+        X_c(f)=\mathscr{F}[X_c(t)]=20[\delta(f-200)+\delta(f+200)]+5[\delta(f-180)+\delta(f+180)+\delta(f-220)+\delta(f+220)].
+    \end{align}
+    From the spectrum, we know the carrier frequency of the DSB-LC AM is $f_c=200$ Hz.
+    We use phase-coherent demodulation to determine the message signal. Multiplying the output with a local oscillator, we get
+    \begin{align}
+        \notag x_c(t)\cdot 2\cos(2\pi f_c)=&2[40\cos(400\pi t)+10\cos(360\pi t)+10\cos(440\pi t)]\cos(400\pi t)\\
+        =&40[\cos(800\pi t)+1]+10[\cos(40\pi t)+\cos(760\pi t)]+10[\cos(40\pi t)+\cos(840\pi t)],
+    \end{align}
+    Then we send the signal to a low-pass filter, we get
+    \begin{align}
+        \text{LP}[x_c(t)\cos(2\pi f_ct)]=&40+20\cos(40\pi t)=A_c\left[1+a\frac{m(t)}{\abs{\min[m(t)]}}\right].
+    \end{align}
+    Therefore, we get $A_c=40$ and the modulation index
+    \begin{align}
+        a=\frac{1}{2}.
+    \end{align}
+    From above, we know the carrier is
+    \begin{align}
+        C(t)=A_c\cos(2\pi f_ct)=40\cos(400\pi t).
+    \end{align}
+    The preprocessed message signal is
+    \begin{align}
+        m_n(t)=\frac{m(t)}{\abs{\min[m(t)]}}=\cos(40\pi t).
+    \end{align}
+    The carrier power is
+    \begin{align}
+        P_c=\frac{1}{2}A_c^2=800.
+    \end{align}
+    The sideband power is
+    \begin{align}
+        P_s=\frac{1}{2}A_c^2a^2\langle m_n^2(t)\rangle=200\langle\cos^2(40\pi t)\rangle=100\langle 1+\cos(80\pi t)\rangle=100.
+    \end{align}
+    The transmission efficiency is
+    \begin{align}
+        \mu=\frac{P_s}{P_s+P_c}=\frac{1}{9}.
+    \end{align}
+\end{sol}
+
+\begin{prob}[Demodulation of SSB, 20 pts]
+    \begin{itemize}
+        \item[a)] Consider a message signal $m(t)$ containing frequency components at $100$, $200$ and $400$ Hz. This signal is applied to an SSB modulator together with a carrier at $100$ kHz, with only the upper sideband retained. In the coherent detector used to recover $m(t)$, the local oscillator supplies a cosine wave of frequency $100.02$ kHz. Determine the frequency components of the detector output.
+        \item[b)] Repeat your analysis, assuming that only the lower sideband is transmitted.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[a)] 
+        \item[b)] 
+    \end{itemize}
+\end{sol}
+
+Note that the following two problems are two extension problems based on what you have learned on the class.
+
+\begin{prob}[Square-Law Modulator, 30 pts]
+    Consider a square-law modulator, as shown in Figure \ref{Assignment-4-Problem-4}. Assume that the average value of $m(t)$ is zero ($\langle m(t)\rangle=0$), and that the maximum value of $\abs{m(t)}$ is $M$. Also assume that the square-law device in Figure \ref{Assignment-4-Problem-4} is defined by $y(t)=a_1x(t)+a_2x^2(t)$, where $a_1$ and $a_2$ are constants.
+    \begin{itemize}
+        \item[a)] Write the equation for $y(t)$.
+        \item[b)] Assume the bandwidth of the message signal $m(t)$ is $W$. Describe the filter in Figure \ref{Assignment-4-Problem-4}, that yields an AM signal for $g(t)$ with $f_c$ as the carrier frequency. Give the necessary filter type and the carrier frequencies of interest. (Hint: What is the center frequency of the filter, what's the bandwidth of the filter, what's the requirement for the carrier frequency $f_c$ in order to generate an AM signal using square-law modulator. Note that AM signal means DSB-LC modulator signal)
+        \item[c)] What's the modulation index of the output AM signal $g(t)$? (Hint: express the modulation index using $a_1$, $a_2$ and $M$)
+        \item[d)] What is the advantage of this method of modulation?
+    \end{itemize}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.5\columnwidth]{Assignment-4-Problem-4.jpg}
+        \caption{}
+        \label{Assignment-4-Problem-4}
+    \end{figure}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[a)] 
+        \item[b)] 
+        \item[c)] 
+        \item[d)] 
+    \end{itemize}
+\end{sol}
+
+\begin{prob}[Square-Law Detector, 10 pts]
+    Consider a square-law detector as shown in Figure \ref{Assignment-4-Problem-5}, using a nonlinear device whose transfer characteristic is defined by $y(t)=a_1x(t)+a_2x^2(t)$, where $a_1$ and $a_2$ are constants, $x(t)$ is the input, and $y(t)$ is the output. The input consist of the AM wave $x(t)=A_c[1+am_n(t)]\cos\omega_ct$.
+    \begin{itemize}
+        \item[a)] Write the equation for $y(t)$.
+        \item[b)] Find the condition for which the message signal $m(t)$ may be recovered from the $y(t)$. (Hint: What's the ration of the wanted signal to the distortion, and how to keep the ratio large?)
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.5\columnwidth]{Assignment-4-Problem-5.jpg}
+        \caption{}
+        \label{Assignment-4-Problem-5}
+    \end{figure}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[a)] 
+        \item[b)] 
     \end{itemize}
 \end{sol}
 \end{document}
