@@ -55,7 +55,7 @@
     \begin{itemize}
         \item[1)] The phase deviation in radians is
         \begin{align}
-            \phi(t)=k_pm(t)=60\Lambda\left(\frac{1}{3}(t-3)\right)\text{ (unit: rad)}.
+            \phi(t)=k_pm(t)=60\Lambda\left(\frac{1}{3}(t-3)\right)\quad\text{ (unit: rad)}.
         \end{align}
         \item[2)] The frequency deviation in hertz is
         \begin{align}
@@ -91,14 +91,64 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[1)] 
-        \item[2)] 
-        \item[3)] 
-        \item[4)] 
-        \item[5)] 
-        \item[6)] 
-        \item[7)] 
-        \item[8)] 
+        \item[1)] The peak frequency deviation is
+        \begin{align}
+            \Delta f=f_dA_m=20\times 5=100\text{ Hz}.
+        \end{align}
+        \item[2)] The modulation index is
+        \begin{align}
+            \beta=\frac{\Delta f}{f_m}=\frac{100}{10}=10.
+        \end{align}
+        \item[3)] This is \textbf{not} narrow band FM, since narrow band FM requires that $\beta\ll 1$ but this modulation has $\beta=10$.
+        \item[4)] If the same $m(t)$ is used for a phase modulator, then the modulation index is
+        \begin{align}
+            \beta=k_pA_m=5k_p.
+        \end{align}
+        To yield the same modulation index as in 1), we need
+        \begin{align}
+            k_p=2.
+        \end{align}
+        \item[5)] Using Carson's rule, the approximate bandwidth is
+        \begin{align}
+            B=2(1+\beta)f_m=2\times(1+10)\times 10=220\text{ Hz}.
+        \end{align}
+        \item[6)] The modulated signal is
+        \begin{align}
+            x_c(t)=A_c\sum_{n=-\infty}^{+\infty}J_n(\beta)\cos[2\pi(f_c+nf_m)t].
+        \end{align}
+        The spectrum of modulated signal is
+        \begin{align}
+            \notag X_c(f)=&\mathscr{F}[x_c(t)]=\frac{A_c}{2}\sum_{n=-\infty}^{+\infty}J_n(\beta)\left[\delta(f-f_c-nf_m)+\delta(f+f_c+nf_m)\right]\\
+            =&\frac{A_c}{2}J_0(\beta)[\delta(f-f_c)+\delta(f+f_c)]+A_c\sum_{n=1}^{+\infty}[\delta(f-f_c-nf_m)+\delta(f+f_c+nf_m)].
+        \end{align}
+        where $\beta=0$ as obtained in 2), the unmodulated carrier amplitude is $\abs{\frac{A_c}{2}J_0(\beta)}$ and the amplitude of side frequency $f_c\pm nf_m$ is $\abs{A_cJ_n(\beta)}$. According to the table from page 163, $\abs{J_0(10)}=0.246$ and $\abs{J_n(10)}>1\%\frac{\abs{J_0(10)}}{2},\forall 0\leq n\leq 16$, so $n_{\max}=16$. The bandwidth is
+        \begin{align}
+            B=2n_{\max}f_m=320\text{ Hz}.
+        \end{align}
+        \item[7)] If the amplitude of the modulating signal $m(t)$ is doubled, i.e., $A_m=10$, then the peak frequency deviation is
+        \begin{align}
+            \Delta f=f_dA_m=200\text{ Hz}.
+        \end{align}
+        The modulation index is
+        \begin{align}
+            \beta=\frac{\Delta f}{f_m}=\frac{200}{10}=20.
+        \end{align}
+        Using Carson's rule, the approximate bandwidth is
+        \begin{align}
+            B=2(1+\beta)f_m=2\times(1+20)\times 10=420\text{ Hz}.
+        \end{align}
+        \item[8)] If the frequency of the modulating signal $m(t)$ is doubled, i.e., $f_m=20$, then the peak frequency deviation is still
+        \begin{align}
+            \Delta f=f_dA_m=100\text{ Hz}
+        \end{align}
+        The modulating index is
+        \begin{align}
+            \beta=\frac{\Delta f}{f_m}=\frac{100}{20}=5.
+        \end{align}
+        Using Carson's rule, the approximate bandwidth is
+        \begin{align}
+            B=2(1+\beta)f_m=2\times(1+5)\times 20=240\text{ Hz}.
+        \end{align}
     \end{itemize}
 \end{sol}
 
