@@ -19,10 +19,26 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[1)] 
-        \item[2)] 
-        \item[3)] 
-        \item[4)] 
+        \item[1)] The phase deviation in radians is
+        \begin{align}
+            \phi(t)=&2\pi f_d\int_0^tm(\tau)\,\mathrm{d}\tau=40\pi\int_0^t3\Lambda\left(\frac{1}{3}(\tau-3)\right)\,\mathrm{d}\tau=\left\{\begin{array}{ll}
+                60\pi t^2,&0\leq t\leq 3,\\
+                -60\pi t^2+720\pi t-1080\pi,&3<t\leq 6,\\
+                1080\pi,&t>6.
+            \end{array}\right.\quad(\text{unit: rad})
+        \end{align}
+        \item[2)] The frequency deviation in hertz is
+        \begin{align}
+            \frac{1}{2\pi}\frac{\mathrm{d}\phi}{\mathrm{d}t}=&\frac{1}{2\pi}\frac{\mathrm{d}\left[2\pi f_d\int_0^tm(\tau)\,d\tau\right]}{\mathrm{d}t}=f_dm(t)=60\Lambda\left(\frac{1}{3}(t-3)\right)\quad(\text{unit: Hz}).
+        \end{align}
+        \item[3)] The peak frequency deviation in hertz is
+        \begin{align}
+            \Delta f=\max\left[\frac{1}{2\pi}\frac{\mathrm{d}\phi}{\mathrm{d}t}\right]=60\text{ Hz}.
+        \end{align}
+        \item[4)] The peak phase deviation in radians is
+        \begin{align}
+            \Delta\phi=\max[\phi(t)]=1080\text{ rad}.
+        \end{align}
     \end{itemize}
 \end{sol}
 
@@ -88,7 +104,7 @@
     A narrowband FM has a carrier frequency of $110$ kHz and a deviation ratio of $0.05$. The bandwidth of the modulating signal is $10$ kHz. This narrowband FM signal is used to generate a wideband FM signal with a deviation ratio of $20$ and a carrier frequency of $100$ MHz. We use the Armstrong indirect FM transmitter in Figure \ref{A-5-P-5} to accomplish this. Give the required value of frequency multiplication $n$. Also, fully define the mixer by giving two permissible frequencies for local oscillator, and define the required bandpass filter (the center frequency and the bandwidth using Carson's rule).
     \begin{figure}[h]
         \centering
-        \includegraphics[width=.5\columnwidth]{Assignment-5-Problem-5.png}
+        \includegraphics[width=.8\columnwidth]{Assignment-5-Problem-5.png}
         \caption{}
         \label{A-5-P-5}
     \end{figure}
