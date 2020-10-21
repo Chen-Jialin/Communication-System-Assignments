@@ -161,8 +161,48 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[1)] 
-        \item[2)] 
+        \item[1)] The phase deviation of the PM signal is
+        \begin{align}
+            \phi(t)=k_pm(t)=k_pA_m\cos 2\pi f_mt.
+        \end{align}
+        The frequency deviation of the PM signal is
+        \begin{align}
+            \frac{1}{2\pi}\frac{\mathrm{d}\phi(t)}{\mathrm{d}t}=-k_pA_mf_m\sin 2\pi f_mt.
+        \end{align}
+        The peak frequency deviation of the PM signal is
+        \begin{align}
+            \Delta f=\max\left[\frac{1}{2\pi}\frac{\mathrm{d}\phi(t)}{\mathrm{d}t}\right]=k_pA_mf_m.
+        \end{align}
+        The bandwidth of the modulating wave is
+        \begin{align}
+            W=f_m.
+        \end{align}
+        The deviation ratio of the PM signal is
+        \begin{align}
+            D=\frac{\Delta f}{W}=k_pA_m.
+        \end{align}
+        The bandwidth of the PM signal is
+        \begin{align}
+            B=2(1+D)W=2(1+k_pA_m)f_m.
+        \end{align}
+        If the maximum phase deviation of the PM signal is much larger than $1$, i.e., $\max\left[\phi(t)\right]=k_pA_m\gg 1$, then
+        \begin{align}
+            B\approx 2k_pA_mf_m,
+        \end{align}
+        i.e., the bandwidth of the PM signal varies linearly with the modulation frequency $f_m$.
+        \item[2)] For FM signal, using Carson's rule, its bandwidth is
+        \begin{align}
+            B=2(1+\beta)f_m=2\left(1+\frac{f_d}{f_m}A_m\right)f_m.
+        \end{align}
+        The phase deviation of the FM signal is
+        \begin{align}
+            \phi(t)=2\pi\int_0^tf_dm(\tau)\,\mathrm{d}\tau=2\pi \int_0^tf_dA_m\cos 2\pi f_m\tau\,\mathrm{d}\tau=\frac{f_dA_m}{f_m}\sin 2\pi f_mt.
+        \end{align}
+        If the maximum phase deviation of the FM signal is much larger than $1$, i.e., $\max[\phi(t)]=\frac{f_dA_m}{f_m}\gg 1$, then
+        \begin{align}
+            B\approx 2f_dA_m,
+        \end{align}
+        i.e., the bandwidth of the FM varies linearly withe the amplitude of the modulation wave $A_m$.
     \end{itemize}
 \end{sol}
 
