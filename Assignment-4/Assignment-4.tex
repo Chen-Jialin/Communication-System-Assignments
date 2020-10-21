@@ -216,7 +216,7 @@
         \end{align}
         One of the proper choices is that the center frequency of the filter equals the carrier frequency and the bandwidth of the filter is greater than the twice of the bandwidth of the message signal and less than $f_c-2W$:
         \begin{align}
-            f_0=f_c,\quad W<B<f_c-2W.
+            f_0=f_c,\quad 2W<B<2f_c-4W.
         \end{align}
         \item[c)] The output AM signal is
         \begin{align}
@@ -251,8 +251,8 @@
     \begin{itemize}
         \item[a)] The equation for $y(t)$ is
         \begin{align}
-            \notag y(t)=&a_1A_c[1+am_n(t)]\cos\omega_c+a_2^2A_c^2[1+am_n(t)]^2\cos^2\omega_ct\\
-            \notag=&a_1A_c[1+am_n(t)]\cos\omega_ct+a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]\frac{1+\cos 2\omega_ct}{2}\\
+            \notag y(t)=&a_1A_c[1+am_n(t)]\cos\omega_c+a_2A_c^2[1+am_n(t)]^2\cos^2\omega_ct\\
+            \notag=&a_1A_c[1+am_n(t)]\cos\omega_ct+a_2A_c^2[1+2am_n(t)+a^2m_n^2(t)]\frac{1+\cos 2\omega_ct}{2}\\
             =&\frac{1}{2}a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]+a_1A_c[1+am_n(t)]\cos\omega_ct+\frac{1}{2}a_2^2A_c^2[1+2am_n(t)+a^2m_n^2(t)]\cos 2\omega_ct
         \end{align}
         \item[b)] We can use a filter that can filter high frequency signal and DC signal. After passing the filter, we can get
