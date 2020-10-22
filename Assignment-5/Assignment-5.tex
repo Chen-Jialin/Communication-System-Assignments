@@ -118,12 +118,11 @@
         \end{align}
         The spectrum of modulated signal is
         \begin{align}
-            \notag X_c(f)=&\mathscr{F}[x_c(t)]=\frac{A_c}{2}\sum_{n=-\infty}^{+\infty}J_n(\beta)\left[\delta(f-f_c-nf_m)+\delta(f+f_c+nf_m)\right]\\
-            =&\frac{A_c}{2}J_0(\beta)[\delta(f-f_c)+\delta(f+f_c)]+A_c\sum_{n=1}^{+\infty}[\delta(f-f_c-nf_m)+\delta(f+f_c+nf_m)].
+            X_c(f)=\mathscr{F}[x_c(t)]=\frac{A_c}{2}\sum_{n=-\infty}^{+\infty}J_n(\beta)\left[\delta(f-f_c-nf_m)+\delta(f+f_c+nf_m)\right],
         \end{align}
-        where $\beta=0$ as obtained in 2), the unmodulated carrier amplitude is $\abs{\frac{A_c}{2}J_0(\beta)}$ and the amplitude of side frequency $f_c\pm nf_m$ is $\abs{A_cJ_n(\beta)}$. According to the table from page 163, $\abs{J_0(10)}=0.246$ and $\abs{J_n(10)}>1\%\frac{\abs{J_0(10)}}{2},\forall 0\leq n\leq 16$, so $n_{\max}=16$. The bandwidth is
+        where $\beta=0$ as obtained in 2), the unmodulated carrier amplitude is $\abs{\frac{A_c}{2}J_0(\beta)}$ and the amplitude of side frequency $f_c\pm nf_m$ is $\abs{\frac{A_c}{2}J_n(\beta)}$. According to the table from page 163, $\abs{J_0(10)}=0.246$ and $\abs{J_n(10)}>1\%\abs{J_0(10)},\forall 0\leq n\leq 15$, so $n_{\max}=15$. The bandwidth is
         \begin{align}
-            B=2n_{\max}f_m=320\text{ Hz}.
+            B=2n_{\max}f_m=300\text{ Hz}.
         \end{align}
         \item[7)] If the amplitude of the modulating signal $m(t)$ is doubled, i.e., $A_m=10$, then the peak frequency deviation is
         \begin{align}
