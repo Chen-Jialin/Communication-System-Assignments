@@ -216,6 +216,39 @@
     \end{figure}
 \end{prob}
 \begin{sol}
-    
+    The narrowband FM signal is
+    \begin{align}
+        x(t)=A_c\cos[2\pi f_{c1}t+\phi(t)]=A_c\cos[2\pi\cdot 110000t+\phi(t)].
+    \end{align}
+    The wideband FM signal after frequency multiplier is
+    \begin{align}
+        y(t)=A_c\cos[2\pi f_{c2}t+n\phi(t)]=A_c\cos[2\pi nf_{c1}t+n\phi(t)]=A_c\cos[2\pi\cdot 110000nt+n\phi(t)].
+    \end{align}
+    Suppose that the frequency of the local oscillator is $f_{\text{LO}}$. After multiplying with local oscillator, the signal becomes
+    \begin{align}
+        \notag e(t)=&y(t)\cdot 2\cos 2\pi f_{\text{LO}}t=2A_c\cos[2\pi\cdot 110000nt+n\phi(t)]\cos 2\pi f_{\text{LO}}t\\
+        =&A_c\{\cos[2\pi(110000n+f_{\text{LO}})t+n\phi(t)]+\cos[2\pi(110000n-f_{\text{LO}})t+n\phi(t)]\}.
+    \end{align}
+    To generate a wideband FM signal with a deviation ratio of $20$, we require the value of frequency multiplication $n$ to be
+    \begin{align}
+        n=\frac{D_2}{D_1}=\frac{20}{0.05}=400.
+    \end{align}
+    In this way, the signal after multiplying with local oscillator is
+    \begin{align}
+        e(t)=A_c\{\cos[2\pi(44000000+f_{\text{LO}})t+400\phi(t)]+\cos[2\pi(44000000-f_{\text{LO}})t+400\phi(t)]\}.
+    \end{align}
+    To generate a wideband FM signal with a carrier frequency of $100$ MHz, we require the frequency of local oscillator to be
+    \begin{align}
+        f_{\text{LO}}=f_c-f_{c2}=100000000\mathrm{Hz}-44000000\mathrm{Hz}=56000000\mathrm{Hz}=56\mathrm{MHz},
+    \end{align}
+    or
+    \begin{align}
+        f_{\text{LO}}=f_c+f_{c2}=100000000\mathrm{Hz}+44000000\mathrm{Hz}=144000000\mathrm{Hz}=144\mathrm{MHz}.
+    \end{align}
+    The center frequency of the bandpass filter should be $100$ MHz, and according to Carson's rule, its bandwidth should be
+    \begin{align}
+        B=2(1+D)W=420\mathrm{kHz}.
+    \end{align}
+    (Actually, the bandwidth within range $[2(1+D)W,f_{c2}-2(1+D)W]=[420\mathrm{kHz},43580\mathrm{kHz}]$ should be OK.)
 \end{sol}
 \end{document}
