@@ -12,7 +12,56 @@
     \end{figure}
 \end{prob}
 \begin{sol}
-
+    The received signal is the sum of the DSB-SC modulated signal and the noise:
+    \begin{align}
+        x_r(t)=x_c(t)+n(t)=A_cm(t)\cos(2\pi f_ct+\theta)+n(t)=A_c\cos(2\pi\cdot 200000t+\theta)+n(t).
+    \end{align}
+    After passing the bandpass filter, the received signal becomes
+    \begin{align}
+        \notag e_2(t)=&x_c(t)+n'(t)=A_c\cos(2\pi f_ct+\theta)+n_c\cos(2\pi f_ct+\theta)-n_s\sin(2\pi f_ct+\theta)\\
+        =&A_c\cos(2\pi\cdot 200000t+\theta)+n_c\cos(2\pi\cdot 200000t)-n_s\sin(2\pi\cdot 200000t).
+    \end{align}
+    The average power of the modulated signal $x_c(t)$ is
+    \begin{align}
+        P_T=\frac{A_c^2}{2}\overline{m^2(t)}=12\mathrm{W}.
+    \end{align}
+    According to figure \ref{A-6-P-1}, the power spectral density of the noise is
+    \begin{align}
+        S_N(f)=10^{-6}\Lambda(400000f).
+    \end{align}
+    After passing the narrowband filter, the average power of the noise component is
+    \begin{align}
+        \notag P_{n'}=&\int_{-f_c-W}^{-f_c+W}S_N(f)\,\mathrm{d}f+\int_{f_c-W}^{f_c+W}S_N(f)\,\mathrm{d}f\\
+        \notag=&2\int_{f_c-W}^{f_c+W}S_N(f)\,\mathrm{d}f\\
+        \notag=&2\int_{200000-3000}^{200000+3000}10^{-6}\Lambda(400000f)\,\mathrm{d}f\\
+        =&0.006(\mathrm{W}).
+    \end{align}
+    The input SNR is
+    \begin{align}
+        \text{SNR}_T=\frac{P_T}{P_{n'}}=\frac{12}{0.006}=2000.
+    \end{align}
+    After demodulation, the output is
+    \begin{align}
+        \notag y_D(t)=&\text{LP}[e_2(t)\cdot 2\cos(2\pi f_ct+\theta)]\\
+        \notag=&\text{LP}\{A_cm(t)[1+\cos(4\pi f_ct+2\theta)]+n_c(t)[1+\cos(4\pi f_ct+2\theta)]-n_s(t)\sin(2\pi f_ct+2\theta)\}\\
+        \notag=&A_cm(t)+n_c(t).
+    \end{align}
+    The average power of the demodulated signal component is
+    \begin{align}
+        A_c^2\overline{m^2(t)}=2P_T=24\mathrm{W}.
+    \end{align}
+    The average power of the noise component is
+    \begin{align}
+        P_{n_c}=P_{n'}=0.006\mathrm{W}.
+    \end{align}
+    The output SNR is
+    \begin{align}
+        \text{SNR}_D=\frac{2P_T}{P_{n_c}}=\frac{24}{0.006}=4000.
+    \end{align}
+    The detection gain is
+    \begin{align}
+        \frac{\text{SNR}_D}{\text{SNR}_T}=2.
+    \end{align}
 \end{sol}
 
 \begin{prob}[Noise in SSB Receiver, 25pts]
@@ -22,7 +71,7 @@
     
 \end{sol}
 
-\begin{prob}
+\begin{prob}[Noise in AM Receiver, 25pts]
     Assume an AM system operates with a modulation index $a=0.4$. The message signal is $m(t)=5\cos(10\pi t)$.
     \begin{itemize}
         \item[1)] Compute the transmission efficiency.
