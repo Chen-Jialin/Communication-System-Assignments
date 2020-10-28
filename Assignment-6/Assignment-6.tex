@@ -68,7 +68,68 @@
     Derive the equation for $y_D(t)$ for an USB-SSB system assuming that the noise is expanded about the frequency $f_c+\frac{W}{2}$. Derive the output SNR (postdetection SNR), detection gain and the figure of merit. Determine and plot the power spectral density of the in-phase component $n_c(t)$ and the quadrature component $n_s(t)$ of the narrowband noise.
 \end{prob}
 \begin{sol}
-    
+    The USB-SSB modulated signal is
+    \begin{align}
+        x_c(t)=A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)].
+    \end{align}
+    The received signal is
+    \begin{align}
+        x_r(t)=x_c(t)+w(t)=A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]+w(t).
+    \end{align}
+    After passing the band filter whose center frequency is $f_c+\frac{W}{2}$ and bandwidth is $W$, the signal becomes
+    \begin{align}
+        \notag e_2(t)=&A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]+n(t)\\
+        =&A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]+n_c(t)\cos\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right]-n_s(t)\sin\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right].
+    \end{align}
+    The average power of the modulated signal is
+    \begin{align}
+        P_T=A_c^2\overline{m^2(t)}
+    \end{align}
+    The average power of the filtered noise is $N_0\cdot W$.
+    Therefore, the input SNR is
+    \begin{align}
+        \text{SNR}_T=\frac{P_T}{N_0W}=\frac{A_c^2\overline{m^2(t)}}{N_0W}.
+    \end{align}
+    After passing demodulator (i.e., multiplying with a local oscillator $2\cos(2\pi f_ct+\theta)$ and passing a lowpass filter), the output signal is
+    \begin{align}
+        y_D(t)=A_cm(t)+n_{c,\text{expanded about }f_c}(t).
+    \end{align}
+    The average power of the demodulated signal is
+    \begin{align}
+        P_D=A_c\overline{m^2(t)}.
+    \end{align}
+    The average power of the noise in output signal is $N_0\cdot W$.
+    Therefore, the output SNR is
+    \begin{align}
+        \text{SNR}_D=\frac{P_D}{N_0W}=\frac{A_c^2\overline{m^2(t)}}{N_0W}.
+    \end{align}
+    The detection gain is
+    \begin{align}
+        \frac{\text{SNR}_D}{\text{SNR}_T}=1.
+    \end{align}
+    The channel SNR is
+    \begin{align}
+        \text{SNR}_c=\frac{P_t}{N_0W}=\frac{A_c^2\overline{m^2(t)}}{N_0W}.
+    \end{align}
+    The figure of merit is
+    \begin{align}
+        \frac{\text{SNR}_D}{\text{SNR}_c}=1.
+    \end{align}
+    The power spectral density of the narrowband noise is
+    \begin{align}
+        S_n(f)=\frac{N_0}{2}\left[\Pi\left(\frac{f-\left(f_c+\frac{W}{2}\right)}{W}\right)+\Pi\left(\frac{f+\left(f_c+\frac{W}{2}\right)}{W}\right)\right].
+    \end{align}
+    Expanded about the frequency $f_c+\frac{W}{2}$, the power spectral density of the in-phase component $n_c(t)$ and the quadrature component $n_s(t)$ are both
+    \begin{align}
+        S_{n_c}(f)=S_{n_s}(f)=\text{LP}\left[S_n\left(f-f_c-\frac{W}{2}\right)+S_n\left(f+f_c+\frac{W}{2}\right)\right]=N_0\Pi\left(\frac{f}{W}\right),
+    \end{align}
+    as shown in figure \ref{P-6-A-2}.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=.4\columnwidth]{A-6-P-2.jpg}
+        \caption{The power spectral density of the in-phase component $n_c(t)$ and the quadrature component $n_s(t)$}
+        \label{P-6-A-2}
+    \end{figure}
 \end{sol}
 
 \begin{prob}[Noise in AM Receiver, 25pts]
