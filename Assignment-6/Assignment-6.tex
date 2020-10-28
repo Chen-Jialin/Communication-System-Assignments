@@ -109,7 +109,7 @@
     \end{align}
     The channel SNR is
     \begin{align}
-        \text{SNR}_c=\frac{P_t}{N_0W}=\frac{A_c^2\overline{m^2(t)}}{N_0W}.
+        \text{SNR}_c=\frac{P_T}{N_0W}=\frac{A_c^2\overline{m^2(t)}}{N_0W}.
     \end{align}
     The figure of merit is
     \begin{align}
@@ -143,10 +143,72 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[1)] 
-        \item[2)] 
-        \item[3)] 
-        \item[4)] 
+        \item[1)] In AM modulation,
+        \begin{align}
+            m_n(t)=\frac{m(t)}{\abs{\min[m(t)]}}=\cos(10\pi t).
+        \end{align}
+        The transmission efficiency is
+        \begin{align}
+            \mu=\frac{a^2\overline{m_n^2(t)}}{a^2\overline{m_n^2(t)}+1}=\frac{a^2/2}{a^2/2+1}=\frac{2}{27}.
+        \end{align}
+        \item[2)] The AM modulated signal is
+        \begin{align}
+            x_c(t)=A_c[1+am_n(t)]\cos(2\pi f_ct+\theta).
+        \end{align}
+        The received signal is
+        \begin{align}
+            x_c(t)=x_c(t)+w(t).
+        \end{align}
+        After passing the bandpass filter, the signal becomes
+        \begin{align}
+            e_2(t)=A_c[1+am_n(t)]\cos(2\pi f_ct+\theta)+n_c(t)\cos(2\pi f_ct+\theta)-n_s(t)\sin(2\pi f_ct+\theta)=r(t)\cos[2\pi f_ct+\phi(t)],
+        \end{align}
+        where the envelope of the signal is
+        \begin{align}
+            r(t)=\sqrt{\{A_c[1+am_n(t)]+n_c(t)\}^2+n_s^2(t)}.
+        \end{align}
+        The average power of the modulated signal is
+        \begin{align}
+            P_t=\overline{\{A_c[1+am_n(t)]\cos(2\pi f_ct+\theta)\}^2}=\frac{A_c^2}{2}\left[1+a^2\overline{m_n(t)}\right].
+        \end{align}
+        The average power of the narrowband noise is $2N_0W$. Therefore, the input SNR is
+        \begin{align}
+            \text{SNR}_T=\frac{P_T}{2N_0W}=\frac{A_c^2\left[1+a^2\overline{m_n(t)}\right]}{4N_0W}.
+        \end{align}
+        After the envelope detector, the output signal is the envelope
+        \begin{align}
+            y_D(t)=r(t)=\sqrt{\{A_c[1+am_n(t)]+n_c(t)\}^2+n_s^2(t)}.
+        \end{align}
+        Since the envelope detector operates above the threshold, i.e., $\text{SNR}_T$ is large and thus $\abs{A_c[1+am_n(t)]+n_c(t)}\gg\abs{n_s(t)}$,
+        \begin{align}
+            y_D(t)\approx A_c[1+am_n(t)]+n_c(t).
+        \end{align}
+        The average of the modulated signal after removal of DC component is
+        \begin{align}
+            P_D=\overline{[A_cam_n(t)]^2}=A_c^2a^2\overline{m_n^2(t)}.
+        \end{align}
+        The average power of the noise in the output signal is $2N_0W$. Therefore, the output SNR is
+        \begin{align}
+            \text{SNR}_D=\frac{P_D}{2N_0W}=\frac{A_c^2a^2\overline{m_n^2(t)}}{2N_0W}.
+        \end{align}
+        The output SNR in decibels relative to the input SNR is
+        \begin{align}
+            10\lg\frac{\text{SNR}_D}{\text{SNR}_T}=10\lg\frac{2a^2\overline{m_n^2(t)}}{1+a^2\overline{m_n^2(t)}}=10\lg 2\mu=-8.29(\mathrm{dB}).
+        \end{align}
+        \item[3)] The average power of the modulated signal is $P_T=\frac{A_c^2}{2}[1+a^2\overline{m_n^2(t)}]$ and the average power of the noise in the message bandwidth is $N_0W$, so the baseband SNR is
+        \begin{align}
+            \text{SNR}_c=\frac{P_T}{N_0W}=\frac{A_c^2[1+a^2\overline{m_n^2(t)}]}{2N_0W}.
+        \end{align}
+        The output SNR in decibels relative to the baseband SNR is
+        \begin{align}
+            10\lg\frac{\text{SNR}_D}{\text{SNR}_c}=10\lg\frac{a^2\overline{m_n^2(t)}}{1+a^2\overline{m_n^2(t)}}=10\lg\mu=-11.30(\mathrm{dB}).
+        \end{align}
+        \item[4)] Since the baseband SNR is unchanged, we can calculate the improvement of output SNR based on its relation with the baseband SNR:
+        \begin{align}
+            \notag 10\lg\frac{\text{SNR}_D(a=0.8)}{\text{SNR}_D(a=0.4)}=&10\lg\frac{\text{SNR}_D(a=0.8)/\text{SNR}_c}{\text{SNR}_D(a=0.4)/\text{SNR}_c}=10\lg\frac{\text{SNR}_D(a=0.8)}{\text{SNR}_c}-10\lg\frac{\text{SNR}_D(a=0.4)}{\text{SNR}_c}\\
+            =&10\lg\mu(a=0.8)-10\lg(a=0.4)=5.15\mathrm{dB}.
+        \end{align}
+        The output SNR improves by $5.15$ dB.
     \end{itemize}
 \end{sol}
 
