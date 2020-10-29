@@ -79,7 +79,8 @@
     After passing the band filter whose center frequency is $f_c+\frac{W}{2}$ and bandwidth is $W$, the signal becomes
     \begin{align}
         \notag e_2(t)=&A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]+n(t)\\
-        =&A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]+n_c(t)\cos\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right]-n_s(t)\sin\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right].
+        \notag=&A_c[m(t)\cos(2\pi f_ct+\theta)-\hat{m}(t)\sin(2\pi f_ct+\theta)]\\
+        &+n_c(t)\cos\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right]-n_s(t)\sin\left[2\pi\left(f_c+\frac{W}{2}\right)t+\theta\right].
     \end{align}
     The average power of the modulated signal is
     \begin{align}
@@ -213,7 +214,7 @@
 \end{sol}
 
 \begin{prob}[Noise in FM Receiver and FDM, 20pts]
-    An FDM system uses single-sideband modulation to from the baseband, and FM modulation for transmission of the baseband. Assume that there are eight channels and that all eight message signal have equal power $P_0$ and equal bandwidth $W$. For each signal, only the upper sideband is transmitted. The sub-carrier waves used for the first stage of modulation are defined by $c_k(t)=A_k\cos(2\pi kf_0t),0\leq k\leq 7$. The width of the guardbands is $3$ W. The received signal consists of the transmitted FM signal plus white Gaussian noise of zero mean and two-sided power spectral density $N_0/2$. Assume the frequency discriminator at the receiver operates above the threshold.
+    An FDM system uses single-sideband modulation to from the baseband, and FM modulation for transmission of the baseband. Assume that there are eight channels and that all eight message signal have equal power $P_0$ and equal bandwidth $W$. For each signal, only the upper sideband is transmitted. The sub-carrier waves used for the first stage of modulation are defined by $c_k(t)=A_k\cos(2\pi kf_0t),0\leq k\leq 7$. The width of the guardbands is $3W$. The received signal consists of the transmitted FM signal plus white Gaussian noise of zero mean and two-sided power spectral density $N_0/2$. Assume the frequency discriminator at the receiver operates above the threshold.
     \begin{itemize}
         \item[1)] Sketch the power spectral density of the signal produced at the frequency discriminator output, showing both the signal and the noise components.
         \item[2)] Find the relationship between the subcarrier amplitudes $A_k$ such that the SSB modulated signals corresponding to different channels have equal output SNRs at the frequency discriminator output.
@@ -221,8 +222,47 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[1)] 
-        \item[2)] 
+        \item[1)] Since each message signal have equal bandwidth $W$ and the width of the guardbands is $3W$, we have
+        \begin{align}
+            f_1=5W,
+        \end{align}
+        and the $k$th channel occupies the frequency range
+        \begin{align}
+            5kW=kf_1\leq f\leq W+kf_1=(5k+1)W,\quad -(1+5k)W=-W-kf_1\leq f\leq-kf_1=-5kW.
+        \end{align}
+        Since received signal includes the white Gaussian noise of two-sided power spectral density $N_0/2$, the power spectral density of the noise component is
+        \begin{align}
+            S_n(f)=\frac{K_D^2}{A_c^2}N_0f^2.
+        \end{align}
+        The power spectral density of the signal and the noise components are shown in figure \ref{A-6-P-4}.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=1\columnwidth]{A-6-P-4.eps}
+            \caption{The power spectral density of the signal and the noise components}
+            \label{A-6-P-4}
+        \end{figure}
+        \item[2)] The noise power in the $k$th channel is
+        \begin{align}
+            P_{nk}=2\int_{5kW}^{(5k+1)W}S_n(f)\,\mathrm{d}f=2\int_{5kW}^{(5k+1)W}\frac{K_D^2}{A_c^2}N_0f^2\,\mathrm{d}f=\frac{2}{3}\frac{K_D^2}{A_c^2}N_0(75k^2+15k+1)W^3.
+        \end{align}
+        The signal power of each channel is
+        \begin{align}
+            P_T=\left\{\begin{array}{ll}
+                \frac{K_D^2f_d^2A_k^2}{2},&k=0\\
+                \frac{K_D^2f_d^2A_k^2}{4},&1\leq k\leq 7.
+            \end{array}\right.
+        \end{align}
+        The output of the $k$th channel is
+        \begin{align}
+            \text{SNR}_D=\frac{P_T}{P_{nk}}=\left\{\begin{array}{ll}
+                \frac{3}{4}\frac{f_d^2A_c^2W^3}{N_0}\frac{A_k^2}{75k^2+15k+1}=\frac{3}{4}\frac{f_d^2A_c^2W^3}{N_0}A_0^2,&k=0,\\
+                \frac{3}{8}\frac{f_d^2A_c^2W^3}{N_0}\frac{A_k^2}{75k^2+15k+1},&1\leq k\leq 7.
+            \end{array}\right.
+        \end{align}
+        To make that the SSB modulated signals corresponding to different channels have equal output SNRs at the frequency dicriminator output,
+        \begin{align}
+            2A_0^2=\frac{A_k^2}{75k^2+15k+1}=\text{constant},\quad\forall 1\leq k\leq 7.
+        \end{align}
     \end{itemize}
 \end{sol}
 \end{document}
