@@ -177,6 +177,41 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] 
+        \begin{align}
+            \notag\rho=&1-\frac{H(X_2\vert X_1)}{H(X_1)}\\
+            \notag=&\frac{H(X_1)-H(X_2\vert X_1)}{H(X_1)}\\
+            \notag&(\text{since }X_1\text{ and }X_2\text{ are identically distributed, }H(X_1)=H(X_2))\\
+            \notag=&\frac{H(X_2)-H(X_2\vert X_1)}{H(X_1)}\\
+            =&\frac{I(X_1;X_2)}{H(X_1)}.
+        \end{align}
+        \item[(b)] Since $H(X_2\vert X_1)\geq 0$ and $H(X_1)\geq 0$, we have
+        \begin{align}
+            \rho=1-\frac{H(X_2\vert X_1)}{H(X_1)}\leq 1.
+        \end{align}
+        Since $H(X_2)\geq H(X_2\vert X_1)$, we have
+        \begin{align}
+            \rho=\frac{H(X_2)-H(X_2\vert X_1)}{H(X_1)}\geq 0.
+        \end{align}
+        \item[(c)] When $X_1$ and $X_2$ are independent, $\rho=0$.
+        \begin{proof}
+            \begin{align}
+                \rho=\frac{I(X_1;X_2)}{H(X_1)}=0\Longleftrightarrow I(X_1;X_2)=0\Longleftrightarrow X_1\text{ and }X_2\text{ are independent}.
+            \end{align}
+        \end{proof}
+        \item[(d)] When $X_1$ and $X_2$ have one-to-one mapping, $\rho=1$.
+        \begin{proof}
+            \begin{align}
+                \rho=1-\frac{H(X_2\vert X_1)}{H(X_1)}=1\Longrightarrow H(X_2\vert X_1)=0\Longleftrightarrow X_2\text{ is a function of }X_1.
+            \end{align}
+            Accordingly,
+            \begin{align}
+                \rho=\frac{H(X_1)-H(X_2\vert X_1)}{H(X_2)}=\frac{H(X_2)-H(X_1\vert X_2)}{H(X_2)}=0\Rightarrow H(X_2\vert X_1)=0\Longrightarrow X_1\text{ is a function of }X_2.
+            \end{align}
+            Therefore, $X_1$ and $X_2$ have one-to-one mapping.
+        \end{proof}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.21Example of entropy.]
