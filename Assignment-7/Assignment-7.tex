@@ -301,7 +301,7 @@
         \item[(f)] As shown in figure \ref{A-7-P-6}.
         \begin{figure}[h]
             \centering
-            \includegraphics[width=.5\columnwidth]{A-7-P-6.pdf}
+            \includegraphics[width=.4\columnwidth]{A-7-P-6.pdf}
             \caption{Venn diagram of $H(X)$, $H(Y)$, $H(X\vert Y)$, $H(Y\vert X)$, $H(X,Y)$ and $I(X;Y)$}
             \label{A-7-P-6}
         \end{figure}
@@ -317,5 +317,24 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] The differential entropy of the exponential density is
+        \begin{align}
+            \notag h(f)=&-\int_0^{+\infty}\lambda e^{-\lambda x}\ln[\lambda e^{-\lambda x}]\,\mathrm{d}x\\
+            \notag=&-\int_0^{+\infty}\lambda e^{-\lambda x}\ln\lambda\,\mathrm{d}x-\int_0^{+\infty}\lambda e^{-\lambda x}(-\lambda x)\,\mathrm{d}x\\
+            \notag=&\left.e^{-\lambda x}\ln\lambda\right\rvert_0^{+\infty}-\lambda\int_0^{+\infty}x\,\mathrm{d}(e^{-\lambda x})\\
+            \notag=&-\ln\lambda-\left.\lambda xe^{-\lambda x}\right\rvert_0^{+\infty}+\lambda\int_0^{+\infty}e^{-\lambda x}\,\mathrm{d}x\\
+            \notag=&1-\ln\lambda\text{ (nats)}\\
+            =&\log_2\frac{e}{\lambda}\text{ (bits)}.
+        \end{align}
+        \item[(b)] The differential entropy of the Laplace density is
+        \begin{align}
+            h(f)=-\int_{-\infty}^{+\infty}\frac{1}{2}\lambda e^{-\lambda\abs{x}}=-\int_0^{+\infty}\lambda e^{-\lambda\abs{x}}=\log_2\frac{e}{\lambda}\text{ (bits)}.
+        \end{align}
+        \item[(c)] $X_1+X_2\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$, thus
+        \begin{align}
+            h(X_1+X_2)=\frac{1}{2}\log_22\pi e(\sigma_1^2+\sigma_2^2)\text{ (bits)}.
+        \end{align}
+    \end{itemize}
 \end{sol}
 \end{document}
