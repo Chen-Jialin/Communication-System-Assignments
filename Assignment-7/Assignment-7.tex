@@ -133,8 +133,36 @@
 \begin{prob}[2.5 Zero conditional entropy.]
     Show that if $H(Y\vert X)=0$, then $Y$ is a function of $X$ [i.e., for all $x$ with $p(x)>0$, there is only one possible value of $y$ with $p(x,y)>0$].
 \end{prob}
-\begin{sol}
-\end{sol}
+\begin{pf}
+    The entropy of $Y\vert X$ is
+    \begin{align}
+        \notag H(Y\vert X)=&-\sum_{x,y}P(X=x,Y=y)\log_2P(Y=y\vert X=x).
+    \end{align}
+    Since
+    \begin{align}
+        -P(X=x,Y=y)\log_2P(Y=y\vert X=x)\geq 0,\quad\forall x,y,
+    \end{align}
+    for given $x_0$ and $y_0$,
+    \begin{align}
+        \notag H(Y\vert X)\geq&-P(X=x_0,Y=y_0)\log_2P(Y=y_0\vert X=x_0)\\
+        =&P(X=x_0)P(Y=y_0\vert X=x_0)\log_2P(Y=y_0\vert X=x_0)\geq 0.
+    \end{align}
+    If $H(Y\vert X)=0$, then
+    \begin{align}
+        0\geq-P(X=x_0)P(Y=y_0\vert X=x_0)\log_2P(Y=y_0\vert X=x_0)\geq 0,
+    \end{align}
+    so there must be
+    \begin{align}
+        -P(Y=y_0\vert X=x_0)\log_2P(Y=y_0\vert X=x_0)=0,
+    \end{align}
+    for $P(X=x_0)>0$.
+    That is,
+    \begin{align}
+        P(Y=y_0\vert X=x_0)=0,\text{ or }P(Y=y_0\vert X=x_0)=1,
+    \end{align}
+    for $P(X=x_0)>0$, which means that for all $x_0$ with $P(X=x_0)>0$, there is only one possible value of $y_0$ with $p(X=x_0,Y=y_0)=p(X=x_0)p(Y=y_0\vert X=x_0)=P(X=x_0)>0$.\\
+    Therefore, if $H(Y\vert X)=0$, then $Y$ is a function of $X$.
+\end{pf}
 
 \begin{prob}[2.11 Measure of correlation.]
     Let $X_1$ and $X_2$ be identically distributed but not necessarily independent. Let
