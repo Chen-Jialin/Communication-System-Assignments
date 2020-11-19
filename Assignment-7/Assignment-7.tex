@@ -83,14 +83,52 @@
     Let $X$ be a discrete random variable. Show that the entropy of a function of $X$ is less than or equal to the entropy of $X$ by justifying the following steps:
     \begin{align*}
         H(X,g(X))\overset{\text{(a)}}{=}&H(X)+H(g(X)\vert X)\\
-        \overset{\text{(b)}}{=}&H(X)\\
+        \overset{\text{(b)}}{=}&H(X);\\
         H(X,g(X))\overset{\text{(c)}}{=}&H(g(X))+H(X\vert g(X))\\
         \overset{\text{(d)}}{\geq}&H(g(X)).
     \end{align*}
     Thus, $H(g(X))\leq H(X)$.
 \end{prob}
-\begin{sol}
-\end{sol}
+\begin{pf}
+    \begin{itemize}
+        \item[(a)] 
+        \begin{align}
+            \notag H(X,g(X))=&-\sum_{x,y}P(X=x,g(X)=y)\log_2P(X=x,g(X)=y)\\
+            \notag=&-\sum_{x,y}P(X=x)P(g(X)=y\vert X=x)\log_2\left[P(X=x)P(g(X)=y\vert X=x)\right]\\
+            \notag=&-\sum_{x,y}P(X=x)P(g(X)=y\vert X=x)\log_2P(X=x)\\
+            \notag&-\sum_{x,y}P(X=x)P(g(X)=y\vert X=x)\log_2P(g(X)=y\vert X=x)\\
+            \notag=&-\sum_xP(X=x)\log_2P(X=x)-\sum_xP(X=x)H(g(X)\vert X=x)\\
+            \notag=&H(X)+H(g(X)\vert X).
+        \end{align}
+        \item[(b)] Once the value of $X$ is given, $g(X)$ is determined, so
+        \begin{gather}
+            H(g(X)\vert X=x)=0,\\
+            \Longrightarrow H(g(X)\vert X)=\sum_xP(X=x)H(g(X)\vert X=x)=0,
+        \end{gather}
+        and
+        \begin{align}
+            H(X,g(X))=H(X)+H(g(X)\vert X)=H(X).
+        \end{align}
+        \item[(c)] 
+        \begin{align}
+            \notag H(X,g(X))=&-\sum_{x,y}P(X=x,g(X)=y)\log_2P(X=x,g(X)=y)\\
+            \notag=&-\sum_{x,y}P(g(X)=y)P(X=x\vert g(X)=y)\log_2\left[P(g(X)=y)P(X=x\vert g(X)=y)\right]\\
+            \notag=&-\sum_{x,y}P(g(X)=y)P(X=x\vert g(X)=y)\log_2P(g(X)=y)\\
+            \notag&-\sum_{x,y}P(g(X)=y)P(X=x\vert g(X)=y)\log_2P(X=x\vert g(X)=y)\\
+            \notag=&-\sum_yP(g(X)=y)\log_2P(g(X)=y)+\sum_yP(g(X)=y)H(X\vert g(X)=y)\\
+            \notag=&H(g(X))+H(X\vert g(X)).
+        \end{align}
+        \item[(d)] Since entropy of any discrete random variable is no less than $0$,
+        \begin{align}
+            H(X\vert g(X))\geq 0,
+        \end{align}
+        we have
+        \begin{align}
+            H(X,g(X))=H(g(X))+H(X\vert g(X))\geq H(g(X)).
+        \end{align}
+    \end{itemize}
+    Using (a)-(d), we can obtain $H(X)\geq H(g(X))$.
+\end{pf}
 
 \begin{prob}[2.5 Zero conditional entropy.]
     Show that if $H(Y\vert X)=0$, then $Y$ is a function of $X$ [i.e., for all $x$ with $p(x)>0$, there is only one possible value of $y$ with $p(x,y)>0$].
