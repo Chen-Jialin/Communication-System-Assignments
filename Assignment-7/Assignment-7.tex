@@ -214,7 +214,7 @@
     \end{itemize}
 \end{sol}
 
-\begin{prob}[2.21Example of entropy.]
+\begin{prob}[2.12 Example of entropy.]
     Let $p(x,y)$ be given by
     \begin{table}[H]
         \centering
@@ -236,6 +236,76 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] The PMF of $X$ is
+        \begin{align}
+            P(X=0)=&P(X=0,Y=0)+P(X=0,Y=1)=\frac{1}{3}+\frac{1}{3}=\frac{2}{3},\\
+            P(X=1)=&P(X=1,Y=0)+p(X=1,Y=1)=0+\frac{1}{3}=\frac{1}{3}.
+        \end{align}
+        The PMF of $Y$ is
+        \begin{align}
+            P(Y=0)=&P(X=0,Y=0)+P(X=1,Y=0)=\frac{1}{3}+0=\frac{1}{3},\\
+            P(Y=1)=&P(X=0,Y=1)+P(X=1,Y=1)=\frac{1}{3}+\frac{1}{3}=\frac{2}{3}.
+        \end{align}
+        The entropy of $X$ is
+        \begin{align}
+            H(X)=-P(X=0)\log_2P(X=0)-P(X=1)\log_2P(X=1)=-\frac{2}{3}\log_2\frac{2}{3}-\frac{1}{3}\log_2\frac{1}{3}=0.918\text{ (bits)}.
+        \end{align}
+        The entropy of $Y$ is
+        \begin{align}
+            H(Y)=-P(Y=0)\log_2P(Y=0)-P(Y=1)\log_2P(Y=1)=-\frac{1}{3}\log_2\frac{1}{3}-\frac{2}{3}\log_2\frac{2}{3}=0.918\text{ (bits)}.
+        \end{align}
+        \item[(b)] The conditional PMF of $X\vert Y$ is
+        \begin{align}
+            P(X=0\vert Y=0)=&1,\\
+            P(X=1\vert Y=0)=&0,\\
+            P(X=0\vert Y=1)=&\frac{1}{2},\\
+            P(X=1\vert Y=1)=&\frac{1}{2}.
+        \end{align}
+        The conditional PMF of $X\vert Y$ is
+        \begin{align}
+            P(Y=0\vert X=0)=&\frac{1}{2},\\
+            P(Y=1\vert X=0)=&\frac{1}{2},\\
+            P(Y=0\vert X=1)=&0,\\
+            P(Y=1\vert X=1)=&1.
+        \end{align}
+        The conditional entropy of $X\vert Y$
+        \begin{align}
+            \notag H(X\vert Y)=&-P(X=0,Y=0)\log_2P(X=0\vert Y=0)-P(X=1,Y=0)\log_2P(X=1\vert Y=0)\\
+            \notag&-P(X=0,Y=1)\log_2P(X=0\vert Y=1)-P(X=1,Y=1)\log_2P(X=1\vert Y=1)\\
+            \notag=&-\frac{1}{3}\log_21-0-\frac{1}{3}\log_2\frac{1}{2}-\frac{1}{3}\log_2\frac{1}{2}\\
+            =&\frac{2}{3}\text{ (bits)}.
+        \end{align}
+        The conditional entropy of $Y\vert X$ is
+        \begin{align}
+            \notag H(Y\vert X)=&-P(X=0,Y=0)\log_2P(Y=0\vert X=0)-P(X=0,Y=1)\log_2P(Y=1\vert X=0)\\
+            \notag&-P(X=1,Y=0)\log_2P(Y=0\vert X=1)-P(X=1,Y=1)\log_2P(Y=1\vert X=1)\\
+            \notag=&-\frac{1}{3}\log_2\frac{1}{2}-\frac{1}{3}\log_2\frac{1}{2}-0-\frac{1}{3}\log_21\\
+            =&\frac{2}{3}\text{ (bits)}.
+        \end{align}
+        \item[(c)] The joint entropy of $X$ and $Y$ is
+        \begin{align}
+            \notag H(X,Y)=&-P(X=0,Y=0)\log_2P(X=0,Y=0)-P(X=1,Y=0)\log_2P(X=1,Y=0)\\
+            \notag&-P(X=0,Y=1)\log_2P(X=0,Y=1)-P(X=1,Y=1)\log_2P(X=1,Y=1)\\
+            \notag=&-\frac{1}{3}\log_2\frac{1}{3}-0-\frac{1}{3}\log_2\frac{1}{3}-\frac{1}{3}\log_2\frac{1}{3}\\
+            =&\log_23=1.585\text{ (bits)}.
+        \end{align}
+        \item[(d)] 
+        \begin{align}
+            H(Y)-H(Y\vert X)=0.251\text{ (bits)}.
+        \end{align}
+        \item[(e)] The mutual information of $X$ and $Y$ is
+        \begin{align}
+            I(X;Y)=H(Y)-H(Y\vert X)=0.251\text{ (bits)}.
+        \end{align}
+        \item[(f)] As shown in figure \ref{A-7-P-6}.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.5\columnwidth]{A-7-P-6.pdf}
+            \caption{Venn diagram of $H(X)$, $H(Y)$, $H(X\vert Y)$, $H(Y\vert X)$, $H(X,Y)$ and $I(X;Y)$}
+            \label{A-7-P-6}
+        \end{figure}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[8.1 Diffrential entropy.]
