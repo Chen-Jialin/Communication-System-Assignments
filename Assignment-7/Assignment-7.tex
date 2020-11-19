@@ -1,0 +1,97 @@
+\documentclass{assignment}
+\UsingEnglish
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment 7}{Due time : 10:15, Nov 20, 2020 (Friday)}{陈稼霖}{45875852}
+\usepackage{diagbox}
+\begin{document}
+\begin{prob}[2.1 Coin flip.]
+    A fair coin is flipped until the first head occurs. Let $X$ denote the number of flips required.
+    \begin{itemize}
+        \item[(a)] Find the entropy $H(X)$ in bits. The following expression may be useful:
+        \[
+            \sum_{n=0}^{\infty}r^n=\frac{1}{1-r},\quad\sum_{n=0}^{\infty}nr^n=\frac{r}{(1-r)^2}.
+        \]
+        \item[(b)] A random variable $X$ is drawn according to this distribution. Find an "efficient" sequence of yes-no questions of the form, "Is $X$ contained in the set $S$?" Compare $H(X)$ to the expected number of questions required to determine $X$.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.2 Entropy of functions.]
+    Let $X$ be a random variable taking on a finite number of values. What is the (general) inequality relation of $H(X)$ and $H(Y)$ if
+    \begin{itemize}
+        \item[(a)] $Y=2^X$?
+        \item[(b)] $Y=\cos X$?
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.4 Entropy of functions of a random variable.]
+    Let $X$ be a discrete random variable. Show that the entropy of a function of $X$ is less than or equal to the entropy of $X$ by justifying the following steps:
+    \begin{align*}
+        H(X,g(X))\overset{\text{(a)}}{=}&H(X)+H(g(X)\vert X)\\
+        \overset{\text{(b)}}{=}&H(X)\\
+        H(X,g(X))\overset{\text{(c)}}{=}&H(g(X))+H(X\vert g(X))\\
+        \overset{\text{(d)}}{\geq}&H(g(X)).
+    \end{align*}
+    Thus, $H(g(X))\leq H(X)$.
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.5 Zero conditional entropy.]
+    Show that if $H(Y\vert X)=0$, then $Y$ is a function of $X$ [i.e., for all $x$ with $p(x)>0$, there is only one possible value of $y$ with $p(x,y)>0$].
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.11 Measure of correlation.]
+    Let $X_1$ and $X_2$ be identically distributed but not necessarily independent. Let
+    \[
+        \rho=1-\frac{H(X_2\vert X_1)}{H(X_1)}.
+    \]
+    \begin{itemize}
+        \item[(a)] Show that $\rho=\frac{I(X_1;X_2)}{H(X_1)}$.
+        \item[(b)] Show that $0\leq\rho\leq 1$.
+        \item[(c)] When is $\rho=0$?
+        \item[(d)] When is $\rho=1$?
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.21Example of entropy.]
+    Let $p(x,y)$ be given by
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|}
+        \hline
+        \diagbox{$X$}{$Y$} & $0$ & $1$ \\ \hline
+        $0$ & $\frac{1}{3}$ & $\frac{1}{3}$ \\ \hline
+        $1$ & $0$ & $\frac{1}{3}$ \\ \hline
+        \end{tabular}
+    \end{table}
+    Find:
+    \begin{itemize}
+        \item[(a)] $H(X)$, $H(Y)$.
+        \item[(b)] $H(X\vert Y)$, $H(Y\vert X)$.
+        \item[(c)] $H(X,Y)$.
+        \item[(d)] $H(Y)-H(Y\vert X)$.
+        \item[(e)] $I(X;Y)$.
+        \item[(f)] Draw a Venn diagram for the quantities in parts (a) through $e$.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[8.1 Diffrential entropy.]
+    Evaluate the differential entropy $h(X)=-\int f\ln f$ for the following:
+    \begin{itemize}
+        \item[(a)] The exponential density, $f(x)=\lambda e^{-\lambda x}$, $x\geq 0$.
+        \item[(b)] The Laplace density, $f(x)=\frac{1}{2}\lambda e^{-\lambda\abs{x}}$.
+        \item[(c)] The sum of $X_1$ and $X_2$, where $X_1$ and $X_2$ are independent random variables with means $\mu_i$ and variables $\sigma_i^2$, $i=1,2$.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+\end{document}
