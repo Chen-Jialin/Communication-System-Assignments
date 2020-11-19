@@ -21,7 +21,7 @@
         \end{align}
         The entropy of $X$ in bits is
         \begin{align}
-            H(X)=\sum_{n=1}^{\infty}-P(X=n)\log_2P(X=n)=\sum_{n=1}^{\infty}-\frac{1}{2^n}\log_2\frac{1}{2^n}=\sum_{n=1}^{\infty}\frac{n}{2^n}=\frac{\frac{1}{2}}{\left(1-\frac{1}{2}\right)^2}=2\text{ (bits)}.
+            H(X)=-\sum_{n=1}^{\infty}P(X=n)\log_2P(X=n)=-\sum_{n=1}^{\infty}\frac{1}{2^n}\log_2\frac{1}{2^n}=\sum_{n=1}^{\infty}\frac{n}{2^n}=\frac{\frac{1}{2}}{\left(1-\frac{1}{2}\right)^2}=2\text{ (bits)}.
         \end{align}
         \begin{itemize}
             \item[(b)] We can use Huffman code to represent the possible $X$'s according to the PMF of $X$. That is,
