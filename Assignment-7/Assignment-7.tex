@@ -52,6 +52,31 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] Suppose the set of possible values that $X$ can take on to be $\{x_1,x_2,\cdots,x_N\}$. The entropy of $X$ is
+        \begin{align}
+            H(X)=-\sum_{n=1}^NP(X=x_n)\log_2P(X=x_n).
+        \end{align}
+        Since $Y=2^X$ is a one-to-one mapping, the set of the possible values that $Y$ can take on is $\{y_1=2^{x_1},y_2=2^{x_2},\cdots,y_n=2^{x_N}\}$ and the PMF of $Y$ is
+        \begin{align}
+            P(Y=2^{x_n})=P(X=x_n).
+        \end{align}
+        The entropy of $Y$ is equal to $X$'s:
+        \begin{align}
+            H(Y)=-\sum_{n=1}^NP(Y=2^{x_n})\log_2P(Y=2^{x_n})=-\sum_{n=1}^NP(X=x_n)\log_2P(X=x_n)=H(X).
+        \end{align}
+        \item[(b)] Since $Y=\cos X$ is not necessarily one-to-one, the PMF of $Y$ is
+        \begin{align}
+            P(Y=y)=\sum_{x\in\{x\vert y=\cos x\}}P(X=x)
+        \end{align}
+        The entropy of $Y$ is equal to or less than $X$'s:
+        \begin{align}
+            \notag H(Y)=&-\sum_yP(Y=y)\log_2P(Y=y)\\
+            \notag=&-\sum_y\left[\sum_{x\in\{x\vert y=cos x\}}P(X=x)\right]\log_2\left[\sum_{x\in\{x\vert y=\cos x\}} P(X=x)\right]\\
+            \notag\leq&-\sum_y\sum_{x\in\{x\vert y=cos x\}}P(X=x)\log_2P(X=x)\\
+            =&-\sum_xP(X=x)\log_2P(X=x)=H(X).
+        \end{align}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.4 Entropy of functions of a random variable.]
