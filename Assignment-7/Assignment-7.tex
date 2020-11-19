@@ -14,6 +14,34 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] The PMF of $X$ is
+        \begin{align}
+            P(X=n)=\left(\frac{1}{2}\right)^{n-1}\frac{1}{2}=\frac{1}{2^n},\quad n=1,2,3,\cdots
+        \end{align}
+        The entropy of $X$ in bits is
+        \begin{align}
+            H(X)=\sum_{n=1}^{\infty}-P(X=n)\log_2P(X=n)=\sum_{n=1}^{\infty}-\frac{1}{2^n}\log_2\frac{1}{2^n}=\sum_{n=1}^{\infty}\frac{n}{2^n}=\frac{\frac{1}{2}}{\left(1-\frac{1}{2}\right)^2}=2\text{ (bits)}.
+        \end{align}
+        \begin{itemize}
+            \item[(b)] We can use Huffman code to represent the possible $X$'s according to the PMF of $X$. That is,
+            \begin{align*}
+                X=1\rightarrow&1,\\
+                X=2\rightarrow&01,\\
+                X=3\rightarrow&001,\\
+                \cdots&\\
+                X=n\rightarrow&\overbrace{00\cdots 0}^{n-1\text{ zero in total}}1,\\
+                \cdots&
+            \end{align*}
+            Then, we can ask in such way: "Is the first symbol of the code $1$?" If the answer is "Yes", we know that $X=1$. If not, we continue to ask: "Is the second symbol of the code $1$". If the answer is "Yes", then we know that $X=2$. If not, we continue such asking method until the answer is "Yes" and thus we can determine the $X$ represented by the code.\\
+            This asking method is equivalent to ask: "Is $X=1$?" "If not, is $X=2$?" "If not, is $X=3$?"......\\
+            In such way, the expected number of questions required to determine $X$ is
+            \begin{align}
+                \frac{1}{2}\times 1+\frac{1}{2}\times\frac{1}{2}\times 2+\frac{1}{2}\times\frac{1}{2}\times\frac{1}{2}\times 3\cdots=\sum_{n=1}^{\infty}\frac{n}{2^n}=2,
+            \end{align}
+            which equals $H(X)$ in bits.
+        \end{itemize}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.2 Entropy of functions.]
