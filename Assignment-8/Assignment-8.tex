@@ -5,11 +5,11 @@
 \begin{prob}[2.11]
     Proof of the Kraft inequality for uniquely decodable codes.
     \begin{itemize}
-        \item Assume a uniquely decodable code has lengths $l_1,\cdots l_M$. In order to show that $\sum_j2^{-l_j}\leq 1$, demonstrate the following identity for each integer $n\geq 1$:
+        \item[(a)] Assume a uniquely decodable code has lengths $l_1,\cdots l_M$. In order to show that $\sum_j2^{-l_j}\leq 1$, demonstrate the following identity for each integer $n\geq 1$:
         \[
             \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{j_1=1}^M\sum_{j_2=1}^M\cdots\sum_{j_n=1}^M2^{-(l_{j_1}+l_{j_2}+\cdots l_{j_n})}.
         \]
-        \item[(b)] Show that there is one term on the right for each concatenation of $n$ codewords (i.e. for the encoding of one $n$-tuple $x^n$) where $l_{j_1}+l_{j_2}+\cdots+l_{j_n}$ is the aggregate length of that concatenation.
+        \item[(b)] Show that there is one term on the right for each concatenation of $n$ codewords (i.e. for the encoding of one $n$-tuple $\bm{x}^n$) where $l_{j_1}+l_{j_2}+\cdots+l_{j_n}$ is the aggregate length of that concatenation.
         \item[(c)] Let $A_i$ be the number of concatenations which have overall length $i$ and show that
         \[
             \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{i=1}^{nl_{max}}A_i2^{-i}.
@@ -22,7 +22,35 @@
     \end{itemize}
 \end{prob}
 \begin{pf}
-
+    \begin{itemize}
+        \item[(a)] 
+        \begin{align}
+            \left[\sum_{j=1}M2^{-l_j}\right]^n=\left[\sum_{j_1=1}^M2^{-l_{j_1}}\right]\left[\sum_{j_2=1}^M2^{-l_{j_2}}\right]\cdots\left[\sum_{j_n=1}^M2^{-l_{j_n}}\right]=\sum_{j_1=1}^M\sum_{j_2=1}^M\cdots\sum_{j_n=1}^M2^{-(l_{j_1}+l_{j_2}+\cdots+l_{j_n})},\quad\forall n\geq 1.
+        \end{align}
+        \item[(b)] For each concatenation of $n$ codewords $\bm{x}^n$, the length of the $k$th codeword is $l_{j_k}$ and there is $n$ codewords in total ($1\leq k\leq n$), so the aggregate length of the concatenation is $l_{j_1}+l_{j_2}+\cdots+l_{j_n}$.
+        \item[(c)] Using the conclusion we obtained in (b), we have
+        \begin{align}
+            \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{\bm{x}^n}e^{-(\text{length of }\bm{x}^n)}=\sum_{i=1}^{nl_{\max}}A_i2^{-i}.
+        \end{align}
+        \item[(d)] Because of unique decodablility (i.e. each concatenation should be different),
+        \begin{align}
+            A_i\leq 2^i,\quad\forall i.
+        \end{align}
+        Thus,
+        \begin{align}
+            \label{P-1-d}
+            \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{i=1}^{nl_{\max}}A_i2^{-i}\leq\sum_{i=1}^{nl_{\max}}2^i2^{-i}=\sum_{i=1}^{nl_{\max}}1=nl_{\max}.
+        \end{align}
+        \item[(e)] Taking the $n$th root of equation \eqref{P-1-d}, we have
+        \begin{align}
+            \sum_{j=1}^M2^{-l_j}\leq[nl_{\max}]^{1/n}.
+        \end{align}
+        Letting $n\rightarrow\infty$, we have
+        \begin{align}
+            \sum_{j=1}^M2^{-l_j}\leq\lim_{n\rightarrow\infty}[nl_{\max}]^{1/n}=1,
+        \end{align}
+        which is the Kraft inequality.
+    \end{itemize}
 \end{pf}
 
 \begin{prob}[2.12]
