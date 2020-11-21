@@ -1,0 +1,78 @@
+\documentclass{assignment}
+\UsingEnglish
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment 8}{Due time : 10:15, Nov 27, 2020 (Friday)}{陈稼霖}{45875852}
+\begin{document}
+\begin{prob}[2.11]
+    Proof of the Kraft inequality for uniquely decodable codes.
+    \begin{itemize}
+        \item Assume a uniquely decodable code has lengths $l_1,\cdots l_M$. In order to show that $\sum_j2^{-l_j}\leq 1$, demonstrate the following identity for each integer $n\geq 1$:
+        \[
+            \left[\sum_{j=1}^M2^{-l_j}\right]=\sum_{j_1=1}^M\sum_{j_2=1}^M\cdots\sum_{j_n=1}^M2^{-(l_{j_1}+l_{j_2}+\cdots l_{j_n})}.
+        \]
+        \item[(b)] Show that there is one term on the right for each concatenation of $n$ codewords (i.e. for the encoding of one $n$-tuple $x^n$) where $l_{j_1}+l_{j_2}+\cdots+l_{j_n}$ is the aggregate length of that concatenation.
+        \item[(c)] Let $A_i$ be the number of concatenations which have overall length $i$ and show that
+        \[
+            \left[\sum_{j=1}^M2^{-l_j}\right]=\sum_{i=1}^{nl_{max}}A_i2^{-i}.
+        \]
+        \item[(d)] Using the unique decodablility, upperbound each $A_i$ and show that
+        \[
+            \left[\sum_{j=1}^M2^{-l_j}\right]\leq nl_{\max}.
+        \]
+        \item[(e)] By taking the $n$th root and letting $n\rightarrow\infty$, demonstrate the Kraft inequality.
+    \end{itemize}
+\end{prob}
+\begin{pf}
+\end{pf}
+
+\begin{prob}[2.12]
+    A source with an alphabet size of $M=\abs{\mathcal{X}}=4$ has a symbol probabilities $\{1/3,1/3,2/9,1/9\}$.
+    \begin{itemize}
+        \item[(a)] Use the Huffman algorithm to find an optimal prefix free code for this source.
+        \item[(b)] Use the Huffman algorithm to find another optimal prefix-free code with a different set of lengths.
+        \item[(c)] Find another prefix-free code that is optimal but cannot result from using the Huffman algorithm.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.14]
+    Consider a source with $M$ equiprobable symbols.
+    \begin{itemize}
+        \item[(a)] Let $k=\lceil\log M\rceil$. Show that, for a Huffman code, the only possible codeword lengths are $k$ and $k-1$.
+        \item[(b)] As a function of $M$, find how many codewords have length $k=\lceil\log M\rceil$. What is the expected codeword length $\bar{L}$ in bits per source code?
+        \item[(c)] Define $y=M/2^k$. Express $\bar{L}-\log M$ as a function of $y$. Find the maximum value of this function over $1/2<y\leq 1$. This illustrates that the entropy bound, $\bar{L}=H[X]+1$, is rather loose in this equiprobable case.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.21]
+    A discrete memoryless source emits iid random symbols $X_1,X_2,\cdots$ Each random symbol $X$ has the symbols $\{a,b,c\}$ with probabilities $\{0.5,0.4,0.1\}$, respectively.
+    \begin{itemize}
+        \item[(a)] Find the expected length $\bar{L}_{\min}$ of the best variable-length prefix-free code for $X$.
+        \item[(b)] Find the expected length $\bar{L}_{\min,2}$, normalized to bits per symbol, of the best variable-length prefix-free code for $X^2$.
+        \item[(c)] Is it true that for any DMS, $\bar{L}_{\min}\geq\bar{L}_{\min,2}$? Explain your answer.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[2.33]
+    Perform an LZ77 parsing of the string \uline{00011101}0010101100. Assume a window of length $W=8$; the initial window is underlined above. You should parse the reset of the string using the Lempel-Ziv algorithm.
+\end{prob}
+\begin{sol}
+\end{sol}
+
+\begin{prob}[4.35 Aliasing]
+    The following exercise is designed to illustrate the sampling of an approximately baseband waveform. To avoid messy computation, we look at a waveform baseband-limited to $3/2$ which is sampled at rate $1$ (i.e. sampled at only $1/3$ the rate that it should be sampled at). In particular, let $u(t)=\sinc(3t)$.
+    \begin{itemize}
+        \item[(a)] Sketch $\hat{u}(f)$. Sketch the function $\hat{v}_m(t)=\rect(f-m)$ for each integer $m$ such that $v_m(f)\neq 0$. Note that $\hat{u}(f)=\sum_m\hat{v}_m(f)$.
+        \item[(b)] Sketch the inverse transforms $v_m(t)$ (real and imaginary parts if complex).
+        \item[(c)] Verify directly from the equations that $u(t)=\sum v_m(t)$. [Hint. This is easier if you express the sine part of the sinc function as a sum of complex exponentials.]
+        \item[(d)] Verify the sinc-weighted sinusoid expansion, (4.73). (There are only three nonzero terms in the expansion.)
+        \item[(e)] For the approximation $s(t)=u(0)\sinc(t)$, find the energy in the difference between $u(t)$ and $s(t)$ and interpret the terms.
+    \end{itemize}
+\end{prob}
+\begin{sol}
+\end{sol}
+\end{document}
