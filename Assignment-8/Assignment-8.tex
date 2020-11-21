@@ -103,6 +103,41 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] For a Huffman code, if $M$ is a power of $2$, say $M=2^k$, then the Huffman tree should be a full binary tree and the length is $k=\log_2M$ for all codewords. If $M$ is not a power of $2$, say $M=2^{k-1}+k_0$ where $0<k_0\leq 2^{k-1}$, the Huffman tree should be a complete but not full binary tree. In this case, some codewords are at the bottom layer of the Huffman tree whose lengths are all $k=\lceil\log_2M\rceil$, other codewords are at the bottom but one layer whose lengths are all $k-1=\lceil\log_2M\rceil-1$.
+        \item[(b)] Suppose the number of codewords with length $k$ is $x$, then the number of codewords with length $k-1$ is $M-x$. The number of node at the bottom but one layer of the Huffman tree should be
+        \begin{align}
+            \frac{x}{2}+(M-x)=2^{k-1},
+        \end{align}
+        so the number of codeword with length $k$ is
+        \begin{align}
+            x=2M-2^k.
+        \end{align}
+        The expected code length per source code is
+        \begin{align}
+            \bar{L}=\frac{k(2M-2^k)+(k-1)(2^k-M)}{M}=k+1-\frac{2^k}{M}.
+        \end{align}
+        \item[(c)] Using $k=\log_2\frac{M}{y}$, we have
+        \begin{align}
+            \bar{L}-\log_2M=-\log_2y+1-\frac{1}{y}.
+        \end{align}
+        The derivative of the above function is
+        \begin{align}
+            \frac{\mathrm{d}}{\mathrm{d}y}=-\frac{1}{y\ln 2}+\frac{1}{y^2}\left\{\begin{array}{ll}
+                >0,&\frac{1}{2}\leq y<\ln 2,\\
+                <0,&\ln 2<y<1,
+            \end{array}\right.
+        \end{align}
+        so the maximum value of the above function is
+        \begin{align}
+            \left[\bar{L}-\log_2M\right]_{\max}=\left[\bar{L}-\log_2M\right]_{y=\ln 2}=-\log_2(\ln 2)+1-\frac{1}{\ln 2}=0.086,
+        \end{align}
+        which means that
+        \begin{align}
+            \bar{L}\leq\log_2M+0.086\leq H(X)+0.086.
+        \end{align}
+        Therefore, the entropy bound $\bar{L}=H[X]+1$, is rather loose in this equiprobable case.
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.21]
