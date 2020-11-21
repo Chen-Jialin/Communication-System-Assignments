@@ -56,12 +56,42 @@
 \begin{prob}[2.12]
     A source with an alphabet size of $M=\abs{\mathcal{X}}=4$ has a symbol probabilities $\{1/3,1/3,2/9,1/9\}$.
     \begin{itemize}
-        \item[(a)] Use the Huffman algorithm to find an optimal prefix free code for this source.
+        \item[(a)] Use the Huffman algorithm to find an optimal prefix-free code for this source.
         \item[(b)] Use the Huffman algorithm to find another optimal prefix-free code with a different set of lengths.
         \item[(c)] Find another prefix-free code that is optimal but cannot result from using the Huffman algorithm.
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        Suppose the four symbols corresponding to the probabilities $\{1/3,1/3,2/9,1/9\}$ are a,b,c,d.
+        \item[(a)] An optimal prefix-free code for this source is shown in figure \ref{A-8-P-2-a}.
+        \item[(b)] Another optimal prefix-free code for this source is shown in figure \ref{A-8-P-2-b}.
+        \begin{figure}[h]
+            \centering
+            \subfigure[An optimal prefix-free code derived from the Huffman algorithm]{
+                \includegraphics[width=.45\columnwidth]{A-8-P-2-a.pdf}
+                \label{A-8-P-2-a}
+            }
+            \subfigure[Another optimal prefix-free code derived from the Huffman algorithm]{
+                \includegraphics[width=.45\columnwidth]{A-8-P-2-b.pdf}
+                \label{A-8-P-2-b}
+            }
+            \item[(c)] Another prefix-free code that is optimal but cannot result from using the Huffman algorithm is shown in table \ref{A-8-P-2-c}.
+            \begin{table}[H]
+                \centering
+                \caption{Another prefix-free code that is optimal but cannot result from using the Huffman algorithm}
+                \label{A-8-P-2-c}
+                \begin{tabular}{|c|c|}
+                \hline
+                symbol & codeword \\ \hline
+                a & 00 \\ \hline
+                b & 11 \\ \hline
+                c & 10 \\ \hline
+                d & 01 \\ \hline
+                \end{tabular}
+                \end{table}
+        \end{figure}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.14]
