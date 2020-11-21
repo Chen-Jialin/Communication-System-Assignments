@@ -92,7 +92,8 @@
 \providecommand{\re}{\,\text{Re}\,} % 复数的实部 Real part of complex number
 \providecommand{\im}{\,\text{Im}\,} % 复数的虚部 Imaginary part of complex number
 \providecommand{\sgn}{\,\text{sgn}\,} % 符号函数 Sign function
-\providecommand{\sinc}{\,\text{sinc}\,} % 辛格函数 sinc function
+\providecommand{\sinc}{\,\text{sinc}\,} % 辛格函数 Sinc function
+\providecommand{\rect}{\,\text{rect}\,} % 矩形函数 Rectangular function
 \providecommand{\bra}[1]{\left\langle#1\right\rvert} % 左矢 Bra
 \providecommand{\ket}[1]{\left\lvert#1\right\rangle} % 右矢 Ket
 \providecommand{\braket}[2]{\left\langle#1\left\vert\right.#2\right\rangle} % 右矢接左矢 Contiguous ket after bra
