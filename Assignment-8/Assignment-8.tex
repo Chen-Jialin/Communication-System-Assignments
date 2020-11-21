@@ -7,21 +7,22 @@
     \begin{itemize}
         \item Assume a uniquely decodable code has lengths $l_1,\cdots l_M$. In order to show that $\sum_j2^{-l_j}\leq 1$, demonstrate the following identity for each integer $n\geq 1$:
         \[
-            \left[\sum_{j=1}^M2^{-l_j}\right]=\sum_{j_1=1}^M\sum_{j_2=1}^M\cdots\sum_{j_n=1}^M2^{-(l_{j_1}+l_{j_2}+\cdots l_{j_n})}.
+            \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{j_1=1}^M\sum_{j_2=1}^M\cdots\sum_{j_n=1}^M2^{-(l_{j_1}+l_{j_2}+\cdots l_{j_n})}.
         \]
         \item[(b)] Show that there is one term on the right for each concatenation of $n$ codewords (i.e. for the encoding of one $n$-tuple $x^n$) where $l_{j_1}+l_{j_2}+\cdots+l_{j_n}$ is the aggregate length of that concatenation.
         \item[(c)] Let $A_i$ be the number of concatenations which have overall length $i$ and show that
         \[
-            \left[\sum_{j=1}^M2^{-l_j}\right]=\sum_{i=1}^{nl_{max}}A_i2^{-i}.
+            \left[\sum_{j=1}^M2^{-l_j}\right]^n=\sum_{i=1}^{nl_{max}}A_i2^{-i}.
         \]
         \item[(d)] Using the unique decodablility, upperbound each $A_i$ and show that
         \[
-            \left[\sum_{j=1}^M2^{-l_j}\right]\leq nl_{\max}.
+            \left[\sum_{j=1}^M2^{-l_j}\right]^n\leq nl_{\max}.
         \]
         \item[(e)] By taking the $n$th root and letting $n\rightarrow\infty$, demonstrate the Kraft inequality.
     \end{itemize}
 \end{prob}
 \begin{pf}
+
 \end{pf}
 
 \begin{prob}[2.12]
