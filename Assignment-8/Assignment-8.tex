@@ -175,9 +175,17 @@
 \end{sol}
 
 \begin{prob}[2.33]
-    Perform an LZ77 parsing of the string \uline{00011101}0010101100. Assume a window of length $W=8$; the initial window is underlined above. You should parse the reset of the string using the Lempel-Ziv algorithm.
+    Perform an LZ77 parsing of the string \uline{00011101}0010101100. Assume a window of length $W=8$; the initial window is underlined above. You should parse the rest of the string using the Lempel-Ziv algorithm.
 \end{prob}
 \begin{sol}
+    The rest of the string can be parsed as
+    \[
+        \uline{00011101}\overbrace{001}^{u=7,n=3}\overbrace{0101}^{u=2,n=4}\overbrace{100}^{u=8,n=3},
+    \]
+    whose corresponding encoded sequence is
+    \[
+        011\;111\;00100\;010\;011\;000.
+    \]
 \end{sol}
 
 \begin{prob}[4.35 Aliasing]
