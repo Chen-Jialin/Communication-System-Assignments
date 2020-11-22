@@ -149,6 +149,29 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] The best variable prefix-free code for $X$ is shown in figure \ref{A-8-P-4-a}, whose expected length is
+        \begin{align}
+            \bar{L}_{\min}=0.5\times 1+0.4\times 2+0.1\times 2=1.5\quad.
+        \end{align}
+        \item[(b)] The best variable prefix-free code for $X^2$ is shown in figure \ref{A-8-P-4-b}, whose expected length normalized to bits per symbol is
+        \begin{align}
+            \notag\bar{L}_{\min,2}=&\frac{1}{2}(0.25\times 2+0.2\times 2+0.2\times 2+0.16\times 3+0.05\times 5+0.05\times 5+0.04\times 5+0.04\times 6+0.01\times 6)\\
+            =&1.39\quad.
+        \end{align}
+        \item[(c)] It is true that for any DMS, $\bar{L}_{\min}\geq\bar{L}_{\min,2}$. One method for source coding of $X^2$ is to use the concatenation of two codewords of $X$ as the codeword of $X^2$, whose expected length per symbol equals $L_{\min}$. Because this method is not necessarily the best coding method, $L_{\min}$ can not be less than $\bar{L}_{\min,2}$, which is the minimal expected length per symbol of $X^2$.
+        \begin{figure}[h]
+            \centering
+            \subfigure[The best variable-length prefix-free code for $X$]{
+                \includegraphics[width=.45\columnwidth]{A-8-P-4-a.pdf}
+                \label{A-8-P-4-a}
+            }
+            \subfigure[The best variable-length prefix-free code for $X^2$]{
+                \includegraphics[width=.45\columnwidth]{A-8-P-4-b.pdf}
+                \label{A-8-P-4-b}
+            }
+        \end{figure}
+    \end{itemize}
 \end{sol}
 
 \begin{prob}[2.33]
