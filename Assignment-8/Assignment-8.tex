@@ -191,7 +191,7 @@
 \begin{prob}[4.35 Aliasing]
     The following exercise is designed to illustrate the sampling of an approximately baseband waveform. To avoid messy computation, we look at a waveform baseband-limited to $3/2$ which is sampled at rate $1$ (i.e. sampled at only $1/3$ the rate that it should be sampled at). In particular, let $u(t)=\sinc(3t)$.
     \begin{itemize}
-        \item[(a)] Sketch $\hat{u}(f)$. Sketch the function $\hat{v}_m(t)=\rect(f-m)$ for each integer $m$ such that $v_m(f)\neq 0$. Note that $\hat{u}(f)=\sum_m\hat{v}_m(f)$.
+        \item[(a)] Sketch $\hat{u}(f)$. Sketch the function $\hat{v}_m(f)=\rect(f-m)$ for each integer $m$ such that $v_m(f)\neq 0$. Note that $\hat{u}(f)=\sum_m\hat{v}_m(f)$.
         \item[(b)] Sketch the inverse transforms $v_m(t)$ (real and imaginary parts if complex).
         \item[(c)] Verify directly from the equations that $u(t)=\sum v_m(t)$. [Hint. This is easier if you express the sine part of the sinc function as a sum of complex exponentials.]
         \item[(d)] Verify the sinc-weighted sinusoid expansion, (4.73). (There are only three nonzero terms in the expansion.)
@@ -199,5 +199,100 @@
     \end{itemize}
 \end{prob}
 \begin{sol}
+    \begin{itemize}
+        \item[(a)] The fourier transforms of $u(t)$
+        \begin{align}
+            \hat{u}(f)=\mathscr{F}[u(t)]=\frac{1}{3}\rect\left(\frac{f}{3}\right),
+        \end{align}
+        as shown in figure \ref{A-8-P-6-u(f)}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.4\columnwidth]{A-8-P-6-u(f).eps}
+            \caption{$\hat{u}(f)$}
+            \label{A-8-P-6-u(f)}
+        \end{figure}
+        The segment functions are
+        \begin{align}
+            \hat{v}_0(f)=&\frac{1}{3}\rect(f),\\
+            \hat{v}_1(f)=&\frac{1}{3}\rect(f-1),\\
+            \hat{v}_{-1}(f)=&\frac{1}{3}\rect(f+1),
+        \end{align}
+        as shown in figure \ref{A-8-P-6-vm(f)}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.99\columnwidth]{A-8-P-6-vm(f).eps}
+            \caption{$\hat{v}_{m}(f)$ for $m=0,\pm 1$.}
+            \label{A-8-P-6-vm(f)}
+        \end{figure}
+        \item[(b)] The inverse transform of $\hat{v}_0(f)$ is
+        \begin{align}
+            v_0(t)=\mathscr{F}^{-1}[\hat{v}_0(t)]=\frac{1}{3}\sinc(t).
+        \end{align}
+        as shown in figure \ref{A-8-P-6-v0(t)}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.4\columnwidth]{A-8-P-6-v0(t).eps}
+            \caption{$v_0(t)$.}
+            \label{A-8-P-6-v0(t)}
+        \end{figure}
+        The inverse transform of $\hat{v}_1(f)$ is
+        \begin{align}
+            v_1(t)=\mathscr{F}^{-1}[\hat{v}_1(t)]=\frac{1}{3}\sinc(t)e^{2\pi it},
+        \end{align}
+        whose real part is
+        \begin{align}
+            \re[v_1(t)]=\frac{1}{3}\sinc(t)\cos(2\pi t),
+        \end{align}
+        and imaginary part is
+        \begin{align}
+            \im[v_1(t)]=\frac{1}{3}\sinc(t)\sin(2\pi t),
+        \end{align}
+        as shown in figure \ref{A-8-P-6-v1(t)}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.99\columnwidth]{A-8-P-6-v1(t).eps}
+            \caption{Real part and imaginary part of $v_1(t)$.}
+            \label{A-8-P-6-v1(t)}
+        \end{figure}
+        The inverse transform of $\hat{v}_{-1}(f)$ is
+        \begin{align}
+            v_{-1}(t)=\mathscr{F}^{-1}[\hat{v}_{-1}(t)]=\frac{1}{3}\sinc(t)e^{-2\pi it},
+        \end{align}
+        whose real part is
+        \begin{align}
+            \re[v_{-1}(t)]=\frac{1}{3}\sinc(t)\cos(2\pi t),
+        \end{align}
+        and imaginary part is
+        \begin{align}
+            \im[v_{-1}(t)]=-\frac{1}{3}\sinc(t)\sin(2\pi t),
+        \end{align}
+        as shown in figure \ref{A-8-P-6-v-1(t)}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.99\columnwidth]{A-8-P-6-v-1(t).eps}
+            \caption{Real part and imaginary part of $v_{-1}(t)$.}
+            \label{A-8-P-6-v-1(t)}
+        \end{figure}
+        \item[(c)] 
+        \begin{align}
+            \notag\sum_mv_m(t)=&v_0(t)+v_1(t)+v_{-1}(t)=\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}+\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}e^{2\pi it}+\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}e^{-2\pi it}\\
+            =&\frac{1}{3}\frac{e^{3\pi it}-e^{-3\pi it}}{2\pi it}=\frac{\sin(3\pi t)}{3\pi t}=\sinc(3t)=u(t)
+        \end{align}
+        \item[(d)] Sampling period $T=1$,
+        \begin{align}
+            \notag\sum_{m,k}v_m(kT)\sinc\left(\frac{t}{T}-k\right)e^{2\pi imt/T}=&\sum_{m=0,\pm 1}v_m(0)\sinc(t)e^{2\pi imt}=\frac{1}{3}\sin(t)+\frac{1}{3}\sinc(t)e^{2\pi it}+\frac{1}{3}\sinc(t)e^{-2\pi it}\\
+            \notag=&\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}+\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}e^{2\pi it}+\frac{1}{3}\frac{e^{\pi it}-e^{-\pi it}}{2\pi it}e^{-2\pi it}\\
+            \notag=&\frac{1}{3}\frac{e^{3\pi it}-e^{-3\pi it}}{2\pi it}=\frac{\sin(3\pi t)}{3\pi t}=\sinc(3t)=u(t).
+        \end{align}
+        \item[(e)] The approximation function
+        \begin{align}
+            s(t)=u(0)\sinc(t)=\sinc(t).
+        \end{align}
+        Using Parseval's Theorem, the energy between $u(t)$ and $s(t)$ is
+        \begin{align}
+            \notag\int_{-\infty}^{+\infty}\abs{u(t)-s(t)}^2\,\mathrm{d}t=&\int_{-\infty}^{+\infty}\abs{\hat{u}(f)-\hat{s}(f)}=\int_{-\infty}^{+\infty}\abs{\frac{1}{3}\rect\left(\frac{f}{3}\right)-\rect\left(f\right)}^2\,\mathrm{d}f=\frac{2}{3}.
+        \end{align}
+        which shows that $s(t)$ is not a very good approximation of $u(t)$, i.e., $s(t)$ and $u(t)$ are not $\mathcal{L}_2$ equivalent.
+    \end{itemize}
 \end{sol}
 \end{document}
