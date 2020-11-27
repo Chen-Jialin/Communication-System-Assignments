@@ -12,9 +12,36 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
-        \item[(c)] 
+        \item[(a)] The $3$-bit quantizer that minimizes the MSE for the uniformly distributed analog rv $U$ should be a uniform quantizer with $8$ equally-spaced quantization intervals bounded by endpoints
+        \begin{align}
+            \label{P-1-endpoints}
+            b_0=-1,\quad b_1=-\frac{3}{4},\quad b_2=-\frac{1}{2},\quad b_3=-\frac{1}{4},\quad b_4=0,\quad b_5=\frac{1}{4},\quad b_6=\frac{1}{2},\quad b_7=\frac{3}{4},\quad b_8=1
+        \end{align}
+        and $8$ equally-spaced representation points
+        \begin{align}
+            \label{P-1-representation-points}
+            a_1=-\frac{7}{8},\quad a_2=-\frac{5}{8},\quad a_3=-\frac{3}{8},\quad a_4=-\frac{1}{8},\quad a_5=\frac{1}{8},\quad a_6=\frac{3}{8},\quad a_7=\frac{5}{8},\quad a_8=\frac{7}{8}.
+        \end{align}
+        \item[(b)] The above uniform quantizer satisfies the Lloyd-Max necessary conditions:
+        \begin{itemize}
+            \item[(i)] For the given representation points $\{a_j\}$, the interval endpoints (excepts the first and the last ones) are the midpoints of the neighboring representation points:
+            \begin{align}
+                \label{P-1-necessary-condition-1}
+                b_j=\frac{a_j+a_{j+1}}{2},\quad\forall j=1,2,\cdots,7.
+            \end{align}
+            \item[(ii)] For the given quantization intervals $\{(b_j,b_{j+1})\}$, the representation points are the expectation of the analog rv in the corresponding quantization intervals
+            \begin{align}
+                \label{P-1-necessary-condition-2}
+                \notag a_j=E[U\vert U\in\mathcal{R}_j]=\frac{\int_{\mathcal{R}_j}f_U(u)u\,\mathrm{d}u}{\int_{\mathcal{R}_j}}f_U(u)\,\mathrm{d}u=\frac{\int_{u_{j-1}}^{u_j}\frac{1}{2}u\,\mathrm{d}u}{\int_{u_{j-1}}^{u_j}\frac{1}{2}\,\mathrm{d}u}=\frac{\frac{1}{2}(b_j^2-b_{j-1}^2)}{\frac{1}{2}(b_j-b_{j-1})}=\frac{1}{2}(b_j+b_{j+1}),\\
+                \forall j=1,2\cdots,8.
+            \end{align}
+        \end{itemize}
+        \item[(c)] Plugging equation \eqref{P-1-necessary-condition-2} into equation \eqref{P-1-necessary-condition-1}, we get
+        \begin{align}
+            b_j=\frac{\frac{b_{j-1}+b_j}{2}+\frac{b_j+b_{j+1}}{2}}{2}=\frac{1}{4}b_{j-1}+\frac{1}{2}b_j+\frac{1}{4}b_{j+1}\Longrightarrow b_{j+1}-b_j=b_j-b_{j-1},\quad\forall j=1,2,\cdots,7,
+        \end{align}
+        which means that for any $3$-bit quantizers satisfying the necessary condition, it must have equally-spaced quantization intervals bounded by endpoints as equation \eqref{P-1-endpoints} shows. Besides, according to equation \eqref{P-1-necessary-condition-2}, for any $3$-bit quantizers satisfying the necessary condition, it must have equally-spaced representation points as equation \eqref{P-1-representation-points} shows.\\
+        Therefore, there is only one $3$-bit quantizer that minimize the MSE --- the one with $8$ equally-spaced quantization intervals and $8$ equally-spaced representation points. It is unique.
     \end{itemize}
 \end{sol}
 
