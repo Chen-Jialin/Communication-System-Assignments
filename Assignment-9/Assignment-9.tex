@@ -303,8 +303,56 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
+        \item[(a)] The differential entropy of the continuous-valued rv $Z$ is
+        \begin{align}
+            h(Z)=-\int_{-\infty}^{+\infty}f_Z(z)\log_2f_Z(z)\,\mathrm{d}z=-\int_{-A}^{+A}f_Z(z)\log_2f_Z(z)\,\mathrm{d}z.
+        \end{align}
+        \textbf{Method I: Variational method.} Regard $h(Z)$ as a functional of $f_Z(z)$:
+        \begin{align}
+            h(Z)=h[f_Z(z)].
+        \end{align}
+        Suppose that $f_{Z0}(z)$ is the pdf of $Z$ that maximizes $h(Z)$, and $f_{Z1}(z)$ an arbitrary function defined on $[-A,+A]$ satisfying
+        \begin{itemize}
+            \item[(i)] $\int_{-A}^{+A}f_{Z1}(z)\,\mathrm{d}z=0$;
+            \item[(ii)] the first order derivative of $f_{Z1}(z)$, $f_{Z1}'(z)$ exists.
+        \end{itemize}
+        Since $f_{Z0}(z)$ is the pdf that maximizes $h(Z)$, the derivative of $h[f_{Z0}(z)+\epsilon f_{Z1}(z)]$ about $\epsilon$ is $0$ at $\epsilon=0$ for arbitrary $h_{Z1}(z)$ satisfying the above conditions:
+        \begin{align}
+            \label{P-4-variaional-method-necessary-condition}
+            \notag\frac{\partial}{\partial\epsilon}h[f_{Z0}(z)+\epsilon f_{Z1}(z)]=&\left.-\frac{\partial}{\partial\epsilon}\int_{-A}^{+A}[f_{Z0}(z)+\epsilon f_{Z1}(z)]\log_2[f_{Z0}(z)+\epsilon f_{Z1}(z)]\,\mathrm{d}z\right\rvert_{\epsilon=0}\\
+            \notag=&-\int_{-A}^{+A}\left.\left\{f_{Z1}(z)\log_2[f_{Z0}(z)+\epsilon f_{Z1}(z)]+[f_{Z0}(z)+\epsilon f_{Z1}(z)]\frac{f_{Z1}(z)}{[f_{Z0}(z)+\epsilon f_{Z1}(z)]\ln 2}\right\}\right\rvert_{\epsilon=0}\,\mathrm{d}z\\
+            \notag=&-\int_{-A}^{+A}f_{Z1}(z)\left\{\log_2[f_{Z0}(z)]+\frac{1}{\ln 2}\right\}\,\mathrm{d}z\\
+            =&-\int_{-A}^{+A}f_{Z1}(z)\log_2[f_{Z0}(z)]\,\mathrm{d}z=0,\quad\forall f_{Z1}(z)\text{ satisfying conditions (i) and (ii)}.
+        \end{align}
+        To make the above equation hold for all $f_{Z1}(z)$ satisfying conditions (i) and (ii) and considering the condition (i) that $\int_{-A}^{+A}f_{Z1}(z)\,\mathrm{d}z=0$, $f_{Z0}(z)$ must be a constant over the range of $[-A,+A]$. Therefore, the pdf that maximizes $h(Z)$ is
+        \begin{align}
+            f_{Z0}(z)=\frac{1}{2a},\quad\text{for }x\in[-A,+A],
+        \end{align}
+        and the upperbound of $h(Z)$ is
+        \begin{align}
+            h_0(Z)=-\int_{-A}^{+A}\frac{1}{2A}\log_2\frac{1}{2A}\,\mathrm{d}z=1+\log_2A.
+        \end{align}
+        \textbf{Method II}: The pdf of uniform distribution over $[-A,+A]$ is
+        \begin{align}
+            f_{Z0}(z)=\frac{1}{2A},\quad\text{for }z\in[-A,+A],
+        \end{align}
+        whose corresponding differential entropy is
+        \begin{align}
+            h_0(Z)=-\int_{-A}^{+A}\frac{1}{2A}\log_2\frac{1}{2A}\,\mathrm{d}z=1+\log_2A.
+        \end{align}
+        For an arbitrary pdf $f_Z(z)$,
+        \begin{align}
+            \label{P-4-Method-II-condition}
+            \notag h(Z)-h_0(Z)=&-\int_{-A}^{+A}f_Z(z)\log_2[f_Z(z)]\,\mathrm{d}z-(1+\log_2A)\\
+            \notag=&-\int_{-A}^{+A}f_Z(z)\log_2[f_Z(z)]\,\mathrm{d}z+\int_{-A}^{+A}f_Z(z)\log_2\frac{1}{2A}\,\mathrm{d}z\\
+            \notag=&\int_{-A}^{+A}f_Z(z)\log_2\frac{f_{Z0}(z)}{f_Z(z)}\,\mathrm{d}z\\
+            \notag=&\frac{1}{\ln 2}\int_{-A}^{+A}f_Z(z)\ln\frac{f_{Z0}(z)}{f_Z(z)}\,\mathrm{d}z\\
+            \notag\leq&\frac{1}{\ln 2}\int_{-A}^{+A}f_Z(z)\left[\frac{f_{Z0}(z)}{f_Z(z)}-1\right]\,\mathrm{d}z\\
+            =&\frac{1}{\ln 2}\int_{-A}^{+A}[f_{Z0}(z)-f_Z(z)]\,\mathrm{d}z=0.
+        \end{align}
+        Therefore, the differential entropy $h(Z)$ is upperbounded $1+\log_2A$.
+        \item[(b)] \textbf{Method I: Variational Method}: As mentioned in (a), to make the equation \ref{P-4-variaional-method-necessary-condition} hold for all $f_{Z1}(z)$ satisfying conditions (i) and (ii), $f_{Z0}(z)$ must be a constant over the range of $[-A,+A]$. Therefore, $h(Z)=1+\log_2A$ if and only if $Z$ is uniformly distributed between $-A$ and $+A$.\\
+        \textbf{Method II:} The two side of the inequality in \ref{P-4-Method-II-condition} reach equal only $\frac{f_{Z0}(z)}{f_Z(z)}=1$. Therefore, $h(Z)=1+\log_2A$ if and only if $Z$ is uniformly distributed between $-A$ and $+A$.
     \end{itemize}
 \end{sol}
 \end{document}
