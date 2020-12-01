@@ -329,7 +329,9 @@
         \end{align}
         \item[(b)] The differential entropy of the Laplace density is
         \begin{align}
-            h(f)=-\int_{-\infty}^{+\infty}\frac{1}{2}\lambda e^{-\lambda\abs{x}}=-\int_0^{+\infty}\lambda e^{-\lambda\abs{x}}=\log_2\frac{e}{\lambda}\text{ (bits)}.
+            \notag h(f)=&-\int_{-\infty}^{+\infty}\frac{1}{2}\lambda e^{-\lambda\abs{x}}\ln\left[\frac{1}{2}\lambda e^{-\lambda\abs{x}}\right]\,\mathrm{d}x\\
+            \notag=&\ln 2\int_{-\infty}^{+\infty}\frac{1}{2}\lambda e^{-\lambda\abs{x}}\,\mathrm{d}x-\int_{-\infty}^{+\infty}\frac{1}{2}\lambda e^{-\lambda\abs{x}}\ln[\lambda e^{-\lambda x}]\,\mathrm{d}x\\
+            \notag=&\ln 2\text{ (nats)}+\log_2\frac{e}{\lambda}\text{ (bits)}=\log_2\frac{2e}{\lambda}\text{ (bits)}.
         \end{align}
         \item[(c)] $X_1+X_2\sim N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$, thus
         \begin{align}
