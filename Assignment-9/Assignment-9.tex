@@ -41,7 +41,7 @@
             b_j=\frac{\frac{b_{j-1}+b_j}{2}+\frac{b_j+b_{j+1}}{2}}{2}=\frac{1}{4}b_{j-1}+\frac{1}{2}b_j+\frac{1}{4}b_{j+1}\Longrightarrow b_{j+1}-b_j=b_j-b_{j-1},\quad\forall j=1,2,\cdots,7,
         \end{align}
         which means that for any $3$-bit quantizers satisfying the necessary condition, it must have equally-spaced quantization intervals bounded by endpoints as equation \eqref{P-1-endpoints} shows. Besides, according to equation \eqref{P-1-necessary-condition-2}, for any $3$-bit quantizers satisfying the necessary condition, it must have equally-spaced representation points as equation \eqref{P-1-representation-points} shows.\\
-        Therefore, there is only one $3$-bit quantizer that minimize the MSE --- the one with $8$ equally-spaced quantization intervals and $8$ equally-spaced representation points. It is unique.
+        Therefore, there is only one $3$-bit quantizer that minimizes the MSE --- the one with $8$ equally-spaced quantization intervals and $8$ equally-spaced representation points. It is unique.
     \end{itemize}
 \end{sol}
 
@@ -161,7 +161,7 @@
         and
         \begin{align}
             \frac{y(x)}{Q(x)}=\left\{\begin{array}{ll}
-                0,&x\leq 1-\varepsilon/2,\\
+                0,&x\leq-1-\varepsilon/2,\\
                 \frac{-x^2+(1+\varepsilon/2)^2}{-2x+3\varepsilon},&-1-\varepsilon/2<x\leq-1+\varepsilon/2,\\
                 \frac{1}{2},&-1+\varepsilon/2<x\leq-\varepsilon/2,\\
                 \frac{x^2-(\varepsilon/2)^2-2\varepsilon}{2x-3\varepsilon},&-\varepsilon/2<x\leq\varepsilon/2,\\
@@ -246,7 +246,7 @@
         \end{align}
         so the minimized MSE under the above assumption is
         \begin{align}
-            \text{MSE}=\frac{f_1L_1^{1/3}(L_1f_1^{1/3}+L_2f_2^{1/3})^2}{M^2}+\frac{f_2L_2^{1/3}(L_1f_1^{1/3}+L_2f_2^{1/3})^2}{M^2}=\frac{(L_1f_1^{1/3}+f_2f_2^{1/3})^3}{M^2}.
+            \text{MSE}=\frac{f_1L_1^{1/3}(L_1f_1^{1/3}+L_2f_2^{1/3})^2}{12M^2}+\frac{f_2L_2^{1/3}(L_1f_1^{1/3}+L_2f_2^{1/3})^2}{12M^2}=\frac{(L_1f_1^{1/3}+f_2f_2^{1/3})^3}{12M^2}.
         \end{align}
         \item[(c)] The Lloyd-Max algorithm converges at such a scheme:
         \begin{align*}
