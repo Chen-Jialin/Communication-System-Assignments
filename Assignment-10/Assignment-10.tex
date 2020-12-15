@@ -74,7 +74,7 @@
 \begin{prob}[6.4, Nyquist]
     Suppose that the PAM modulated baseband waveform $u(t)=\sum_{k=-\infty}^{\infty}u_kp(t-kT)$ is received. That is, $u(t)$ is known, $T$ is known, and $p(t)$ is known. We want to determine the signals $\{u_k\}$ from $u(t)$. Assume only linear operations can be used. That is, we wish to find some waveform $d_k(t)$ for each integer $k$ such that $\int_{-\infty}^{\infty}u(t)d_k(t)\,\mathrm{d}t=u_k$.
     \begin{itemize}
-        \item[(a)] What properties must be satisfied by $d_k(t)$ such that the above equation is satisfied no matter what values are taken by the other signals. $\cdots,u_{k-2},u_{k-1},u_{k+1},u_{k+2},\cdots$? These properties should take the from of constrains on the inner products $\langle p(t-kT),d_j(t)\rangle$. Do not worry about convergence, interchange of limits, etc.
+        \item[(a)] What properties must be satisfied by $d_k(t)$ such that the above equation is satisfied no matter what values are taken by the other signals, $\cdots,u_{k-2},u_{k-1},u_{k+1},u_{k+2},\cdots$? These properties should take the from of constrains on the inner products $\langle p(t-kT),d_j(t)\rangle$. Do not worry about convergence, interchange of limits, etc.
         \item[(b)] Suppose you find a function $d_0(t)$ that satisfies these constrains for $k=0$. Shown that, for each $k$, a function $d_k(t)$ satisfying these constrains can be found simply in terms of $d_0(t)$.
         \item[(c)] What is the relationship between $d_0(t)$ and a function $q(t)$ that avoids intersymbol interference in the approach taken in Section 6.3 (i.e. a function $q(t)$ such that $p(t)*q(t)$ is ideal Nyquist)?
     \end{itemize}
@@ -82,9 +82,55 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
-        \item[(c)] 
+        \item[(a)] In order that
+        \begin{align}
+            \int_{-\infty}^{+\infty}u(t)d_j(t)\,\mathrm{d}t=&\int_{-\infty}^{+\infty}\sum_{k=-\infty}^{+\infty}u_kp(t-kT)d_j(t)\,\mathrm{d}t=\sum_{k=-\infty}^{+\infty}u_k\int_{-\infty}^{+\infty}p(t-kT)d_j(t)\,\mathrm{d}t=u_j\quad\forall j,
+        \end{align}
+        $d_k(t)$ must satisfy that
+        \begin{align}
+            \label{P-4-dk(t)-constrain}
+            \langle p(t-kT),d_j(t)\rangle=\int_{-\infty}^{+\infty}p(t-kT)d_j(t)\,\mathrm{d}t=\delta_{jk},
+        \end{align}
+        where
+        \begin{align}
+            \delta_{jk}\equiv\left\{\begin{array}{ll}
+                1,&j=k;\\
+                0,&j\neq k.
+            \end{array}\right.
+        \end{align}
+        \item[(b)] Other $d_k(t)$ can be expressed in terms of $d_0(t)$ as
+        \begin{align}
+            d_k(t)=d_0(t-kT).
+        \end{align}
+        Here shows the reason: If $d_0(t)$ satisfies that
+        \begin{align}
+            \langle p(t-kT),d_0(t)\rangle=\int_{-\infty}^{+\infty}p(t-kT)d_0(t)\,\mathrm{d}t=\delta_{0k}\quad\forall k,
+        \end{align}
+        then for each $j$,
+        \begin{align}
+            \notag\langle p(t-kT),d_j(t)\rangle=&\int_{-\infty}^{+\infty}p(t-kT)d_j(t)\,\mathrm{d}t=\int_{-\infty}^{+\infty}p(t-kT)d_0(t-jT)\,\mathrm{d}t\\
+            =&\int_{-\infty}^{+\infty}p(t-(k-j)T)d_0(t)\,\mathrm{d}t=\delta_{jk}\quad\forall k.
+        \end{align}
+        \item[(c)] The filtered waveform is
+        \begin{align}
+            \notag r(t)=&\int_{-\infty}^{+\infty}u(\tau)q(\tau-t)\,\mathrm{d}\tau=\int_{-\infty}^{+\infty}\sum_{k=-\infty}^{+\infty}u_kp(\tau-kT)q(t-\tau)\,\mathrm{d}\tau=\sum_{k=-\infty}^{+\infty}u_k\int_{-\infty}^{+\infty}p(\tau-kT)q(t-\tau)\,\mathrm{d}\tau.
+        \end{align}
+        In order that sampled signal
+        \begin{align}
+            r(jT)=\sum_{k=-\infty}^{+\infty}u_k\int_{-\infty}^{+\infty}p(\tau-kT)q(jT-\tau)\,\mathrm{d}\tau=u_j,
+        \end{align}
+        $q(t)$ must satisfies that
+        \begin{align}
+            \langle p(t-kT),q(jT-t)\rangle=\int p(t-kT)q(jT-t)\,\mathrm{d}\tau=\delta_{jk}.
+        \end{align}
+        Comparing the above equation with equation \eqref{P-4-dk(t)-constrain}, the relationship between $d_j(t)$ and $q(t)$ is
+        \begin{align}
+            d_j(t)=q(jT-t).
+        \end{align}
+        For $j=0$, we have
+        \begin{align}
+            d_0(t)=q(-t).
+        \end{align}
     \end{itemize}
 \end{sol}
 
