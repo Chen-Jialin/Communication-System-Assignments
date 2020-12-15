@@ -6,15 +6,27 @@
     For any subspace $\mathcal{S}$ of an inner product space $\mathcal{V}$, define $\mathcal{S}^{\perp}$ as the set of vectors $\bm{v}\in\mathcal{V}$ that are orthogonal to all $\bm{w}\in\mathcal{S}$.
     \begin{itemize}
         \item[(a)] Show that $\mathcal{S}^{\perp}$ is a subspace of $\mathcal{V}$.
-        \item[(b)] Assuming that $\mathcal{S}$ is finite-dimensional, show that any $\bm{u}\in\mathcal{V}$ can be uniquely decomposed into $\bm{u}=\bm{u}_{\vert\mathcal{S}}+\bm{u}_{\perp\mathcal{S}}$, where $\bm{u}_{\vert\mathcal{S}}\in\mathcal{S}^{\perp}$.
-        \item[(c)] Assuming that $\mathcal{V}$ is finite-dimensional, show that $\mathcal{V}$ has an orthonormal basis where some of the basis vectors form a basis for $\mathcal{S}$ and the remaining basis vector form a basis for $\mathcal{S}^{\perp}$.
+        \item[(b)] Assuming that $\mathcal{S}$ is finite-dimensional, show that any $\bm{u}\in\mathcal{V}$ can be uniquely decomposed into $\bm{u}=\bm{u}_{\vert\mathcal{S}}+\bm{u}_{\perp\mathcal{S}}$, where $\bm{u}_{\vert\mathcal{S}}\in\mathcal{S}$ and $\bm{u}_{\perp\mathcal{S}}\in\mathcal{S}^{\perp}$.
+        \item[(c)] Assuming that $\mathcal{V}$ is finite-dimensional, show that $\mathcal{V}$ has an orthonormal basis where some of the basis vectors form a basis for $\mathcal{S}$ and the remaining basis vectors form a basis for $\mathcal{S}^{\perp}$.
     \end{itemize}
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
-        \item[(c)] 
+        \item[(a)] $\mathcal{S}^{\perp}$ satisfies the following two conditions:
+        \begin{itemize}
+            \item[(i)] $\bm{0}\in\mathcal{S}^{\perp}$, since $\bm{0}\in\mathcal{V}$ and $\bm{0}\cdot\bm{w}=0\;\forall\bm{w}=\mathcal{S}$;
+            \item[(ii)] If $\bm{v}_1,\bm{v}_2\in\mathcal{S}^{\perp}$, i.e. $\bm{v}_1,\bm{v}_2\in\mathcal{V}$ and $\bm{v}_1\cdot\bm{w}=0$, $\bm{v}_2\cdot\bm{w}=0\;\forall\bm{w}\in\mathcal{S}$, then $\alpha\bm{v}_1+\beta\bm{v}_2\in\mathcal{V}$ and $(\alpha\bm{v}_1+\beta\bm{v}_2)\cdot\bm{w}=\alpha\bm{v}_1\cdot\bm{w}+\beta\bm{v}_2\cdot\bm{w}=0\;\forall\bm{w}\in\mathcal{S}$, so $\alpha\bm{v}_1+\beta\bm{v}_2\in\mathcal{S}^{\perp}$, where $\alpha,\beta$ are arbitrary scalars.
+        \end{itemize}
+        Therefore, $\mathcal{S}^{\perp}$ is a subspace of $\mathcal{V}$.
+        \item[(b)] According to Projection theorem (Theorem 5.3.1), since $\mathcal{S}$ is a subspace of the inner product space $\mathcal{V}$, for any $\bm{u}\in\bm{V}$, there is a unique vector $\bm{u}_{\vert\mathcal{S}}\in\mathcal{S}$ such that $(\bm{u}-\bm{u}_{\vert\mathcal{S}})\cdot\bm{s}=0\;\forall\bm{s}\in\mathcal{S}$ where $\bm{u}-\bm{u}_{\vert\mathcal{S}}=\bm{u}_{\perp\mathcal{S}}\in\mathcal{S}^{\perp}$. Therefore, any $\rm{u}\in\mathcal{V}$ an be uniquely decomposed into $\bm{u}=\bm{u}_{\vert\mathcal{S}}+\bm{u}_{\perp\mathcal{S}}$, where $\bm{u}_{\vert\mathcal{S}}=\mathcal{S}$ and $\bm{u}_{\perp\mathcal{S}}\in\mathcal{S}^{\perp}$.
+        \item[(c)] Since $\mathcal{S}$ is a subspace, we can find an orthonormal basis of $\mathcal{S}$, say, $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}$. For any $\bm{u}_{\vert\mathcal{S}}\in\mathcal{S}$, we can decompose it uniquely into the linear combination of $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}$: $\bm{u}_{\vert\mathcal{S}}=\sum_{k=1}^{n_1}\alpha_j\bm{s}_j$.\\
+        Similarly, since $\mathcal{S}^{\perp}$ is a subspace, we can find an orthonormal basis of $\mathcal{S}^{\perp}$, say, $\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$. For any $\bm{u}_{\perp\mathcal{S}}\in\mathcal{S}$, we can decompose it uniquely into the linear combination of $\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$: $\bm{u}_{\perp\mathcal{S}}=\sum_{j=1}^{n_2}\beta_j\bm{t}_j$.\\
+        Now we prove that $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}\cup\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$ is a orthonormal basis of $\mathcal{V}$:
+        \begin{itemize}
+            \item[(i)] $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}\cup\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$ is a basis of $\mathcal{S}$, since for any $\bm{u}\in\mathcal{V}$, we can first decompose it uniquely into $\bm{u}=\bm{u}_{\vert\mathcal{S}}+\bm{u}_{\perp\mathcal{S}}$, where $\bm{u}_{\vert\mathcal{S}}\in\mathcal{S}$ and $\bm{u}_{\perp\mathcal{S}}\in\mathcal{S}^{\perp}$, and then decompose it uniquely into $\bm{u}=\sum_{k=1}^{n_1}\alpha_k\bm{s}_k+\sum_{j=1}^{n_2}\beta_j\bm{t}_j$;
+            \item[(ii)] $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}\cup\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$ is orthonormal, since $\{\bm{s}_k\vert k=1,2,\cdots,n_1\}$ is orthonormal, $\{\bm{t}_j\vert j=1,2,\cdots,n_2\}$ is orthonormal, and for any $\bm{s}_k$ and $\bm{t}_j$, the definition of $\mathcal{S}^{\perp}$ requires that $\bm{s}_k\cdot\bm{t}_j=0$.
+        \end{itemize}
+        Therefore, $\mathcal{V}$ has an orthonormal basis where some of the basis vectors form a basis for $\mathcal{S}$ and the remaining basis vectors form a basis for $\mathcal{S}^{\perp}$.
     \end{itemize}
 \end{sol}
 
