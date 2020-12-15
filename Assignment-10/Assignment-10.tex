@@ -145,10 +145,26 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
+        \item[(a)] Since
+        \begin{align}
+            g(0)=v(0)\sinc(0)=1,
+        \end{align}
+        and
+        \begin{align}
+            g(kT)=v(kT)\sinc(k)=0\quad\forall k\neq 0,
+        \end{align}
+        $g(t)$ is ideal Nyquist with interval $T$.
         \item[(b)] 
-        \item[(c)] 
-        \item[(d)] 
+        \begin{align}
+            \hat{g}(t)=\mathcal{F}[v(t)\sinc(t/T)]=\hat{v}(f)*T\rect(Tf)=T\int_{-\infty}^{+\infty}\hat{v}(s)\rect(T(s-f))\,\mathrm{d}s=T\int_{f-\frac{1}{2T}}^{f+\frac{1}{2T}}\hat{v}(s)\,\mathrm{d}s.
+        \end{align}
+        \item[(c)] Since
+        \begin{align}
+            \notag\sum_k\hat{g}\left(f+\frac{k}{T}\right)\rect(fT)=&\sum_kT\int_{f-\frac{1}{2T}+\frac{k}{T}}^{f+\frac{1}{2T}+\frac{k}{T}}\hat{v}(s)\,\mathrm{d}s\rect(fT)=T\rect(fT)\int_{-\infty}^{+\infty}\hat{v}(s)\,\mathrm{d}s\\
+            =&T\rect(fT)v(t=0)=T\rect(fT),
+        \end{align}
+        $\hat{g}(f)$ satisfies the Nyquist criterion.
+        \item[(d)] If $v(t)$ is baseband-limited to $B_b$, then $g(t)$ is baseband-limited to $B_b+\frac{1}{2T}$.
     \end{itemize}
 \end{sol}
 
