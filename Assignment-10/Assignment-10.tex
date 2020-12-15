@@ -42,14 +42,32 @@
 
 \begin{prob}[6.3]
     \begin{itemize}
-        \item[(a)] Assume that the received signal in a $4$-PAM system is $V_k=U_k+Z_k$, where $U_k$ is the transmitted $4$-PAM signal at time $k$. Let $Z_k$ be independent of $U_k$ and Gaussian with density $f_Z(z)=\sqrt{1/2\pi}\exp(-z^2/2)$. Assume that the receiver chooses the signal $\tilde{U}_k$ closest to $V_k$. (It is shown in Chapter 8 that this detection rule minimizes $P_e$ for equiprobable signals.) Find the probability $P_e$ (in terms of Gaussian intervals) that $U_k\neq\tilde{U}_k$.
+        \item[(a)] Assume that the received signal in a $4$-PAM system is $V_k=U_k+Z_k$, where $U_k$ is the transmitted $4$-PAM signal at time $k$. Let $Z_k$ be independent of $U_k$ and Gaussian with density $f_Z(z)=\sqrt{1/2\pi}\exp(-z^2/2)$. Assume that the receiver chooses the signal $\tilde{U}_k$ closest to $V_k$. (It is shown in Chapter 8 that this detection rule minimizes $P_e$ for equiprobable signals.) Find the probability $P_e$ (in terms of Gaussian integrals) that $U_k\neq\tilde{U}_k$.
         \item[(b)] Evaluate the partial derivative of $P_e$ with respect to the third signal point $a_3$ (i.e. the positive inner signal point) at the point where $a_3$ is equal to its value $d/2$ in standard $4$-PAM and all other signal points are kept at $4$-PAM values. [Hint. This does not require any calculation.]
     \end{itemize}
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
+        \item[(a)] Suppose the signal constellation of the $4$-PAM system is $\mathcal{A}=\{a_1=-\frac{3}{2}d,a_2=-\frac{d}{2},a_3=\frac{d}{2},a_4=\frac{3}{2}d\}$. If $U_k=a_1$ or $U_k=a_4$, the probability that $U_k\neq\tilde{U}_k$ is
+        \begin{align}
+            P_e=\int_{\frac{d}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z=Q\left(\frac{d}{2}\right),
+        \end{align}
+        where $Q$-function
+        \begin{align}
+            Q(x)=\int_x^{+\infty}\frac{1}{\sqrt{2\pi}}e^{-z^2/2}\,\mathrm{d}z
+        \end{align}
+        If $U_k=a_2$ or $U_k=a_3$, the probability that $U_k\neq\tilde{U}_k$ is
+        \begin{align}
+            P_e=\int_{-\infty}^{-\frac{d}{2}}f_Z(z)\,\mathrm{d}z+\int_{\frac{d}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z=2\int_{\frac{d}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z=2Q\left(\frac{d}{2}\right).
+        \end{align}
+        \item[(b)] Suppose the third signal point is moved to $a_3'=\frac{d}{2}+\epsilon$. For $U_k=a_3'$, the probability that $U_k\neq\tilde{U}_k$ becomes
+        \begin{align}
+            P_e'=\int_{-\infty}^{-\frac{d+\epsilon}{2}}f_Z(z)\,\mathrm{d}z+\int_{\frac{d-\epsilon}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z=\int_{\frac{d+\epsilon}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z+\int_{\frac{d-\epsilon}{2}}^{+\infty}f_Z(z)\,\mathrm{d}z=Q\left(\frac{d+\epsilon}{2}\right)+Q\left(\frac{d-\epsilon}{2}\right),
+        \end{align}
+        so the partial derivative of $P_e$ with respect to the third signal points $a_3$ is
+        \begin{align}
+            \frac{\partial P_e}{\partial a_3}=\lim_{\epsilon\rightarrow 0}\frac{P_e'-P_e}{\epsilon}=\lim_{\epsilon\rightarrow 0}\frac{Q\left(\frac{d+\epsilon}{2}\right)+Q\left(\frac{d-\epsilon}{2}\right)-2Q\left(\frac{d}{2}\right)}{\epsilon}=0.
+        \end{align}
     \end{itemize}
 \end{sol}
 
