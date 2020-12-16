@@ -288,12 +288,74 @@
             \psi_{k,1}(t)=&\re[2\theta_k(t)e^{2\pi if_ct}],\\
             \psi_{k,2}(t)=&\im[-2\theta_k(t)e^{2\pi if_ct}].
         \end{align*}
-        The set $\{\psi_{k,j};k\in\mathbb{Z},j\in\{1,2\}\}$ is an orthogonal set of functions, each with energy $2$. Furthermore if $u(f)=\sum_ku_k\theta_k(t)$, then the corresponding passband function $x(t)=2\re[u(t)e^{2\pi if_ct}]$ is given by
+        The set $\{\psi_{k,i};k\in\mathbb{Z},i\in\{1,2\}\}$ is an orthogonal set of functions, each with energy $2$. Furthermore, if $u(f)=\sum_ku_k\theta_k(t)$, then the corresponding passband function $x(t)=2\re[u(t)e^{2\pi if_ct}]$ is given by
         \[
             x(t)=\sum_k\re[u_k]\psi_{k,1}(t)+\im[u_k]\psi_{k,2}(t).
         \]
     \end{framed}
 \end{prob}
 \begin{sol}
+    \begin{align}
+        \psi_{k,1}(t)=&\theta_k(t)e^{2\pi if_ct}+\theta_k^*(t)e^{-2\pi if_ct},\\
+        \psi_{k,2}(t)=&i[\theta_k(t)e^{2\pi if_ct}-\theta_k^*(t)e^{2\pi if_ct}],
+    \end{align}
+    have Fourier transforms
+    \begin{align}
+        \hat{\psi_{k,1}}(f)=&\hat{\theta}_k(f-f_c)+\hat{\theta}_k^*(-f-f_c),\\
+        \hat{\psi_{k,2}}(f)=&i[\hat{\theta}_k(f-f_c)-\hat{\theta}_k^*(-f-f_c)].
+    \end{align}
+    Since $\{\theta_k(t)\}$ is an orthonormal set, according to Parseval's theorem, we have
+    \begin{align}
+        \notag\langle\theta_k(t),\theta_j(t)\rangle=&\int_{-\infty}^{+\infty}\theta_k(t)\theta_k^*(t)\,\mathrm{d}t=\int_{-\infty}^{+\infty}\hat{\theta}_k(f)\hat{\theta}_j^*(f)\,\mathrm{d}f=\langle\hat{\theta}_k(f),\hat{\theta}_j(f)\rangle=\delta_{jk}.
+    \end{align}
+    Now let's look at the inner products of the functions in $\{\psi_{k,i};k\in\mathbb{Z},i\in\{1,2\}\}$:
+    \begin{itemize}
+        \item[(i)] 
+        \begin{align}
+            \notag\langle\psi_{k,1}(t),\psi_{j,1}(t)\rangle=&\langle\hat{\psi}_{k,1}(f),\hat{\psi}_{j,1}(f)\rangle=\int_{-\infty}^{+\infty}[\hat{\theta}_k(f-f_c)+\hat{\theta}_k^*(-f-f_c)][\hat{\theta}_j(f-f_c)+\hat{\theta}_j(-f-f_c)]^*\,\mathrm{d}f\\
+            \notag=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            &+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f.
+        \end{align}
+        Since $\{\theta_k(t):k\in\mathbb{Z}\}$ are limited to the frequency band $[-B/2,B/2]$, $\hat{\theta}_k(f-f_c)$ and $\hat{\theta}_j^*(f-f_c)$ are band-limited to $[f_c-B/2,f_c+B/2]$, and $\hat{\theta}_k^*(-f-f_c)$ and $\hat{\theta}_j(-f-f_c)$ are band-limited to $[-f_c-B/2,-f_c+B/2]$. Since $f>B/2$, the frequency band $[-f_c-B/2,-f_c+B/2]$ and $[f_c-B/2,f_c+B/2]$ do not overlap, so the integral $\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_k(-f-f_c)\,\mathrm{d}f$ and $\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f$ vanishes. In this way,
+        \begin{align}
+            \notag\langle\psi_{k,1}(t),\psi_{j,1}(t)\rangle=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            \notag=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f)\hat{\theta}_j(f)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(f)\hat{\theta}_j(f)\,\mathrm{d}f\\
+            =&2\delta_{jk}.
+        \end{align}
+        \item[(ii)] 
+        \begin{align}
+            \notag\langle\psi_{k,2}(t),\psi_{j,2}(t)\rangle=&\langle\hat{\psi}_{k,2}(f),\psi_{j,2}(f)\rangle=\int_{-\infty}^{+\infty}[\hat{\theta}_k(f-f_c)-\theta_k^*(-f-f_c)][\hat{\theta}_j(f-f_c)-\theta_j^*(-f-f_c)]^*\,\mathrm{d}f\\
+            \notag=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f-\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            &-\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f.
+        \end{align}
+        where $\int_{-\infty}^{+\infty}\hat{\theta}_k^(f-f_c)\hat{\theta}_j^(-f-f_c)\,\mathrm{d}f$ and $\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f$ vanishes. In this way,
+        \begin{align}
+            \notag\langle\psi_{k,2}(t),\psi_{j,2}(t)\rangle=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            \notag=&\int_{-\infty}^{+\infty}\hat{\theta}_k(f)\hat{\theta}_j(f)\,\mathrm{d}f+\int_{-\infty}^{+\infty}\hat{\theta}_k^*(f)\hat{\theta}_j(f)\,\mathrm{d}f\\
+            =&2\delta_{jk}.
+        \end{align}
+        \item[(iii)] 
+        \begin{align}
+            \notag\langle\psi_{k,1}(t),\psi_{j,2}(t)\rangle=&\langle\hat{\psi}_{k,1}(f),\hat{\psi}_{j,2}(f)\rangle=-i\int_{-\infty}^{+\infty}[\hat{\theta}_k(f-f_c)+\hat{\theta}_k^*(-f-f_c)][\hat{\theta}_j(f-f_c)-\hat{\theta}_j^*(-f-f_c)]^*\,\mathrm{d}f\\
+            \notag=&-i\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_k^*(f-f_c)\,\mathrm{d}f+i\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            \notag&-i\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j^*(f-f_c)\,\mathrm{d}f+i\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(-f-f_c)\,\mathrm{d}f\\
+            \notag=&-i\delta_{jk}+0-0+i\delta_{jk}\\
+            =&0.
+        \end{align}
+    \end{itemize}
+    In general,
+    \begin{align}
+        \langle\psi_{k,m}(t),\psi_{j,n}(t)\rangle=2\delta_{jk}\delta_{mn}.
+    \end{align}
+    Therefore, the set of $\{\psi_{k,i};k\in\mathbb{Z},i\in\{1,2\}\}$ is an orthogonal set of functions, each with energy $2$.
+
+    (As mentioned above, only if $f_c>B/2$, can we eliminate the terms, such as $\int_{-\infty}^{+\infty}\hat{\theta}_k(f-f_c)\hat{\theta}_k(-f-f_c)\,\mathrm{d}f$ and $\int_{-\infty}^{+\infty}\hat{\theta}_k^*(-f-f_c)\hat{\theta}_j(f-f_c)\,\mathrm{d}f$, and get the above inner products. This is why we need $f_c>B/2$.)
+
+    If $u(f)=\sum_ku_k\theta_k(t)$, the corresponding passband function $x(t)$ is
+    \begin{align}
+        \notag x(t)=&2\re[u(t)e^{2\pi if_ct}]=2\re[\sum_ku_k\theta_k(t)e^{2\pi if_ct}]\\
+        \notag=&\sum_k\{2\re[u_k]\re[\theta_k(t)e^{2\pi if_ct}]-2\im[u_k]\im[\theta_k(t)e^{2\pi if_ct}]\}\\
+        =&\sum_k\re[u_k]\psi_{k,1}(t)+\im[u_k]\psi_{k,2}(t).
+    \end{align}
 \end{sol}
 \end{document}
