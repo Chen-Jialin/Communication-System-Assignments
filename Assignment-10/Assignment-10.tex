@@ -172,7 +172,7 @@
     Consider a PAM baseband system in which the modulator is defined by a signal interval $T$ and a waveform $p(t)$, the channel is defined by a filter $h(t)$, and the receiver is defined by a a filter $q(t)$ which is sampled at $T$-spaced intervals. The received waveform, after the receiver filter $q(t)$, is then given by $r(t)=\sum_ku_kg(t-kT)$, where $g(t)=p(t)*h(t)*q(t)$.
     \begin{itemize}
         \item[(a)] What properties must $g(t)$ have so that $r(kT)=u_k$ for all $k$ and for all choices of input $\{u_k\}$? What is the Nyquist criterion for $\hat{g}(f)$?
-        \item[(b)] Now assume that $T=1/2$ and that $p(t)$, $h(t)$, $q(t)$ and all their Fourier transforms are restricted to be real. Assume further that $\hat{p}(f)$ and $\hat{h}(f)$ are specified by \ref{Figure 6.10}, i.e. by
+        \item[(b)] Now assume that $T=1/2$ and that $p(t)$, $h(t)$, $q(t)$ and all their Fourier transforms are restricted to be real. Assume further that $\hat{p}(f)$ and $\hat{h}(f)$ are specified by Figure \ref{Figure 6.10}, i.e. by
         \[
             \hat{p}(f)=\left\{\begin{array}{ll}
                 1&\abs{f}\leq 0.5;\\
@@ -198,10 +198,85 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
-        \item[(c)] 
-        \item[(d)] 
+        \item[(a)] In order that
+        \begin{align}
+            r(kT)=\sum_ju_jg((k-j)T)=u_k,
+        \end{align}
+        $g(t)$ must have the property that
+        \begin{align}
+            g(kt)=\left\{\begin{array}{ll}
+                1,&k=0;\\
+                0,&k\neq 0.
+            \end{array}\right.
+        \end{align}
+        \item[(b)] \uline{It is possible}. Since
+        \begin{align}
+            g(t)=p(t)*h(t)*q(t),
+        \end{align}
+        we have
+        \begin{align}
+            \hat{g}(f)=\hat{p}(f)\hat{h}(f)\hat{q}(f).
+        \end{align}
+        Now
+        \begin{align}
+            \hat{p}(f)\hat{h}(f)=\left\{\begin{array}{ll}
+                1,&\abs{f}\leq\frac{1}{2};\\
+                1.5-\abs{f},&\frac{1}{2}<\abs{f}\leq\frac{3}{4};\\
+                0,&\frac{3}{4}<\abs{f}\leq 1;\\
+                1.5-\abs{f},&1<\abs{f}\leq\frac{5}{4};\\
+                0,&\abs{f}>\frac{5}{4}.
+            \end{array}\right.
+        \end{align}
+        To avoid intersymbol interference, $g(t)$ must satisfies Nyquist criterion, i.e., $g(t)$ must be band-edge symmetric
+        \begin{align}
+            \hat{g}(f)+g(2-f)=T=\frac{1}{2},\quad 0\leq f\leq 1.
+        \end{align}
+        so
+        \begin{align}
+            \hat{g}(f)=\left\{\begin{array}{ll}
+                1,&0\leq\abs{f}\leq\frac{3}{4};\\
+                0,&\frac{3}{4}<\abs{f}\leq 1;\\
+                1,&1<\abs{f}\leq\frac{5}{4};\\
+                0,&\abs{f}>\frac{5}{4}.
+            \end{array}\right.
+        \end{align}
+        To give such a $\hat{g}(f)$, we need $\hat{q}(f)$ satisfies
+        \begin{align}
+            \hat{q}(f)=\left\{\begin{array}{ll}
+                \frac{1}{2},&0\leq\abs{f}\leq\frac{1}{2};\\
+                \frac{1}{3-2\abs{f}},&\frac{1}{2}<\abs{f}\leq\frac{3}{4};\\
+                \frac{1}{3-2\abs{f}},&1<\abs{f}\leq\frac{5}{4},
+            \end{array}\right.
+        \end{align}
+        where $\hat{q}(f)$ is nonunique in region $\frac{3}{4}<\abs{f}\leq 1$ and $\abs{f}>\frac{5}{4}$. One possible $q(f)$ is
+        \begin{align}
+            \hat{q}(f)=\left\{\begin{array}{ll}
+                \frac{1}{2},&0\leq\abs{f}\leq\frac{1}{2};\\
+                \frac{1}{3-2\abs{f}},&\frac{1}{2}<\abs{f}\leq\frac{5}{4};\\
+                0,&\abs{f}>\frac{5}{4}.
+            \end{array}\right.
+        \end{align}
+        \item[(c)] If
+        \begin{align}
+            \hat{h}(f)=\left\{\begin{array}{ll}
+                1,&\abs{f}\leq\frac{3}{4};\\
+                0,&\abs{f}>\frac{3}{4}.
+            \end{array}\right.
+        \end{align}
+        \uline{It is impossible to find $\hat{q}(f)$ so that there is no intersymbol interference.} Here is the reason: Now
+        \begin{align}
+            \hat{p}(f)\hat{h}(f)=\left\{\begin{array}{ll}
+                1,&0\leq\abs{f}\leq\frac{1}{2};\\
+                1.5-\abs{f},&\frac{1}{2}<\abs{f}\leq\frac{3}{4};\\
+                0,&\abs{f}>\frac{3}{4}.
+            \end{array}\right.,
+        \end{align}
+        so
+        \begin{align}
+            \hat{g}(f)=0,\quad\text{for }\abs{f}>\frac{3}{4}.
+        \end{align}
+        Therefore, no matter how $\hat{q}(f)$ be, there is no way for $\hat{g}(f)$ to be band-edge symmetric and thus no way for intersymbol interference.
+        \item[(d)] Condition $\hat{p}(f)\hat{h}(f)$ under which intersymbol interference can be avoid by choice of $\hat{q}(f)$: \emph{For any $\abs{f}\leq 1$, if $\hat{p}(f)\hat{h}(f)=0$, then $\hat{p}(2-f)\hat{h}(2-f)\neq 0$.}
     \end{itemize}
 \end{sol}
 
