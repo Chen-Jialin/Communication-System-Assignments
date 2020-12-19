@@ -36,7 +36,7 @@
         To give minimum expected cost, the decision should be
         \begin{align}
             \notag\tilde{U}_{\text{mincost}}=&\arg\min_j\{E[\text{cost of making decision }\tilde{U}=j]\\
-            =&\arg\min[C_{0j}p_{U\vert V}(0\vert v)+C_{1j}p_{U\vert V}(1\vert v)].
+            =&\arg\min_j[C_{0j}p_{U\vert V}(0\vert v)+C_{1j}p_{U\vert V}(1\vert v)].
         \end{align}
         \item[(b)] The min cost decision can be expressed as
         \begin{align}
@@ -68,13 +68,48 @@
     Consider the following two equiprobable hypothesis:
     \begin{align*}
         U=0\quad:&\quad V_1=a\cos\Theta+Z_1,\quad V_2=a\sin\Theta+Z_2,\\
-        U=1\quad:&\quad V_2=-a\cos\Theta+Z_1,\quad V_2=-a\sin\Theta+Z_2.
+        U=1\quad:&\quad V_1=-a\cos\Theta+Z_1,\quad V_2=-a\sin\Theta+Z_2.
     \end{align*}
     $Z_1$ and $Z_2$ are iid $\mathcal{N}(0,\sigma^2)$, and $\Theta$ takes on the values $\{-\pi/4,0,\pi/4\}$ each with probability $1/3$.\\
     Find the ML decision rule when $V_1$ and $V_2$ are observed.\\
     \emph{Hint:} Sketch the possible values of $V_1$ and $V_2$ for $\bm{Z}=0$ given each hypothesis. Then, without doing any calculations try to come up with a good intuitive decision rule. Then try to verify that it is optimal.
 \end{prob}
 \begin{sol}
-    
+    If $\bm{Z}=0$, then possible value of $(V_1,V_2)$ are shown as the points in figure \ref{P-2}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.4\columnwidth]{A-11-P-2.eps}
+        \caption{Possible value of $(V_1,V_2)$ if $\bm{Z}=0$.}
+        \label{P-2}
+    \end{figure}
+
+    According to figure \ref{P-2}, guess that the ML decision rule is
+    \begin{align}
+        V_1\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}1.
+    \end{align}
+
+    Now we prove that the above rule is optimal: The joint pdf of $(V_1,V_2)$ conditional on $U=0$ is
+    {\footnotesize
+    \begin{align}
+        \notag f_{(V_1,V_2)\vert U}((v_1,v_2)\vert U=0)=&\frac{1}{3}\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(v_2+\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\\
+        \notag&+\frac{1}{3}\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(v_1-a\right)^2}{2\sigma^2}\right]\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{v_2^2}{2\sigma^2}\right]\\
+        \notag&+\frac{1}{3}\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{\left(v_2-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\\
+        =&\frac{1}{6\pi\sigma^2}\left\{\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2+\left(v_2+\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1-a\right)^2+v_2^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2+\left(v_2-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\right\}.
+    \end{align}
+    }
+    Similarly, the joint pdf of $(V_1,V_2)$ conditional on $U=1$ is
+    {\footnotesize
+    \begin{align}
+        f_{(V_1,V_2)\vert U}((v_1,v_2)\vert U=1)=\frac{1}{6\pi\sigma^2}\left\{\exp\left[-\frac{\left(v_1+\frac{a}{\sqrt{2}}\right)^2+\left(v_2+\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1+a\right)^2+v_2^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1+\frac{a}{\sqrt{2}}\right)^2+\left(v_2-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]\right\}.
+    \end{align}
+    }
+    ML decision rule is
+    \begin{align}
+        \frac{f_{(V_1,V_2)\vert U}((v_1,v_2)\vert 0)}{f_{(V_1,V_2)\vert U}((v_1,v_2)\vert 1)}\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}&1,\\
+        \Longrightarrow\frac{\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2+\left(v_2+\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1-a\right)^2+v_2^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1-\frac{a}{\sqrt{2}}\right)^2+\left(v_2-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]}{\exp\left[-\frac{\left(v_1+\frac{a}{\sqrt{2}}\right)^2+\left(v_2+\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1+a\right)^2+v_2^2}{2\sigma^2}\right]+\exp\left[-\frac{\left(v_1+\frac{a}{\sqrt{2}}\right)^2+\left(v_2-\frac{a}{\sqrt{2}}\right)^2}{2\sigma^2}\right]}\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}&1,\\
+        \Longrightarrow\frac{\exp\left[\frac{\sqrt{2}av_1-\sqrt{2}av_2}{2\sigma^2}\right]+\exp\left[\frac{2av_1}{2\sigma^2}\right]+\exp\left[\frac{\sqrt{2}av_1+\sqrt{2}av_2}{2\sigma^2}\right]}{\exp\left[\frac{-\sqrt{2}av_1-\sqrt{2}av_2}{2\sigma^2}\right]+\exp\left[\frac{-2av_1}{2\sigma^2}\right]+\exp\left[\frac{-\sqrt{2}av_1+\sqrt{2}av_2}{2\sigma^2}\right]}\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}&1,\\
+        \Longrightarrow\exp\left[\frac{2\sqrt{2}av_1}{2\sigma^2}\right]\frac{\exp\left[\frac{-\sqrt{2}av_2}{2\sigma^2}\right]+\exp\left[\frac{(2-\sqrt{2})av_1}{2\sigma^2}\right]+\exp\left[\frac{\sqrt{2}av_2}{2\sigma^2}\right]}{\exp\left[\frac{-\sqrt{2}av_2}{2\sigma^2}\right]+\exp\left[\frac{(-2+\sqrt{2})av_1}{2\sigma^2}\right]+\exp\left[\frac{\sqrt{2}av_2}{2\sigma^2}\right]}\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}&1,\\
+        \Rightarrow v_1\overset{\hat{U}=0}{\underset{\hat{U}=1}{\gtreqless}}&1.
+    \end{align}
 \end{sol}
 \end{document}
