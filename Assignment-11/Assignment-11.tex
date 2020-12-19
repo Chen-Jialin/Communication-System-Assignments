@@ -6,7 +6,7 @@
     \begin{itemize}
         \item[(a)] Consider a binary hypothesis testing problem with a priori probabilities $p_0$, $p_1$ and likelihoods $f_{V\vert U}(v\vert i)$, $i=0,1$. Let $C_{ij}$ be the cost of deciding on hypothesis $j$ when $i$ is correct. Conditional on a observation $V=v$, find the expected cost (over $U=0,1$) of making the decision $\tilde{U}=j$ for $j=0,1$. Show that the decision of minimum expected cost is given by
         \[
-            \tilde{U}_{\text{mincost}}=\arg\min_j\left[C_0p_{U\vert V}(0\vert v)+C_1p_{U\vert V}(1\vert v)\right]
+            \tilde{U}_{\text{mincost}}=\arg\min_j\left[C_{0j}p_{U\vert V}(0\vert v)+C_{1j}p_{U\vert V}(1\vert v)\right]
         \]
         \item[(b)] Show that the min cost decision above can be expressed as the following threshold test:
         \[
@@ -17,9 +17,50 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
-        \item[(b)] 
-        \item[(c)] 
+        \item[(a)] The expected cost of making the decision $\tilde{U}=0$ is
+        \begin{align}
+            E[\text{cost of making decision }\tilde{U}=0]=C_{00}p_{U\vert V}(0\vert v)+C_{10}p_{U\vert V}(1\vert v).
+        \end{align}
+        The expected cost of making the decision $\tilde{U}=1$ is
+        \begin{align}
+            E[\text{cost of making decision }\tilde{U}=1]=C_{01}p_{U\vert V}(0\vert v)+C_{11}p_{U\vert V}(1\vert v)
+        \end{align}
+        In general, the expected cost of making decision $\tilde{U}=j$ is
+        \begin{align}
+            \notag E[\text{cost of making decision }\tilde{U}=j]=&\left\{\begin{array}{ll}
+                C_{00}p_{U\vert V}(0\vert v)+C_{10}p_{U\vert V}(1\vert v),&j=0;\\
+                C_{01}p_{U\vert V}(0\vert v)+C_{11}p_{U\vert V}(1\vert v),&j=1,
+            \end{array}\right.\\
+            =&C_{0j}p_{U\vert V}(0\vert v)+C_{1j}p_{U\vert V}(1\vert v).
+        \end{align}
+        To give minimum expected cost, the decision should be
+        \begin{align}
+            \notag\tilde{U}_{\text{mincost}}=&\arg\min_j\{E[\text{cost of making decision }\tilde{U}=j]\\
+            =&\arg\min[C_{0j}p_{U\vert V}(0\vert v)+C_{1j}p_{U\vert V}(1\vert v)].
+        \end{align}
+        \item[(b)] The min cost decision can be expressed as
+        \begin{align}
+            C_{00}p_{U\vert V}(0\vert v)+C_{10}p_{U\vert V}(1\vert v)\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}&C_{01}p_{U\vert V}(0\vert v)+C_{11}p_{U\vert V}(1\vert v),\\
+            \Longrightarrow(C_{00}-C_{01})p_{U\vert V}(0\vert v)\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}&(C_{11}-C_{10})p_{U\vert V}(1\vert v).
+        \end{align}
+        where according to Bayes' theorem
+        \begin{align}
+            p_{U\vert V}(0\vert v)=&\frac{p_0f_{V\vert U}(v\vert 0)}{P_V(v)},\\
+            p_{U\vert V}(1\vert v)=&\frac{p_1f_{V\vert U}(v\vert 1)}{P_V(v)}.
+        \end{align}
+        Therefore, the min cost decision can be expressed as
+        \begin{align}
+            (C_{00}-C_{01})\frac{p_0f_{V\vert U}(v\vert 0)}{P_V(v)}\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}&(C_{11}-C_{10})\frac{p_1f_{V\vert U}(v\vert 1)}{P_V(v)},\\
+            \Longrightarrow\Lambda(v)=\frac{f_{V\vert U}(v\vert 0)}{f_{V\vert U}(v\vert 1)}\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}&\frac{p_1(C_{10}-C_{11})}{p_0(C_{01}-C_{00})}=\eta.
+        \end{align}
+        \item[(c)] The MAP rule is
+        \begin{align}
+            \hat{U}(v)=\arg\max_j[p_{U\vert V}(j\vert v)],\\
+            \Longrightarrow p_{U\vert V}(0\vert v)\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}p_{U\vert V}(1\vert v),\\
+            \Longrightarrow\frac{p_0f_{V\vert U}(v\vert 0)}{P_V(v)}\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}\frac{p_1f_{V\vert U}(v\vert 1)}{P_V(v)},\\
+            \Longrightarrow\Lambda(v)=\frac{f_{V\vert U}(v\vert 0)}{f_{V\vert U}(v\vert 1)}\overset{\tilde{U}=0}{\underset{\tilde{U}=1}{\gtreqless}}\frac{p_1}{p_0},
+        \end{align}
+        which can be regarded as a special case of the min cost decision rule that $C_{10}-C_{11}=C_{01}-C_{00}$. Therefore, the only difference between a MAP test and a minimum cost test is an adjustment of the threshold to take account of the cost, i.e., a large cost of an error of one type equivalent to having a large a priori probability for that hypothesis.
     \end{itemize}
 \end{sol}
 
