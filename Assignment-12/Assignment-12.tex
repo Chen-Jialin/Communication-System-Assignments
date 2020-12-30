@@ -1,0 +1,52 @@
+\documentclass{assignment}
+\UsingEnglish
+\ProjectInfos*{Intro to Communication System}{EE140}{Fall, 2020}{Assignment }{Due time : Nil}{陈稼霖}{45875852}
+\begin{document}
+\begin{prob}[8.9, otrhogonal signal sets; continuation of Exercise 8.8]
+    Consider a set $\mathcal{A}=\{\bm{a}_m,0\leq m\leq M-1\}$ of $M$ orthogonal vectors in $\mathbb{R}^M$ with equal energy $E$.
+    \begin{itemize}
+        \item[(a)] Use the union bound to show that $\mathrm{Pr}(e)$, using ML detection, is bounded by
+        \[
+            \mathrm{Pr}(e)\leq(M-1)Q(\sqrt{E/N_0}).
+        \]
+        \item[(b)] Let $M\rightarrow\infty$ with $E_b=E/\log M$ held constant. Using the upperbound for $Q(x)$ in Exercise 8.7(b), show that if $E_b/N_0>2\ln 2$, then $\lim_{M\rightarrow\infty}\mathrm{Pr}(e)=0$. How close is this to the ultimate Shannon limit on $E_b/N_0$? What is the limit of the spectral efficiency $\rho$?
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[(a)] 
+        \item[(b)] 
+    \end{itemize}
+\end{sol}
+
+\begin{prob}[8.11]
+    Section 8.3.4 discusses detection for binary complex vectors in WGN by viewing complex $n$-dimensional vectors as $2n$-dimensional real vectors. Here you will treat the vectors directly as $n$-dimension complex vectors. Let $\bm{Z}=(Z_1,\cdots,Z_n)^T$ be a vector of complex idd Gaussian rvs with iid real and imaginary parts, each $\mathcal{N}(0,N_0/2)$. The input $\bm{U}$ is binary antipodal, taking on values $\bm{a}$ and $-\bm{a}$. The observation $\bm{V}$ is $\bm{U}+\bm{Z}$.
+    \begin{itemize}
+        \item[(a)] The probability density of $\bm{Z}$ is given by
+        \[
+            f_{\bm{Z}}(z)=\frac{1}{(\pi N_0)^n}\exp\sum_{j=1}^n\frac{-\abs{z_j}^2}{N_0}=\frac{1}{(\pi N_0)^n}\exp\frac{-\norm{z}^2}{N_0}.
+        \]
+        Explain what this probability density represents (i.e. probability per unit what?)
+        \item[(b)] Give expression for $f_{\bm{V}\vert\bm{U}}(\bm{v}\vert\bm{a})$ and $f_{\bm{V}\vert\bm{U}}(\bm{v}\vert-\bm{a})$.
+        \item[(c)] Show that the log likelihood ratio for the observation $\bm{v}$ is given by
+        \[
+            \mathrm{LLR}(\bm{v})=\frac{-\norm{\bm{v}-\bm{a}}^2+\norm{\bm{v}+\bm{a}}^2}{N_0}.
+        \]
+        \item[(d)] Explain why this implies that ML detection is minimum distance detection (defining the distance between two complex vectors as the norm of their difference).
+        \item[(e)] Show that $\mathrm{LLR}(\bm{v})$ can also be written as $4\re[\langle\bm{v},\bm{a}\rangle]/N_0$.
+        \item[(f)] The appearance of the real part, $\re[\langle\bm{v},\bm{a}\rangle]$, in part (e) is surprising. Point out why log likelihood ratios must be real. Also explain why replacing $\re[\langle\bm{v},\bm{a}\rangle]$ by $\abs{\langle\bm{v},\bm{a}\rangle}$ in the above expression would give a nonsensical result in the ML test.
+        \item[(g)] Does the set of points $\{\bm{v}:\text{LLR}(\bm{v})=0\}$ form a complex vector space?
+    \end{itemize}
+\end{prob}
+\begin{sol}
+    \begin{itemize}
+        \item[(a)] 
+        \item[(b)] 
+        \item[(c)] 
+        \item[(d)] 
+        \item[(e)] 
+        \item[(f)] 
+        \item[(g)] 
+    \end{itemize}
+\end{sol}
+\end{document}
