@@ -66,13 +66,27 @@
 \end{prob}
 \begin{sol}
     \begin{itemize}
-        \item[(a)] 
+        \item[(a)] The probability density represents the probability per unit volume in $2n$-dimensional real vector space.
         \item[(b)] 
-        \item[(c)] 
-        \item[(d)] 
-        \item[(e)] 
-        \item[(f)] 
-        \item[(g)] 
+        \begin{align}
+            f_{\bm{V}\vert\bm{U}}(\bm{v}\vert\bm{a})=&\frac{1}{(\pi N_0)^n}\exp\frac{-\norm{\bm{v}-\bm{a}}^2}{N_0},\\
+            f_{\bm{V}\vert\bm{U}}(\bm{v}\vert-\bm{a})=&\frac{1}{(\pi N_0)^n}\exp\frac{-\norm{\bm{v}+\bm{a}}^2}{N_0}.
+        \end{align}
+        \item[(c)] The log likelihood ratio for the observation $\bm{v}$ is given by
+        \begin{align}
+            \mathrm{LLR}(\bm{v})=\ln\frac{f_{\bm{V}\vert\bm{U}}(\bm{v}\vert\bm{a})}{f_{\bm{V}\vert\bm{U}}(\bm{v}\vert-\bm{a})}=\ln\left[\exp\frac{-\norm{\bm{v}-\bm{a}}^2+\norm{\bm{v}+\bm{a}}^2}{N_0}\right]=\frac{-\norm{\bm{v}-\bm{a}}^2+\norm{\bm{v}+\bm{a}}^2}{N_0}.
+        \end{align}
+        \item[(d)] The ML detection rule is
+        \begin{align}
+            \mathrm{LLR}(\bm{v})=\frac{-\norm{\bm{v}-\bm{a}}^2+\norm{\bm{v}+\bm{a}}^2}{N_0}\underset{\tilde{U}=-\bm{a}}{\overset{\tilde{U}=\bm{a}}{\gtreqless}}0.
+        \end{align}
+        Since $\norm{\bm{v}-\bm{a}}$ is the distance between $\bm{v}$ and $\bm{a}$ and $\norm{\bm{v}+\bm{a}}^2$ is the distance between $\bm{v}$ and $-\bm{a}$, if the distance between $\bm{v}$ and $\bm{a}$ is less than that between $\bm{v}$ and $-\bm{a}$, ML detection gives $\tilde{U}=\bm{a}$, otherwise, giving $\tilde{U}=-\bm{a}$. Therefore, this $\mathrm{LLR}(\bm{v})$ implies that ML detection is minimum distance detection.
+        \item[(e)] $\mathrm{LLR}$ can be written as
+        \begin{align}
+            \mathrm{LLR}(\bm{v})=\frac{2\langle\bm{v},\bm{a}\rangle+\langle\bm{a},\bm{v}\rangle}{N_0}=\frac{4\re[\langle\bm{v},\bm{a}\rangle]}{N_0}.
+        \end{align}
+        \item[(f)] The likelihood ratio is the ratio of two positive numbers, so its logarithm $\mathrm{LLR}(\bm{v})$ is also a real number. Consider the one-dimensional case with $\bm{a}=1$. The noise in the imaginary direction is irrelevant and only the real component of noise is relevant.
+        \item[(g)] \uline{No}. Consider the one-dimensional case with $\bm{a}=1$. The set $\{\bm{v}:\mathrm{LLR}(\bm{v})\}$ is pure imaginary numbers, which is not closed under scalar multiplication by complex number.
     \end{itemize}
 \end{sol}
 \end{document}
